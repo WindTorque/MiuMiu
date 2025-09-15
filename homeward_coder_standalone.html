@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homeward Coder — Standalone</title>
+  <style>
+    :root {
+      --bg: #b3bfcd;
+      --ink: #23303d;
+      --muted: #5a6b7e;
+      --softB: #FF556B;   /* step */
+      --softC: #6CC1E5;   /* left */
+      --turnR: #FFAA4E;   /* right */
+      --tile: #dae2ee;
+      --home: #ffe28a;
+      --start: #98e2c6;
+      --uiPx: 640px;      /* will be updated by JS */
+      --blockH: 56px;
+      --blockW: 56px;
+      --btnW: 64px;
+      --btnGap: 8px;
+    }
+    * { box-sizing: border-box; }
+    [hidden]{display:none!important;}
+    body {
+      margin: 0;
+      font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      display: flex; flex-direction: column;
+    }
+    .topbar { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; border-bottom:1px solid #e0e4ea; background:#fff; position:sticky; top:0; z-index:10; }
+    .level-info { display:flex; gap:10px; align-items:baseline; font-size:15px; }
+    .level-info .dot { color: var(--muted); }
+    .right-tools { display:flex; gap:6px; }
+    button { border:0; border-radius:12px; padding:8px 12px; cursor:pointer; font-size:18px; background:#fff; }
+    button.ghost { background:#f2f5f9; }
+    button.primary { background:#62c370; color:#08340f; }
+    .layout { display:grid; grid-template-columns:1fr; gap:10px; padding:12px; }
+    .board-wrap { position:relative; margin:0 auto; width:min(90vw, 480px); }
+    #board { width:100%; height:auto; border-radius:16px; border:6px solid #fff; background:#fff; box-shadow:0 6px 20px rgba(0,0,0,0.08); display:block; }
+    .code-ui { display:flex; align-items:center; justify-content:center; gap:10px; width:var(--uiPx); margin:0 auto; }
+    .runner { display:flex; flex-direction:row; gap:var(--btnGap); justify-content:center; }
+    .runner button { height:var(--blockH); min-width:var(--btnW); font-size:22px; background:#fff; border:1px solid #000; border-radius:12px; font-weight:800; }
+    .program-area { display:flex; align-items:center; gap:10px; width:calc(var(--uiPx) - (3 * var(--btnW) + 2 * var(--btnGap))); }
+    .program-bar { height:calc(var(--blockH) + 16px); background:#fff; border-radius:14px; padding:8px; display:flex; gap:8px; align-items:center; overflow-x:auto; box-shadow:inset 0 0 0 2px #eef3f8; width:calc(100% - 72px - 10px); }
+    .block { display:inline-flex; align-items:center; justify-content:center; gap:6px; min-width:var(--blockW); height:var(--blockH); padding:6px 10px; border-radius:12px; background:var(--softB); color:#33040b; font-weight:800; user-select:none; cursor:grab; font-size:28px; }
+    .block.current { outline:4px solid #000; }
+    .block.dragging { cursor:grabbing; opacity:.6; }
+    .placeholder { background:transparent!important; border:2px dashed #9bb8d6; }
+    .block[data-type="step"], .menu-block.block[data-type="step"] { background:var(--softB); color:#33040b; }
+    .block[data-type="turnLeft"], .menu-block.block[data-type="turnLeft"] { background:var(--softC); color:#063e54; }
+    .block[data-type="turnRight"], .menu-block.block[data-type="turnRight"] { background:var(--turnR); color:#4d2e00; }
+    .trash { width:72px; height:72px; border-radius:14px; background:#fdf1f1; display:grid; place-items:center; font-size:32px; border:2px dashed #f3b3b3; user-select:none; }
+    .block-menu { display:flex; flex-wrap:wrap; gap:10px; width:var(--uiPx); margin:0 auto; justify-content:center; }
+    .menu-block.block { background:#edf6ff; color:#093056; font-weight:800; border-radius:12px; padding:6px 10px; display:inline-flex; gap:8px; align-items:center; cursor:grab; height:var(--blockH); min-width:var(--blockW); justify-content:center; font-size:28px; }
+    .tiny { text-align:center; padding:10px; color:var(--muted); font-size:12px; }
+    .win-banner { position:absolute; inset:0; display:grid; place-items:center; background:rgba(0,0,0,0.25); border-radius:16px; }
+    .win-banner .banner-inner { background:#fff; padding:18px 22px; border-radius:14px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.15); }
+    .win-banner .stars { font-size:28px; margin-bottom:6px; }
+    .win-banner .msg { font-size:20px; margin-bottom:10px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="level-info">
+      <span id="levelName">Level 01</span>
+      <span class="dot">•</span>
+      <span>Optimal: <strong id="optimalBlocks">–</strong></span>
+      <span class="dot">•</span>
+      <span>Your blocks: <strong id="yourBlocks">0</strong></span>
+    </div>
+    <div class="right-tools">
+      <button id="avatarToggle" class="ghost">🐭</button>
+      <button id="muteToggle" class="ghost">🔊</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="board-wrap">
+      <canvas id="board" width="640" height="640"></canvas>
+      <div class="win-banner" id="winBanner" hidden>
+        <div class="banner-inner">
+          <div class="stars">⭐️⭐️⭐️</div>
+          <div class="msg">You made it home!</div>
+          <button id="nextOrReset" class="primary">Reset</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="code-ui">
+      <div class="runner">
+        <button id="btnStart" class="start btn" title="Start/Pause">▶️</button>
+        <button id="btnStep"  class="step btn" title="Step">⏭️</button>
+        <button id="btnReset" class="reset btn" title="Reset">🔄</button>
+      </div>
+
+      <div class="program-area">
+        <div id="programBar" class="program-bar" data-max="20" aria-label="Program bar"></div>
+        <div id="trash" class="trash" aria-label="Trash">🗑️</div>
+      </div>
+    </section>
+
+    <section class="block-menu" id="blockMenu"></section>
+  </main>
+
+  <footer class="tiny">
+    <span>Homeward Coder — footprints move; ↺/↻ turn.</span>
+  </footer>
+
+  <script>
+    // ---------- Embedded level (used in standalone) ----------
+    const embeddedLevel = {
+      id: "01",
+      name: "Homecoming 1",
+      grid: { cols: 5, rows: 5 },
+      start: { x: 1, y: 2, dir: "E" },
+      home:  { x: 4, y: 2 },
+      obstacles: [
+        { x:0, y:1, type:"tree" },
+        { x:2, y:1, type:"water" },
+        { x:3, y:2, type:"wall" }
+      ],
+      optimalBlocks: 4,
+      allowedBlocks: ["step","turnLeft","turnRight"]
+    };
+
+    // ---------- State ----------
+    const state = {
+      level: null,
+      program: [],
+      ip: 0,
+      running: false,
+      pos: { x: 0, y: 0 },
+      dir: "E",
+      lastWin: false,
+      soundsMuted: false,
+      avatar: "gray"
+    };
+
+    // ---------- Elements ----------
+    const $ = s => document.querySelector(s);
+    const board = $("#board"), ctx = board.getContext("2d");
+    const programBar = $("#programBar"), blockMenu = $("#blockMenu"), trash = $("#trash");
+    const startBtn = $("#btnStart"), stepBtn = $("#btnStep"), resetBtn = $("#btnReset");
+    const optimalEl = $("#optimalBlocks"), yourEl = $("#yourBlocks"), levelNameEl = $("#levelName");
+    const winBanner = $("#winBanner"), nextOrResetBtn = $("#nextOrReset"), avatarToggle = $("#avatarToggle"), muteToggle = $("#muteToggle");
+
+    // ---------- Audio ----------
+    let audioCtx;
+    function beep(kind="move"){
+      if (state.soundsMuted) return;
+      if (!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.connect(g); g.connect(audioCtx.destination);
+      o.frequency.value = kind==="move"?660: kind==="turn"?520: kind==="bonk"?180: 880;
+      g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.3, audioCtx.currentTime+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime+0.12);
+      o.start(); o.stop(audioCtx.currentTime+0.13);
+    }
+
+    // ---------- Utils ----------
+    function uid(){ return Math.random().toString(36).slice(2,9); }
+    function dirVec(d){ return d==="N"?{x:0,y:-1}: d==="S"?{x:0,y:1}: d==="W"?{x:-1,y:0}:{x:1,y:0}; }
+    function turnLeft(d){ return d==="N"?"W": d==="W"?"S": d==="S"?"E":"N"; }
+    function turnRight(d){ return d==="N"?"E": d==="E"?"S": d==="S"?"W":"N"; }
+    function tileAt(x,y){
+      const L = state.level;
+      if (x<0 || y<0 || x>=L.grid.cols || y>=L.grid.rows) return "off";
+      for (const o of L.obstacles) if (o.x===x && o.y===y) return o.type;
+      if (L.home.x===x && L.home.y===y) return "home";
+      if (L.start.x===x && L.start.y===y) return "start";
+      return "empty";
+    }
+    function getCSS(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+    function saveProgram(){ try{ localStorage.setItem("hc_prog_"+state.level.id, JSON.stringify(state.program)); }catch{} }
+    function loadProgram(){ try{ const r=localStorage.getItem("hc_prog_"+state.level.id); if(r) state.program = JSON.parse(r);}catch{} }
+
+    // ---------- UI: menu & program ----------
+    function iconFor(t){ if(t==="step") return "👣"; if(t==="turnLeft") return "↺"; if(t==="turnRight") return "↻"; return "?"; }
+    function updateYourCount(){ yourEl.textContent = state.program.length; }
+    function makeBlockEl(type,id){
+      const el = document.createElement("div");
+      el.className = "block"; el.draggable = true;
+      el.dataset.type = type; el.dataset.id = id || uid();
+      el.innerHTML = iconFor(type);
+      el.addEventListener("dragstart", onBlockDragStart);
+      el.addEventListener("dragend", onBlockDragEnd);
+      el.addEventListener("click", ()=>{
+        const idx = state.program.findIndex(b=>b.id===el.dataset.id);
+        if (idx>=0){ state.program.splice(idx,1); renderProgram(); saveProgram(); }
+      });
+      return el;
+    }
+    function renderProgram(){
+      programBar.innerHTML = "";
+      for (const blk of state.program) programBar.appendChild(makeBlockEl(blk.type, blk.id));
+      updateYourCount();
+    }
+    function renderMenu(){
+      blockMenu.innerHTML = "";
+      const allowed = new Set(state.level.allowedBlocks||["step","turnLeft","turnRight"]);
+      for (const type of ["step","turnLeft","turnRight"]){
+        if (!allowed.has(type)) continue;
+        const btn = document.createElement("div");
+        btn.className = "menu-block block";
+        btn.draggable = true;
+        btn.dataset.type = type;
+        btn.dataset.id = "menu-"+type;
+        btn.innerHTML = iconFor(type);
+        btn.addEventListener("click", ()=>{
+          const max = Number(programBar.dataset.max||20);
+          if (state.program.length >= max) return;
+          state.program.push({ id: uid(), type });
+          renderProgram(); saveProgram();
+        });
+        btn.addEventListener("dragstart", (e)=>{
+          e.dataTransfer.setData("text/plain", JSON.stringify({from:"menu", type}));
+          e.dataTransfer.effectAllowed = "copy";
+          btn.classList.add("dragging");
+        });
+        btn.addEventListener("dragend", ()=>btn.classList.remove("dragging"));
+        blockMenu.appendChild(btn);
+      }
+    }
+
+    // ---------- DnD (placeholder + ghost) ----------
+    let dragData=null;
+    let placeholder=document.createElement("div"); placeholder.className="block placeholder";
+    let draggedEl=null, dragGhost=null;
+
+    function onBlockDragStart(e){
+      const id = e.target.dataset.id;
+      dragData = { id, srcIndex: state.program.findIndex(b=>b.id===id) };
+      draggedEl = e.target;
+
+      // ghost so the drag remains alive after removing DOM node
+      try{
+        dragGhost = e.target.cloneNode(true);
+        dragGhost.style.position="absolute"; dragGhost.style.top="-1000px"; dragGhost.style.left="-1000px"; dragGhost.style.opacity="0.85";
+        document.body.appendChild(dragGhost);
+        e.dataTransfer.setDragImage(dragGhost, dragGhost.offsetWidth/2, dragGhost.offsetHeight/2);
+      }catch{}
+
+      const kids = [...programBar.querySelectorAll(".block:not(.placeholder)")];
+      const ref = kids[dragData.srcIndex] || null;
+      try{ programBar.removeChild(draggedEl); }catch{}
+      if (!placeholder.parentElement) programBar.insertBefore(placeholder, ref);
+      else programBar.replaceChild(placeholder, ref);
+
+      e.dataTransfer.setData("text/plain", JSON.stringify({from:"bar", id, index: dragData.srcIndex}));
+      e.dataTransfer.effectAllowed="move";
+    }
+    function onBlockDragEnd(){
+      clearPlaceholder();
+      if (dragGhost && dragGhost.parentNode) dragGhost.parentNode.removeChild(dragGhost);
+      dragGhost=null; draggedEl=null; dragData=null;
+      renderProgram();
+    }
+    function clearPlaceholder(){ if (placeholder.parentElement) placeholder.parentElement.removeChild(placeholder); }
+    function getInsertIndexAtX(container,x){
+      const kids=[...container.querySelectorAll(".block:not(.placeholder)")];
+      let idx=kids.length;
+      for (let i=0;i<kids.length;i++){
+        const box = kids[i].getBoundingClientRect();
+        const mid = box.left + box.width/2;
+        if (x < mid){ idx = i; break; }
+      }
+      return idx;
+    }
+    programBar.addEventListener("dragover", (e)=>{
+      e.preventDefault();
+      const idx = getInsertIndexAtX(programBar, e.clientX);
+      const kids=[...programBar.querySelectorAll(".block:not(.placeholder)")];
+      const ref = kids[idx] || null;
+      if (!placeholder.parentElement) programBar.insertBefore(placeholder, ref);
+      else if (placeholder.nextSibling !== ref) programBar.insertBefore(placeholder, ref);
+    });
+    programBar.addEventListener("dragleave", (e)=>{
+      const r = programBar.getBoundingClientRect();
+      if (e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom) clearPlaceholder();
+    });
+    programBar.addEventListener("drop", (e)=>{
+      e.preventDefault();
+      // final index = number of non-placeholder nodes before placeholder
+      let idx = 0;
+      for (const n of programBar.children){
+        if (n===placeholder) break;
+        if (!n.classList.contains("placeholder")) idx++;
+      }
+      let payload = null; try{ payload = JSON.parse(e.dataTransfer.getData("text/plain")); }catch{}
+      if (payload && payload.from==="menu"){
+        const max = Number(programBar.dataset.max||20);
+        if (state.program.length < max) state.program.splice(idx,0,{id:uid(),type:payload.type});
+      } else if (payload && payload.from==="bar" && dragData){
+        const from = dragData.srcIndex;
+        const item = state.program.splice(from,1)[0];
+        state.program.splice(idx,0,item);
+      }
+      clearPlaceholder();
+      renderProgram(); saveProgram();
+    });
+    trash.addEventListener("dragover",(e)=>{ e.preventDefault();});
+    trash.addEventListener("drop",(e)=>{
+      e.preventDefault();
+      let p=null; try{ p=JSON.parse(e.dataTransfer.getData("text/plain")); }catch{}
+      if (p && p.from==="bar"){
+        const i = state.program.findIndex(b=>b.id===p.id);
+        if (i>=0){ state.program.splice(i,1); renderProgram(); saveProgram(); }
+      }
+    });
+    trash.addEventListener("click", ()=>{ state.program = []; renderProgram(); saveProgram(); });
+
+    // ---------- Runner ----------
+    let timer=null;
+    function setRunning(on){
+      state.running = on;
+      if (on){ startBtn.textContent="⏸️"; timer=setInterval(()=>stepOnce(true), 600); }
+      else { startBtn.textContent="▶️"; clearInterval(timer); timer=null; }
+    }
+    function stepOnce(fromTimer=false){
+      if (state.ip >= state.program.length){
+        if (fromTimer) setRunning(false);
+        evaluateWin();
+        return;
+      }
+      const blk = state.program[state.ip];
+      highlightIp();
+      let stop=false;
+      if (blk.type==="step"){
+        const v=dirVec(state.dir);
+        const nx=state.pos.x+v.x, ny=state.pos.y+v.y;
+        const t = tileAt(nx,ny);
+        if (t==="off"||t==="tree"||t==="wall"||t==="water"){ beep("bonk"); stop=true; }
+        else { state.pos.x=nx; state.pos.y=ny; beep("move"); }
+      } else if (blk.type==="turnLeft"){ state.dir = turnLeft(state.dir); beep("turn"); }
+      else if (blk.type==="turnRight"){ state.dir = turnRight(state.dir); beep("turn"); }
+      state.ip++; draw();
+      if (stop){ setRunning(false); return; }
+      if (!fromTimer && state.ip>=state.program.length) evaluateWin();
+    }
+    function evaluateWin(){
+      const onHome = (state.pos.x===state.level.home.x && state.pos.y===state.level.home.y);
+      if (onHome){ state.lastWin=true; showWin(); beep("win"); }
+    }
+    function highlightIp(){
+      programBar.querySelectorAll(".block").forEach(b=>b.classList.remove("current"));
+      if (state.ip < state.program.length){
+        const id = state.program[state.ip].id;
+        const el = programBar.querySelector('.block[data-id="'+id+'"]');
+        if (el) el.classList.add("current");
+      }
+    }
+
+    // ---------- Drawing ----------
+    function draw(){
+      const L = state.level;
+      const W = board.width, H = board.height;
+      ctx.clearRect(0,0,W,H);
+      const cols=L.grid.cols, rows=L.grid.rows;
+      const cw = W/cols, ch = H/rows;
+
+      for (let y=0;y<rows;y++){
+        for (let x=0;x<cols;x++){
+          const t = tileAt(x,y);
+          ctx.fillStyle = getCSS("--tile")||"#dae2ee";
+          ctx.fillRect(x*cw, y*ch, cw, ch);
+          ctx.strokeStyle = "rgba(0,0,0,0.18)";
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x*cw, y*ch, cw, ch);
+
+          if (t==="home"){ ctx.fillStyle = getCSS("--home"); ctx.fillRect(x*cw,y*ch,cw,ch); drawHouse(x*cw,y*ch,cw,ch); }
+          else if (t==="start"){ ctx.fillStyle = getCSS("--start"); ctx.fillRect(x*cw,y*ch,cw,ch); drawStartFlag(x*cw,y*ch,cw,ch); }
+          else if (t==="tree"){ drawTree(x*cw,y*ch,cw,ch); }
+          else if (t==="wall"){ drawWall(x*cw,y*ch,cw,ch); }
+          else if (t==="water"){ drawWater(x*cw,y*ch,cw,ch); }
+        }
+      }
+      drawMouse(state.pos.x*cw+cw/2, state.pos.y*ch+ch/2, Math.min(cw,ch)*0.7, state.dir);
+    }
+
+    function drawHouse(x,y,w,h){
+      const cx = x + w/2, cy = y + h/2;
+      ctx.save(); ctx.translate(cx,cy);
+      ctx.fillStyle = "#efaa3a"; ctx.fillRect(-w*0.3, 0, w*0.6, h*0.35);
+      ctx.fillStyle = "#d64c4c"; ctx.beginPath(); ctx.moveTo(-w*0.35,0); ctx.lineTo(0,-h*0.35); ctx.lineTo(w*0.35,0); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    function drawStartFlag(x,y,w,h){
+      ctx.save(); ctx.translate(x+w*0.15, y+h*0.2);
+      ctx.fillStyle="#1b8a5a"; ctx.fillRect(0,0,w*0.15,h*0.6);
+      ctx.fillStyle="#2bb673"; ctx.beginPath(); ctx.moveTo(w*0.15,0); ctx.lineTo(w*0.6,h*0.15); ctx.lineTo(w*0.15,h*0.3); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    function drawTree(x,y,w,h){
+      ctx.save(); ctx.translate(x+w/2,y+h/2);
+      ctx.fillStyle="#3a5d0f";
+      ctx.beginPath(); ctx.moveTo(0,-h*0.35); ctx.lineTo(-w*0.28,h*0.1); ctx.lineTo(w*0.28,h*0.1); ctx.closePath(); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(0,-h*0.2); ctx.lineTo(-w*0.24,h*0.24); ctx.lineTo(w*0.24,h*0.24); ctx.closePath(); ctx.fill();
+      ctx.fillStyle="#6b4c2a"; ctx.fillRect(-w*0.06,h*0.2,w*0.12,h*0.2);
+      ctx.restore();
+    }
+    function drawWall(x,y,w,h){
+      ctx.save(); ctx.translate(x,y);
+      ctx.fillStyle="#c7cdd6"; ctx.fillRect(0,0,w,h);
+      ctx.strokeStyle="#9aa4b2";
+      for(let i=0;i<3;i++){ ctx.beginPath(); ctx.moveTo(0,i*h/3); ctx.lineTo(w,i*h/3); ctx.stroke(); }
+      for(let i=1;i<3;i++){ ctx.beginPath(); ctx.moveTo(i*w/3,0); ctx.lineTo(i*w/3,h); ctx.stroke(); }
+      ctx.restore();
+    }
+    function drawWater(x,y,w,h){
+      ctx.save(); ctx.translate(x,y);
+      const g = ctx.createLinearGradient(0,0,0,h);
+      g.addColorStop(0,"#bfe7ff"); g.addColorStop(1,"#87c8f2");
+      ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+      ctx.strokeStyle="rgba(255,255,255,0.6)";
+      for(let i=0;i<4;i++){ ctx.beginPath(); ctx.arc(w*(0.2+0.2*i), h*0.6, w*0.08, 0, Math.PI*2); ctx.stroke(); }
+      ctx.restore();
+    }
+
+    function drawMouse(cx,cy,size,dir){
+      ctx.save();
+      ctx.translate(cx,cy);
+      const angle = dir==="E" ? 0 : dir==="N" ? -Math.PI/2 : dir==="S" ? Math.PI/2 : Math.PI;
+      ctx.rotate(angle);
+      // tail
+      ctx.strokeStyle = "#f3a3b4";
+      ctx.lineWidth = Math.max(2, size*0.06);
+      ctx.beginPath(); ctx.moveTo(-size*0.30, size*0.12); ctx.quadraticCurveTo(-size*0.40, size*0.28, -size*0.30, size*0.40); ctx.stroke();
+      // body
+      const bodyGrad = ctx.createLinearGradient(-size*0.3,0,size*0.3,0);
+      bodyGrad.addColorStop(0,"#6e6e6e"); bodyGrad.addColorStop(1,"#8a8a8a");
+      ctx.fillStyle = bodyGrad;
+      roundedRect(ctx, -size*0.30, -size*0.22, size*0.60, size*0.44, 20); ctx.fill();
+      // ears
+      ctx.fillStyle = "#f5a3ad";
+      ctx.beginPath(); ctx.arc(-size*0.05, -size*0.22, size*0.09, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(-size*0.05,  size*0.22, size*0.09, 0, Math.PI*2); ctx.fill();
+      // nose
+      ctx.fillStyle = "#ffb0bc"; ctx.beginPath(); ctx.arc(size*0.34, 0, size*0.08, 0, Math.PI*2); ctx.fill();
+      // eyes
+      ctx.fillStyle = "white";
+      ctx.beginPath(); ctx.arc(size*0.08, -size*0.10, size*0.08, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(size*0.08,  size*0.10, size*0.08, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = "#3b3b3b";
+      ctx.beginPath(); ctx.arc(size*0.12, -size*0.10, size*0.04, 0, Math.PI*2); ctx.fill();
+      ctx.beginPath(); ctx.arc(size*0.12,  size*0.10, size*0.04, 0, Math.PI*2); ctx.fill();
+      // whiskers
+      ctx.strokeStyle = "#2b2b2b"; ctx.lineWidth = 2;
+      for (let i=-1;i<=1;i+=2){
+        ctx.beginPath(); ctx.moveTo(size*0.12,  i*size*0.10); ctx.lineTo(size*0.26,  i*size*0.16); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(size*0.12,  i*size*0.06); ctx.lineTo(size*0.26,  i*size*0.08); ctx.stroke();
+      }
+      ctx.restore();
+    }
+    function roundedRect(ctx,x,y,w,h,r){
+      const rr=Math.min(r,w/2,h/2);
+      ctx.beginPath();
+      ctx.moveTo(x+rr,y);
+      ctx.arcTo(x+w,y,x+w,y+h,rr);
+      ctx.arcTo(x+w,y+h,x,y+h,rr);
+      ctx.arcTo(x,y+h,x,y,rr);
+      ctx.arcTo(x,y,x+w,y,rr);
+      ctx.closePath();
+    }
+
+    // ---------- Controls ----------
+    startBtn.addEventListener("click", ()=>{
+      if (state.running){ setRunning(false); }
+      else {
+        state.pos = { x: state.level.start.x, y: state.level.start.y };
+        state.dir = state.level.start.dir;
+        state.ip = 0;
+        hideWin();
+        draw();
+        programHighlightClear();
+        setRunning(true);
+      }
+    });
+    stepBtn.addEventListener("click", ()=>{ setRunning(false); if (state.ip===0) draw(); stepOnce(false); });
+    resetBtn.addEventListener("click", ()=> resetToStart());
+    nextOrResetBtn.addEventListener("click", ()=>{ hideWin(); resetToStart(); });
+    avatarToggle.addEventListener("click", ()=>{ state.avatar = (state.avatar==="gray"?"brown":"gray"); draw(); });
+    muteToggle.addEventListener("click", ()=>{ state.soundsMuted = !state.soundsMuted; muteToggle.textContent = state.soundsMuted ? "🔇" : "🔊"; });
+    function programHighlightClear(){ programBar.querySelectorAll(".block").forEach(b=>b.classList.remove("current")); }
+    function resetToStart(){ setRunning(false); state.ip=0; state.pos={x:state.level.start.x, y:state.level.start.y}; state.dir=state.level.start.dir; state.lastWin=false; hideWin(); programHighlightClear(); draw(); }
+
+    // ---------- Win UI ----------
+    function showWin(){ winBanner.hidden=false; winBanner.style.display="grid"; }
+    function hideWin(){ winBanner.hidden=true; winBanner.style.display="none"; }
+
+    // ---------- Layout ----------
+    function syncWidths(){
+      const boardW = board.getBoundingClientRect().width; // responsive canvas container width
+      // Fit 12 blocks (+gaps, trash, padding) + 3 buttons
+      const blockW = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--blockW')) || 56;
+      const gap = 8, pad = 16, trashW = 72, trashGap = 10;
+      const barNeeded = (12*blockW) + (11*gap) + pad + trashW + trashGap;
+      const btnW = 64, btnGap = 8, btns = (3*btnW) + (2*btnGap);
+      const uiW = Math.max(boardW, btns + barNeeded);
+      document.documentElement.style.setProperty('--uiPx', uiW + 'px');
+    }
+    window.addEventListener('resize', syncWidths);
+
+    // ---------- Init ----------
+    function ensureDefaults(lvl){
+      if (!lvl.grid) lvl.grid = {cols:5,rows:5};
+      if (!lvl.start) lvl.start = {x:0,y:0,dir:"E"};
+      if (!lvl.home)  lvl.home  = {x:lvl.grid.cols-1,y:lvl.grid.rows-1};
+      if (!lvl.optimalBlocks) lvl.optimalBlocks = 1;
+      if (!Array.isArray(lvl.allowedBlocks) || lvl.allowedBlocks.length===0) lvl.allowedBlocks = ["step","turnLeft","turnRight"];
+      if (!Array.isArray(lvl.obstacles)) lvl.obstacles = [];
+      return lvl;
+    }
+    function applyLevel(lvl){
+      lvl = ensureDefaults(lvl);
+      state.level = lvl;
+      levelNameEl.textContent = "Level " + lvl.id + ": " + lvl.name;
+      optimalEl.textContent = "" + lvl.optimalBlocks;
+      state.pos = { x:lvl.start.x, y:lvl.start.y };
+      state.dir = lvl.start.dir;
+      renderMenu(); loadProgram(); renderProgram(); draw();
+    }
+    function init(){
+      hideWin();
+      syncWidths();
+      programBar.addEventListener("dragenter", e=>e.preventDefault());
+      applyLevel(embeddedLevel); // standalone uses embedded level only
+    }
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
