@@ -119,7 +119,7 @@ body{
 .level-info{
         align-items: baseline;
         display: flex;
-        font-size: 25px;
+        font-size: 20px;
         gap: 10px;
         justify-self: start;
         min-width: 0;
@@ -1292,8 +1292,19 @@ try{
     if (btnAll)   btnAll.style.display   = onStart ? '' : 'none';
     if (btnTrash) btnTrash.style.display = onStart ? 'none' : '';
 
-    if (badge) badge.style.display = onStart ? 'none' : ''; // hide on start, show during programming
-    if (!onStart) updateCurrentUserUI();
+    
+    if (badge){
+        // Hide the player name on start screen OR whenever we're in local-only mode.
+        const hideBadge = onStart || ENABLE_LOCAL_SAVE;
+        badge.style.display = hideBadge ? 'none' : '';
+        // Also hide the dot separator that follows the badge
+        const sep = badge.nextElementSibling;
+        if (sep && sep.classList && sep.classList.contains('dot-sep')){
+            sep.style.display = hideBadge ? 'none' : '';
+        }
+    }
+
+    if (!onStart && !ENABLE_LOCAL_SAVE) updateCurrentUserUI();
 
     var _sf = document.getElementById('chooseSaveFolderBtn');
     var _sp = document.getElementById('playerSelect');
