@@ -92,7 +92,7 @@
 --font-26: 26px;
 --font-28: 28px;
 
---barH: 78px;
+--barH: 76px;
 --topbarH: 40px;
 --icon-22: 22px;
 --icon-32: 32px;
@@ -404,7 +404,7 @@ main.layout{
         flex: 1;
         gap: var(--space-3);
         height: var(--barH);
-        min-height: calc(var(--blockH) + 24px);
+        min-height: var(--barH);
         min-width: var(--minProgramW);
         overflow-x: auto;
         padding: var(--space-3);
@@ -783,6 +783,7 @@ main.layout{
         grid-area: menu;
         margin-bottom: env(safe-area-inset-bottom, 12px);
         width: 100%;   
+        min-height: calc(var(--blockH) + 4px);
     }
 
 /* === Repeat Block === */
@@ -1323,7 +1324,7 @@ button.ghost{
     }
   }
 
-/* === Mobile Landscape Overrides (v6.6) === */
+/* === Mobile Landscape Overrides === */
 @media (orientation: landscape) and (max-height: 480px), 
        (orientation: landscape) and (max-width: 900px) {
     :root{
