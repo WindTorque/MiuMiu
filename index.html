@@ -323,6 +323,11 @@ main.layout{
         min-height: 0;
     }
 
+/* When #functionBar is visible, shrink Program bar width */
+main.layout:has(#functionBar:not([hidden])){
+  --minProgramW: 300px;
+}
+
 .board-wrap{
         margin: 0 auto;
         max-width: 90vw;
@@ -380,9 +385,8 @@ main.layout{
 /* === Program UI Bars === */
 
 .program-area{
-        align-items: center;
-        display: block;
-        flex: 1;
+        display: block;  
+        flex: 0 0 auto;          /* <-- STOP growing; take natural width */
         gap: 10px;
     }
 
@@ -393,6 +397,14 @@ main.layout{
         overflow-x: auto;
         padding-bottom: var(--space-2);
         white-space: nowrap;
+        scrollbar-width: none;
+
+    }
+
+.pf-wrap::-webkit-scrollbar{    /* Chromium/WebKit/Android */
+        height: 0;
+        width: 0;
+        display: none;
     }
 
 .program-bar{
@@ -406,7 +418,9 @@ main.layout{
         height: var(--barH);
         min-height: var(--barH);
         min-width: var(--minProgramW);
-        overflow-x: auto;
+        overflow-x: visible;     /* let it grow horizontally */
+        width: max-content;      /* expand to fit all blocks in one row */
+        flex: 0 0 auto;          /* don’t shrink; take natural width */
         padding: var(--space-3);
     }
 
@@ -1329,7 +1343,7 @@ button.ghost{
        (orientation: landscape) and (max-width: 900px) {
     :root{
         --scale: 0.88;            /* scales spacing/fonts/icons via --u */
-        --minProgramW: 480px;     /* allow program bar to fit smaller screens */
+        --minProgramW: 350px;     /* allow program bar to fit smaller screens */
         --fnBarW: 420px;
         --boardBorder: calc(6px * var(--scale));
         --uiPx: 720px;
