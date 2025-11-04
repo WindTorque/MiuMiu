@@ -92,7 +92,7 @@
 --font-26: 26px;
 --font-28: 28px;
 
---barH: 76px;
+--barH: calc(var(--blockH) + 24px);  /* keeps bars snug to their blocks */
 --topbarH: 40px;
 --icon-22: 22px;
 --icon-32: 32px;
@@ -1347,6 +1347,15 @@ button.ghost{
         --fnBarW: 420px;
         --boardBorder: calc(6px * var(--scale));
         --uiPx: 720px;
+        --scale: 0.78;            /* was 0.88 */
+        --topbarH: 32px;          /* was 40px */
+        --icon-22: 18px;          /* was 22px */
+        --icon-32: 24px;          /* was 32px */
+        --icon-36: 28px;          /* was 36px */
+        --icon-42: 34px;          /* was 42px */
+        --font-20: 16px;          /* text tokens used in header */
+        --font-22: 18px;
+        --font-26: 20px;
     }
     .layout{ 
         gap: var(--space-3); 
@@ -1359,6 +1368,51 @@ button.ghost{
     .code-ui{ gap: var(--space-6); }
     .block-menu{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .block-menu .block{ touch-action: none; } /* prevent accidental scroll while dragging */
+
+    /* — compress the header layout — */
+    .topbar{
+    gap: 8px;                 /* tighter gaps */
+    padding: 6px 10px;        /* smaller paddings; safe-area padding is added below already */
+    }
+
+    /* keep your safe-area padding logic */
+    .topbar{
+    padding-left: calc(10px + env(safe-area-inset-left));
+    padding-right: calc(10px + env(safe-area-inset-right));
+    }
+
+    /* — scale specific header bits — */
+    .level-info{
+    font-size: var(--font-20);  /* smaller title/stats */
+    gap: 6px;
+    }
+    .level-info .title{ white-space: nowrap; }
+
+    #currentUserBadge{
+    font-size: var(--font-20);
+    height: var(--topbarH);
+    }
+
+    /* icon buttons and select */
+    .icon-btn{
+    height: var(--topbarH);
+    padding: 4px 8px;
+    gap: 4px;
+    }
+    .icon-btn svg{ height: var(--icon-22); width: var(--icon-22); }
+
+    .center-tools select{
+    height: var(--topbarH);
+    font-size: var(--font-20);
+    padding: 4px 6px;
+    }
+
+    /* right-side spacing */
+    .right-tools{ gap: 4px; }
+    .right-tools .dot-sep{ font-size: 28px; }
+
+    /* stars total on the right a bit smaller */
+    #totalStarsRight{ font-size: var(--font-20); }
 }
 
 /* === Portrait deterrent for phones === */
