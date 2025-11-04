@@ -3,56 +3,117 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MIUMIU Learn to Code</title>
 <style>
 /* === CSS Variables & Theme === */
 
 :root{
-        --bg: #a7a4a4;
-        --blockH: 48px;
-        --blockW: 48px;
-        --btnSmall: 42px;
-        --C1: #ffffff;
-        --C2: #fffb01;
-        --C3: #fb7eff;
-        --cheese: #fcdb7a;
-        --cheeseInk: #4B2C82;
-        --fn-block-bg: #108204;
-        --fn-block-fg: #d8ffd4;
-        --fn-locked-bg: #d8f0d6;
-        --fn-locked-border: #fa9d9d;
-        --function-bar-bg: #d8f0d6;
-        --function-bar-border: #aee6a9;
-        --home: #bbdfc0;
-        --ifBgnd: #ffe9d7;
-        --ifLabel: #ff7a00;
-        --ink: #23303d;
-        --left: #6CC1E5;
-        --mhole-blue: #1e88e5;
-        --mhole-border-width: 4px;
-        --mhole-green: #43a047;
-        --mhole-red: #e53935;
-        --mhole-yellow: #fdd835;
-        --muted: #5a6b7e;
-        --play: #63d3a2;
-        --repeat: #e2e2e2;
-        --repeatInk: #4B2C82;
-        --resetPink: #f1bdb1;
-        --right: #FFAA4E;
-        --run-outline-color: #000;
-        --run-outline-offset: 0px;
-        --run-outline-width: 4px;
-        --start: #c09c7f;
-        --step: #FF556B;
-        --stepLight: #b5f0d6;
-        --straw: #f8f1c7;
-        --straw-border: #e9dba3;
-        --tile: #bbdfc0;
-        --treeBg: #9fcf9f;
-        --uiPx: 840px;
-        --wallBg: #e9bd8d;
-    }
+    /* SCALING */
+    /* base sizes stay as “design” values */
+    --blockH: calc(48px * var(--scale));
+    --blockW: calc(48px * var(--scale));
+    --btnSmall: calc(42px * var(--scale));
+
+    /* optional: topbar + icons scale too */
+    --topbarH: calc(40px * var(--scale));
+    --icon-22: calc(22px * var(--scale));
+    --icon-32: calc(32px * var(--scale));
+    --icon-36: calc(36px * var(--scale));
+    --icon-42: calc(42px * var(--scale));
+
+    
+    /* COLOURS */
+    --bg: #a7a4a4;
+    --C1: #ffffff;
+    --C2: #fffb01;
+    --C3: #fb7eff;
+    --cheese: #fcdb7a;
+    --cheeseInk: #4B2C82;
+    --fn-block-bg: #108204;
+    --fn-block-fg: #d8ffd4;
+    --fn-locked-bg: #d8f0d6;
+    --fn-locked-border: #fa9d9d;
+    --function-bar-bg: #d8f0d6;
+    --function-bar-border: #aee6a9;
+    --home: #bbdfc0;
+    --ifBgnd: #ffe9d7;
+    --ifLabel: #ff7a00;
+    --ink: #23303d;
+    --left: #6CC1E5;
+    --mhole-blue: #1e88e5;
+    --mhole-border-width: 4px;
+    --mhole-green: #43a047;
+    --mhole-red: #e53935;
+    --mhole-yellow: #fdd835;
+    --muted: #5a6b7e;
+    --play: #63d3a2;
+    --repeat: #e2e2e2;
+    --repeatInk: #4B2C82;
+    --resetPink: #f1bdb1;
+    --right: #FFAA4E;
+    --run-outline-color: #000;
+    --run-outline-offset: 0px;
+    --run-outline-width: 4px;
+    --start: #c09c7f;
+    --step: #FF556B;
+    --stepLight: #b5f0d6;
+    --straw: #f8f1c7;
+    --straw-border: #e9dba3;
+    --tile: #bbdfc0;
+    --treeBg: #9fcf9f;
+    --wallBg: #e9bd8d;
+    --repeatUntil: #ead8ff;
+    --repeatUntilInk: var(--cheeseInk);
+/* === Scaling variables injected (v6.5 scalable) === */
+--u: calc(2px * var(--scale));
+--space-1: calc(var(--u)*2);
+--space-2: calc(var(--u)*3);
+--space-3: calc(var(--u)*4);
+--space-4: calc(var(--u)*5);
+--space-5: calc(var(--u)*6);
+--space-6: calc(var(--u)*7);
+--space-7: calc(var(--u)*8);
+--space-8: calc(var(--u)*10);
+--space-9: calc(var(--u)*12);
+
+--radius-1: 8px;
+--radius-2: 10px;
+--radius-3: 12px;
+--radius-4: 14px;
+--radius-5: 16px;
+--radius-round: 999px;
+
+--font-12: 12px;
+--font-16: 16px;
+--font-18: 18px;
+--font-20: 20px;
+--font-22: 22px;
+--font-26: 26px;
+--font-28: 28px;
+
+--barH: 78px;
+--topbarH: 40px;
+--icon-22: 22px;
+--icon-32: 32px;
+--icon-36: 36px;
+--icon-42: 42px;
+--repeat-icon-menu: 16px;
+--repeat-icon-live: 22px;
+
+--border-1: 1px;
+--border-2: 2px;
+--outline-4: 4px;
+
+--shadow-1: 0 6px 20px rgba(0,0,0,0.08);
+--shadow-2: 0 10px 30px rgba(0,0,0,0.15);
+
+--minProgramW: 600px;
+--boardBorder: 6px;
+
+--menuRightGap: 55px; /* default for repeat menu; if-menu IF uses 35px */
+    --scale: 1;
+}
 
 /* === Resets & Base === */
 
@@ -84,12 +145,12 @@ body{
 .topbar{
         align-items: center;
         background: #fff;
-        border-bottom: 1px solid #e0e4ea;
+        border-bottom: var(--border-1) solid #e0e4ea;
         display: grid;
-        gap: 12px;
+        gap: var(--space-5);
         grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
         justify-content: space-between;
-        padding: 10px 14px;
+        padding: var(--space-4) var(--space-6);
         position: sticky;
         top: 0;
         z-index: 10;
@@ -99,9 +160,9 @@ body{
         align-items: center;
         color: #e53935;
         display: inline-flex;
-        font-size: 20px;
+        font-size: var(--font-20);
         font-weight: 700;
-        height: 40px;
+        height: var(--topbarH);
         line-height: 1;
     }
 
@@ -119,8 +180,8 @@ body{
 .level-info{
         align-items: baseline;
         display: flex;
-        font-size: 20px;
-        gap: 10px;
+        font-size: var(--font-20);
+        gap: var(--space-4);
         justify-self: start;
         min-width: 0;
     }
@@ -156,16 +217,16 @@ body{
     }
 
 .topbar .ghost{
-        border-radius: 12px;
+        border-radius: var(--radius-3);
         display: grid;
-        height: 40px;
+        height: var(--topbarH);
         place-items: center;
-        width: 40px;
+        width: var(--topbarH);
     }
 
 .topbar .ghost svg{
-        height: 22px;
-        width: 22px;
+        height: var(--icon-22);
+        width: var(--icon-22);
     }
 
 .level-col > h2{
@@ -173,7 +234,7 @@ body{
     }
 
 .center-tools select{
-        height: 40px;
+        height: var(--topbarH);
     }
 
 .icon-btn.ghost{
@@ -182,21 +243,21 @@ body{
 
 .icon-btn svg{
         display: block;
-        height: 22px;
-        width: 22px;
+        height: var(--icon-22);
+        width: var(--icon-22);
     }
 
 .icon-btn{
         align-items: center;
         background: #fff;
         border: 1px solid var(--ink2);
-        border-radius: 10px;
+        border-radius: var(--radius-2);
         display: inline-flex;
         gap: 6px;
-        height: 40px;
+        height: var(--topbarH);
         justify-content: center;
-        padding: 6px 8px;
-        width: 40px;
+        padding: var(--space-2) var(--space-6);
+        width: var(--topbarH);
         color: #6b7280;
     }
 
@@ -223,30 +284,30 @@ body{
 
 .layout{
         display: grid;
-        gap: 10px;
+        gap: var(--space-4);
         grid-template-columns: 1fr;
-        padding: 12px;
+        padding: var(--space-5);
     }
 
 #board{
         background: #fff;
-        border: 6px solid #fff;
-        border-radius: 16px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        border: var(--boardBorder) solid #fff;
+        border-radius: var(--radius-5);
+        box-shadow: var(--shadow-1);
         display: block;
     }
 
 .code-ui{
         align-items: center;
         display: flex;
-        gap: 16px;
+        gap: var(--space-7);
         grid-area: ui;
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
         max-width: var(--uiPx);
-        padding-left: 12px;
-        padding-right: 12px;
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
         width: 100%;
     }
 
@@ -276,17 +337,17 @@ main.layout{
 .runner{
         align-items: center;
         display: grid;
-        gap: 10px;
-        grid-auto-rows: 42px;
+        gap: var(--space-4);
+        grid-auto-rows: var(--icon-42);
         grid-template-columns: repeat(2, var(--btnSmall));
         justify-items: center;
-        width: calc(var(--btnSmall)*2 + 10px);
+        width: calc(var(--btnSmall, 42px)*2 + var(--space-4));
     }
 
 .runner button{
         background: #fff;
         border: none;
-        border-radius: 14px;
+        border-radius: var(--radius-4);
         display: grid;
         height: 100%;
         padding: 0;
@@ -328,25 +389,25 @@ main.layout{
 .pf-wrap{
         align-items: stretch;
         display: flex;
-        gap: 12px;
+        gap: var(--space-5);
         overflow-x: auto;
-        padding-bottom: 4px;
+        padding-bottom: var(--space-2);
         white-space: nowrap;
     }
 
 .program-bar{
         align-items: flex-start;
         background: #fff;
-        border-radius: 14px;
-        box-shadow: inset 0 0 0 2px #eef3f8;
+        border-radius: var(--radius-4);
+        box-shadow: inset 0 0 0 var(--border-2) #eef3f8;
         display: flex;
         flex: 1;
-        gap: 8px;
-        height: 78px;
+        gap: var(--space-3);
+        height: var(--barH);
         min-height: calc(var(--blockH) + 24px);
-        min-width: 600px;
+        min-width: var(--minProgramW);
         overflow-x: auto;
-        padding: 8px;
+        padding: var(--space-3);
     }
 
 .function-bar{
@@ -369,48 +430,51 @@ main.layout{
 
 .program-bar .block.repeat,
 .function-bar .block.repeat{
-        align-items: center;
-        border: 1px solid var(--cheeseInk);
-        height: calc(var(--blockH) + 12px);
-        min-height: calc(var(--blockH) + 12px);
-        min-width: 80px;
-        padding-left: 4px;
-        padding-right: 32px;
-        position: relative;
-    }
+    align-items: center;
+    border: 1px solid var(--cheeseInk);
+    height: calc(var(--blockH) + 12px);
+    min-height: calc(var(--blockH) + 12px);
+    min-width: 80px;
+    padding-left: 4px;
+    padding-right: 32px;
+    position: relative;
+}
 
 .program-bar .block.repeat .repeat-inner.dropzone,
 .function-bar .block.repeat .repeat-inner.dropzone{
-        align-items: center;
-        min-height: calc(var(--blockH));
-        padding-left: 4px;
-        padding-right: 4px;
-    }
+    align-items: center;
+    min-height: calc(var(--blockH));
+    padding-left: 4px;
+    padding-right: 4px;
+}
 
 #functionBar.locked{
-        background: var(--fn-locked-bg);
-        border: 2px solid var(--fn-locked-border);
-        box-shadow: inset 0 0 0 1px var(--fn-locked-border);
-        user-select: none;
-    }
+    background: var(--fn-locked-bg);
+    border: 2px solid var(--fn-locked-border);
+    box-shadow: inset 0 0 0 1px var(--fn-locked-border);
+    user-select: none;
+}
 
 #functionBar.locked .block{
-        background-clip: padding-box;
-        cursor: not-allowed;
-    }
+    background-clip: padding-box;
+    cursor: not-allowed;
+    border-radius: var(--radius-3);
+    font-size: var(--font-26);
+    padding: var(--space-2) var(--space-4);
+}
 
 #functionBar{
-        flex: 0 0 var(--fnBarW, 470px);
-        max-width: var(--fnBarW, 470px);
-        min-width: var(--fnBarW, 470px);
-        overflow-x: hidden;
-        overflow-y: hidden;
-        scrollbar-width: none;
-    }
+    flex: 0 1 min(100%, var(--fnBarW, 470px));
+    max-width: 100%;
+    min-width: auto;
+    overflow-x: auto; /* keep safe */
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
 
 #functionBar::-webkit-scrollbar{
-        display: none;
-    }
+    display: none;
+}
 
 /* Function bar locked: no changing of repeat count or IF selector */
 #functionBar.locked .repeat-count,
@@ -447,14 +511,14 @@ main.layout{
 
 .block .blk-svg{
         display: block;
-        height: 32px;
-        width: 32px;
+        height: var(--icon-42);
+        width: var(--icon-42);
     }
 
 .block .blk-arrow{
         display: block;
-        height: 32px;
-        width: 32px;
+        height: var(--icon-36);
+        width: var(--icon-36);
     }
 
 .block.function{
@@ -506,7 +570,7 @@ main.layout{
     }
 
 .block.error{
-        outline: 4px solid #ff1744;
+        outline: 4px solid #ff0000;
     }
 
 .block.dragging{
@@ -516,7 +580,7 @@ main.layout{
 
 .placeholder{
         background: transparent!important;
-        border: 2px dashed #9bb8d6;
+        border: var(--border-2) dashed #9bb8d6;
         border-radius: 12px;
         height: var(--blockH);
         min-width: var(--blockW);
@@ -571,7 +635,13 @@ main.layout{
 
 .block-menu .block[data-type="repeat"] .repeat-count{
         cursor: inherit;
-    }
+  border: var(--border-2) solid #0b2a33;
+  border-radius: var(--radius-1);
+  bottom: calc(var(--u)*2.5);
+  font: 600 var(--font-18)/1 ui-sans-serif;
+  padding: calc(var(--u)*0.5) var(--space-4);
+  right: var(--space-3);
+}
 
 .menu-block.block[data-type="if"]{
         align-items: stretch;
@@ -606,37 +676,47 @@ main.layout{
 
 .block-menu .block[data-type="if"]{
         align-items: stretch;
-        display: flex;
+        display: inline-flex;
         gap: 0;
         height: var(--blockH);
         min-height: var(--blockH);
-        min-width: calc(var(--blockW) + 6px);
-        padding-right: 19px;
-        width: var(--blockW);
+        min-width: var(--blockW);
+        width: auto;
+        position: relative;
+        padding-left: 0;
     }
 
 .block-menu .block[data-type="if"] .if-inner{
-        display: none;
+        display: none;  
     }
 
 .block-menu .block[data-type="if"] .if-left{
+        padding-left: 0;
+        gap: 0;
         align-items: flex-start;
         height: 100%;
         justify-content: center;
-        padding: 4px 12px 6px 6px;
-        width: 100%;
+        padding: 4px 6px 6px 6px;
+        width: auto;
     }
 
 .block-menu .block[data-type="if"] .if-label{
-        font-size: 16px;
-        margin-bottom: 2px;
-    }
+        font-size: var(--font-16);
+        text-align: left;
+        margin-bottom: calc(var(--u));
+        width:auto;
+        margin-left: 2px;
+  font: 800 var(--font-20)/1 ui-sans-serif;
+}
 
 .block-menu .block[data-type="if"] .if-choice{
         cursor: inherit;
         pointer-events: none;
-        width: 22px;
-    }
+        width: var(--icon-22);
+        margin-left: 0;
+  border: var(--border-2) solid var(--ifLabel);
+  border-radius: var(--radius-1);
+}
 
 .menu-block.block{
         align-items: center;
@@ -666,7 +746,7 @@ main.layout{
 .block-menu .block[data-type="repeat"]{
         height: var(--blockH);
         min-height: var(--blockH);
-        padding-right: 55px;
+        padding-right: var(--menuRightGap);
         position: relative;
     }
 
@@ -702,19 +782,19 @@ main.layout{
         padding-right: 12px;
         grid-area: menu;
         margin-bottom: env(safe-area-inset-bottom, 12px);
-        width: 100%;
+        width: 100%;   
     }
 
 /* === Repeat Block === */
 
 .repeat-icon{
-        height: 16px;
+        height: var(--repeat-icon-menu);
         opacity: 0.9;
         pointer-events: none;
         position: absolute;
-        right: 12px;
-        top: 6px;
-        width: 16px;
+        right: var(--space-5);
+        top: var(--space-3);
+        width: var(--repeat-icon-menu);
     }
 
 .repeat-icon svg{
@@ -724,10 +804,10 @@ main.layout{
     }
 
 .repeat:not(.is-menu) .repeat-icon{
-        height: 22px;
-        right: 8px;
-        top: 5px;
-        width: 22px;
+        height: var(--repeat-icon-live);
+        right: var(--space-3);
+        top: calc(var(--u)*2.5);
+        width: var(--repeat-icon-live);
     }
 
 .repeat-count{
@@ -761,6 +841,15 @@ main.layout{
         right: 7px;
         top: 3px;
     }
+
+.menu-block.block[data-type="repeat"],
+.repeat.is-menu{
+  padding-right: 55px;     /* same space the menu version used for the icon */
+  min-width: var(--blockW);
+  height: var(--blockH);
+  min-height: var(--blockH);
+  position: relative;
+}
 
 /* === IF Block === */
 
@@ -807,6 +896,133 @@ main.layout{
         width: 20px;
     }
 
+.if.is-menu{
+    height: var(--blockH);
+    min-height: var(--blockH);
+    padding-right: 25px;   /* same right reserve as repeat */
+    position: relative;
+  
+}
+
+/* Make IF menu look stick even when cloned (ghost) */
+.if.is-menu,
+.menu-block.block[data-type="if"]{
+    height: var(--blockH);
+    min-height: var(--blockH);
+    padding-right: 35px;        /* match repeat / repeatUntil menu gap */
+    position: relative;
+    padding-left: 0px;
+}
+
+/* Menu preview behaviour for IF */
+
+.if.is-menu .if-inner{ display: none; }      /* like your .block-menu … rule */
+.if.is-menu .if-choice{ pointer-events: none; cursor: inherit; }
+
+/* ===== Repeat-Until block (UI only) ===== */
+
+/* Same outer box as repeat */
+.program-bar .block.repeat-until,
+.function-bar .block.repeat-until{
+    align-items: center;
+    border: 1px solid var(--cheeseInk);
+    height: calc(var(--blockH) + 12px);
+    min-height: calc(var(--blockH) + 12px);
+    min-width: 80px;
+    padding-left: 4px;
+    padding-right: 32px;
+    position: relative;              /* needed for right-side absolute children */
+    background: var(--repeatUntil, #ead8ff); /* pastel purple */
+    color: var(--repeatUntilInk, var(--cheeseInk));
+}
+
+/* Inner dropzone – identical to repeat */
+.program-bar .block.repeat-until .repeat-inner.dropzone,
+.function-bar .block.repeat-until .repeat-inner.dropzone{
+    align-items: center;
+    min-height: var(--blockH);
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/* Icon position – identical to repeat */
+.repeat-until .repeat-icon{
+    height: 16px;
+    opacity: 0.9;
+    pointer-events: none;
+    position: absolute;
+    right: 12px;
+    top: 6px;
+    width: 16px;
+}
+.repeat-until:not(.is-menu) .repeat-icon{
+    height: 22px;
+    right: 8px;
+    top: 5px;
+    width: 22px;
+}
+
+/* Selector sits where repeat-count sits (bottom-right) */
+.repeat-until > .until-choice{
+    background: #fff;                 /* overridden by color choices when needed */
+    border: 2px solid var(--cheeseInk);
+    border-radius: 8px;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 6px;
+    bottom: 5px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0;                     /* use the inner .icon sizing */
+}
+
+
+.block.repeat-until{
+    align-items: stretch;
+    background: var(--repeatUntil, #ead8ff);
+    border: 1px solid var(--cheeseInk);
+    color: var(--repeatUntilInk, var(--cheeseInk)); 
+}
+
+
+/* Menu preview: small icon, selector disabled */
+.block-menu .block[data-type="repeatUntil"]{
+    align-items: center;
+    background: var(--repeatUntil, #ead8ff);
+    border: 1px solid var(--cheeseInk);
+    color: var(--repeatUntilInk, var(--cheeseInk));
+    display: inline-flex;
+    gap: 0;
+    position: relative;
+    height: var(--blockH);
+    min-height: var(--blockH);
+    min-width: calc(var(--blockW) + 6px);
+    padding-right: 55px;              /* make room for right-side icon */
+}
+.block-menu .block[data-type="repeatUntil"] .repeat-inner{ display:none; }
+
+/* Disable selector in menu; keep it visible */
+.block-menu .block[data-type="repeatUntil"] .until-choice{
+    cursor: inherit;
+    pointer-events: none;
+    width: 22px; height: 22px;
+    bottom: 4px;                      /* match the smaller menu height */
+}
+
+.repeat-until.is-menu .repeat-icon{
+    top: 3px;      
+    right: 9px; 
+}
+
+/* Locked function bar: disable selector (reuse existing) */
+#functionBar.locked .if-choice{ pointer-events:none; cursor:not-allowed; }
+#functionBar.locked .if-choice:hover{ transform:none; }
+
+
 /* === Banners (Win/Delete) === */
 
 .win-banner{
@@ -826,8 +1042,8 @@ main.layout{
 
 .win-banner .banner-inner{
         background: #FFF7D1;
-        border-radius: 18px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        border-radius: calc(var(--radius-5) + 2px);
+        box-shadow: var(--shadow-2);
         padding: 22px;
         text-align: center;
     }
@@ -902,7 +1118,7 @@ main.layout{
         left: 50%;
         padding: 12px 16px;
         position: fixed;
-        top: 12px;
+        top: var(--space-5);
         transform: translateX(-50%);
         z-index: 1000;
     }
@@ -928,7 +1144,7 @@ main.layout{
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        font-size: 18px;
+        font-size: var(--font-18);
         line-height: 1;
         padding: 6px 10px;
     }
@@ -1010,22 +1226,22 @@ main.layout{
 
 .tiny{
         color: var(--muted);
-        font-size: 12px;
+        font-size: var(--font-12);
         padding: 10px;
         text-align: center;
     }
 
 #debug{
         background: #111;
-        border-radius: 10px;
-        bottom: 8px;
+        border-radius: var(--radius-2);
+        bottom: var(--space-4);
         box-shadow: 0 8px 28px rgba(0,0,0,0.35);
         color: #fff;
         font: 12px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
         max-width: 60ch;
-        padding: 10px 12px;
+        padding: var(--space-4) var(--space-5);
         position: fixed;
-        right: 8px;
+        right: var(--space-4);
         white-space: pre-wrap;
         z-index: 9999;
     }
@@ -1077,6 +1293,49 @@ button.ghost{
     }
   }
 
+/* === Mobile Landscape Overrides (v6.6) === */
+@media (orientation: landscape) and (max-height: 480px), 
+       (orientation: landscape) and (max-width: 900px) {
+    :root{
+        --scale: 0.88;            /* scales spacing/fonts/icons via --u */
+        --minProgramW: 480px;     /* allow program bar to fit smaller screens */
+        --fnBarW: 420px;
+        --boardBorder: calc(6px * var(--scale));
+        --uiPx: 720px;
+    }
+    .layout{ 
+        gap: var(--space-3); 
+        padding: var(--space-4); 
+        padding-left: calc(var(--space-5) + env(safe-area-inset-left));
+        padding-right: calc(var(--space-5) + env(safe-area-inset-right));
+    }
+    .pf-wrap{ gap: var(--space-4); }
+    .program-bar{ padding: var(--space-2); height: var(--barH); }
+    .code-ui{ gap: var(--space-6); }
+    .block-menu{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .block-menu .block{ touch-action: none; } /* prevent accidental scroll while dragging */
+}
+
+/* === Portrait deterrent for phones === */
+@media (orientation: portrait) and (max-width: 900px){
+  body::before{
+    content: "Please rotate your device to landscape to play.";
+    position: fixed; inset: 0; z-index: 99999;
+    display: grid; place-items: center;
+    background: rgba(0,0,0,.75); color: #fff; text-align: center;
+    padding: var(--space-8);
+    font-size: var(--font-18);
+  }
+  main.layout, #startScreen{ filter: blur(2px); pointer-events: none; }
+}
+
+/* === Safe-area (notches) padding on small screens === */
+@media (max-width: 900px){
+  .topbar{
+    padding-left: calc(var(--space-6) + env(safe-area-inset-left));
+    padding-right: calc(var(--space-6) + env(safe-area-inset-right));
+  }
+}
 </style>
 </head>
 
@@ -1197,6 +1456,27 @@ button.ghost{
 </main>
 
 <script>
+/* === DPR Canvas Helper (v6.6) === */
+function setCanvasBackingScale(canvas){
+  try{
+    const dpr = Math.max(1, (window.devicePixelRatio || 1));
+    const cssW = Math.round(canvas.getBoundingClientRect().width);
+    const cssH = Math.round(canvas.getBoundingClientRect().height);
+    const needW = Math.max(1, Math.round(cssW * dpr));
+    const needH = Math.max(1, Math.round(cssH * dpr));
+    if (canvas.width !== needW || canvas.height !== needH){
+      const ctx = canvas.getContext('2d');
+      // Save existing transform-aware state by resetting width/height (resets transform)
+      canvas.width = needW;
+      canvas.height = needH;
+      // Scale drawing so 1 unit = 1 CSS pixel
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+  }catch(e){
+    console.warn("setCanvasBackingScale:", e);
+  }
+}
+
 
 
 // *********************************************
@@ -1209,7 +1489,7 @@ button.ghost{
 //   true   LOCAL DATA      data saved to browser only
 //   false  JSON DATA       data saved to JSON files (in selected directoy) only
 
-const ENABLE_LOCAL_SAVE = true;     
+const ENABLE_LOCAL_SAVE = false;     
 
 
 
@@ -1562,15 +1842,15 @@ function updateTotalsUI(){
 })();
 
 function refreshStartScreenLockState(){
-  try{
-    const host = document.getElementById("levelsList");
-    if (!host) return;
-    const locked = !(window.Guards && Guards.canPlay());
-    host.querySelectorAll(".challenge-row").forEach(btn=>{
-      btn.disabled = locked;
-      btn.classList.toggle("disabled", locked);
-    });
-  }catch(_){}
+    try{
+        const host = document.getElementById("levelsList");
+        if (!host) return;
+        const locked = !(window.Guards && Guards.canPlay());
+        host.querySelectorAll(".challenge-row").forEach(btn=>{
+        btn.disabled = locked;
+        btn.classList.toggle("disabled", locked);
+        });
+    }catch(_){}
 }
 
 // Build the start screen columns
@@ -2247,10 +2527,10 @@ window.CHALLENGES = [
         grid: { cols: 8, rows: 6 },
         start: { x: 1, y: 0, dir: "S" },
         home:{x:1,y:3},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"tree"},{"x":2,"y":5,"type":"tree"},{"x":3,"y":5,"type":"water"},{"x":4,"y":5,"type":"tree"}],
-        cheeses:[{"x":6,"y":4},{"x":6,"y":5}],
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"tree"},{"x":2,"y":5,"type":"tree"},{"x":3,"y":5,"type":"water"},{"x":4,"y":5,"type":"tree"}],
+        cheeses:[{"x":6,"y":5}],
         mouseHoles: [{"color":3,"x1":6,"y1":0,"x2":1,"y2":2}],
-        optimalBlocks:12,
+        optimalBlocks:10,
         allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
 
         }
@@ -2264,15 +2544,14 @@ window.CHALLENGES = [
         grid: { cols: 7, rows: 5 },
         start: { x: 5, y: 0, dir: "W" },
         home:{x:2,y:4},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":2,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":2,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":6,"y":4,"type":"water"}],
+        obstacles:[{"x":0,"y":0,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":2,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":2,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":6,"y":4,"type":"water"}],
         cheeses:[{"x":3,"y":0},{"x":3,"y":2}],
         mouseHoles: [{"color":2,"x1":1,"y1":0,"x2":4,"y2":2},{"color":4,"x1":1,"y1":2,"x2":5,"y2":4}],
         optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","cheese","repeat"]
+        allowedBlocks:["step","cheese","repeat"]
+
         }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
     (function(){ var L = {
@@ -2282,15 +2561,14 @@ window.CHALLENGES = [
         grid: { cols: 7, rows: 5 },
         start: { x: 0, y: 4, dir: "N" },
         home:{x:6,y:0},
-        obstacles:[{"x":1,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":5,"y":4,"type":"water"}],
+        obstacles:[{"x":1,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":5,"y":4,"type":"water"}],
         cheeses:[{"x":3,"y":2}],
-        mouseHoles: [{"color":1,"x1":0,"y1":0,"x2":2,"y2":4},{"color":2,"x1":2,"y1":0,"x2":4,"y2":4},{"color":3,"x1":4,"y1":0,"x2":6,"y2":4}],
+        mouseHoles: [{"color":1,"x1":0,"y1":0,"x2":2,"y2":4},{"color":3,"x1":4,"y1":0,"x2":6,"y2":4}],
         optimalBlocks:9,
         allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
+
         }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
     (function(){ var L = {
@@ -2406,7 +2684,7 @@ window.CHALLENGES = [
         challengeId: 7,
         name: "Advanced Loops with Turning",
         grid: { cols: 5, rows: 5 },
-        start: { x: 1, y: 3, dir: "N" },
+        start: { x: 1, y: 3, dir: "W" },
         home:{x:3,y:3},
         obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"water"},{"x":2,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":2,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
         cheeses:[],
@@ -2479,15 +2757,14 @@ window.CHALLENGES = [
         grid: { cols: 7, rows: 6 },
         start: { x: 1, y: 0, dir: "W" },
         home:{x:5,y:4},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"wall"},{"x":0,"y":5,"type":"wall"},{"x":6,"y":5,"type":"wall"}],
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"wall"},{"x":0,"y":5,"type":"wall"},{"x":6,"y":5,"type":"wall"}],
         cheeses:[],
         mouseHoles: [],
         optimalBlocks:4,
         allowedBlocks:["step","turnLeft","repeat"]
+
         }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
     (function(){ var L = {
@@ -3066,38 +3343,6 @@ window.CHALLENGES = [
         obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
         cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
         mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["step","repeat","cheese"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 3,
-        name: "\"If\" block",
-        grid: { cols: 10, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:9,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
-        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["step","repeat","cheese","function"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 4,
-        name: "\"If\" block",
-        grid: { cols: 10, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:9,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
-        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
-        mouseHoles: [],
         optimalBlocks:5,
         allowedBlocks:["function"]
         ,
@@ -3110,7 +3355,7 @@ window.CHALLENGES = [
     
     (function(){ var L = {
         levelId: 8,
-        challengeId: 5,
+        challengeId: 3,
         name: "\"If\" block",
         grid: { cols: 5, rows: 5 },
         start: { x: 0, y: 1, dir: "E" },
@@ -3130,7 +3375,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 8,
-        challengeId: 6,
+        challengeId: 4,
         name: "\"If\" block",
         grid: { cols: 5, rows: 5 },
         start: { x: 2, y: 4, dir: "N" },
@@ -3150,7 +3395,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 8,
-        challengeId: 7,
+        challengeId: 5,
         name: "\"If\" block",
         grid: { cols: 5, rows: 5 },
         start: { x: 4, y: 0, dir: "W" },
@@ -3170,7 +3415,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 8,
-        challengeId: 8,
+        challengeId: 6,
         name: "\"If\" block",
         grid: { cols: 5, rows: 5 },
         start: { x: 1, y: 0, dir: "S" },
@@ -3190,7 +3435,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 8,
-        challengeId: 9,
+        challengeId: 7,
         name: "\"If\" block",
         grid: { cols: 8, rows: 6 },
         start: { x: 4, y: 1, dir: "W" },
@@ -3210,7 +3455,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 8,
-        challengeId: 10,
+        challengeId: 8,
         name: "\"If\" block",
         grid: { cols: 8, rows: 6 },
         start: { x: 1, y: 2, dir: "S" },
@@ -3219,7 +3464,7 @@ window.CHALLENGES = [
         cheeses:[{"x":4,"y":1},{"x":5,"y":3},{"x":2,"y":4},{"x":6,"y":4}],
         mouseHoles: [],
         optimalBlocks:10,
-        allowedBlocks:["turnLeft","turnRight","cheese","function"]
+        allowedBlocks:["step","turnLeft","turnRight","cheese","function","repeatUntil","if","repeat"]
         ,
         functionLocked:false,
         functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]},{"type":"if","choice":"C2","children":[]}]}]
@@ -3228,29 +3473,49 @@ window.CHALLENGES = [
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
         }; })(),
 
+    // (function(){ var L = {
+    //     levelId: 8,
+    //     challengeId: 8,
+    //     name: "\"If\" block",
+    //     grid: { cols: 8, rows: 6 },
+    //     start: { x: 1, y: 2, dir: "S" },
+    //     home:{x:7,y:4},
+    //     obstacles:[{"x":1,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":3,"y":1,"type":"C2"},{"x":5,"y":1,"type":"C2"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":3,"y":4,"type":"C1"},{"x":5,"y":4,"type":"C1"},{"x":0,"y":5,"type":"tree"},{"x":7,"y":5,"type":"tree"}],
+    //     cheeses:[{"x":4,"y":1},{"x":5,"y":3},{"x":2,"y":4},{"x":6,"y":4}],
+    //     mouseHoles: [],
+    //     optimalBlocks:10,
+    //     allowedBlocks:["turnLeft","turnRight","cheese","function"]
+    //     ,
+    //     functionLocked:false,
+    //     functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]},{"type":"if","choice":"C2","children":[]}]}]
+
+    //     }
+    //     return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+    //     }; })(),
+
 ];
 
 
 
   // === State ===
 var state={
-  teleportCooldown:null,
-  teleport:null,
-  level:null,
-  program:[],
-  ip:0,
-  running:false,
-  pos:{x:0,y:0},
-  dir:"E",
-  soundsMuted:false,
-  cheeses:[], 
-  plan:[], 
-  errorId:null, 
-  pauseIntent:false,
-  functionEnabled: false,
-  functionLocked: false,
-  functionProgram: [],   // editable contents
-  functionInit: []      // initial contents (from challenge)
+    teleportCooldown:null,
+    teleport:null,
+    level:null,
+    program:[],
+    ip:0,
+    running:false,
+    pos:{x:0,y:0},
+    dir:"E",
+    soundsMuted:false,
+    cheeses:[], 
+    plan:[], 
+    errorId:null, 
+    pauseIntent:false,
+    functionEnabled: false,
+    functionLocked: false,
+    functionProgram: [],   // editable contents
+    functionInit: []      // initial contents (from challenge)
 };
 
 // --- Cat capture visual state ---
@@ -3294,6 +3559,19 @@ function repeatGlyphIcon(){               // tiny dark-grey, reset-style mark
   p.setAttribute("stroke-linecap","round");
   p.setAttribute("stroke-linejoin","round");
   // same geometry as resetIcon (compact swirl)
+  p.setAttribute("d","M70 30h-9l7-7 M30 70h9l-7 7 M34 42a20 20 0 0 1 30-10 M66 58a20 20 0 0 1-30 10");
+  s.appendChild(p);
+  return s;
+}
+
+function repeatUntilGlyphIcon(){
+  var s = svgNode(100,100);
+  var p = document.createElementNS(s.namespaceURI,"path");
+  p.setAttribute("fill","none");
+  p.setAttribute("stroke", getComputedStyle(document.documentElement).getPropertyValue('--cheeseInk') || '#4B2C82');
+  p.setAttribute("stroke-width","10");
+  p.setAttribute("stroke-linecap","round");
+  p.setAttribute("stroke-linejoin","round");
   p.setAttribute("d","M70 30h-9l7-7 M30 70h9l-7 7 M34 42a20 20 0 0 1 30-10 M66 58a20 20 0 0 1-30 10");
   s.appendChild(p);
   return s;
@@ -3440,6 +3718,7 @@ function updateBoardGeometry(){
     // 5) Mirror to CSS size (no stretch)
     board.style.width  = newW + "px";
     board.style.height = newH + "px";
+setCanvasBackingScale(board);
 
     // 6) Keep handles for drawing
     state.cellSize = cell;
@@ -3455,7 +3734,7 @@ function updateBoardGeometry(){
     for (var i = 0; i < arr.length; i++){
         var b = arr[i];
         n += 1; // count this block itself
-        if (b.type === "repeat" || b.type === "if"){
+        if (b.type === "repeat" || b.type === "if" || b.type === "repeatUntil"){
             n += countBlocks(b.children || []);
         }
     }
@@ -3571,7 +3850,7 @@ function getContainerByPath(root, path){
     for(var i=0;i<root.length;i++){
         var b=root[i];
         if(b.id===id) return path.concat([i]);
-        if (b.type==="repeat" || b.type==="if"){
+        if (b.type === "repeat" || b.type === "if" || b.type === "repeatUntil"){
             var p2 = getBlockPathById(b.children||[], id, path.concat([i,"children"]));
             if(p2) return p2;
         }
@@ -3601,44 +3880,44 @@ function removeAtPath(root, path){
 }
 
 function wireBlockDnD(el){
-  setRunning(false);
-  
-    // match the legacy makeBlockEl behaviour
-  el.draggable = true;
+    setRunning(false);
+    
+        // match the legacy makeBlockEl behaviour
+    el.draggable = true;
 
-  // Temporarily disable repeat wrapper dragging so inner blocks drag cleanly
-  el.addEventListener("pointerdown", function(){
-    try{
-      var rep = el.closest(".block.repeat");
-      if (rep && rep !== el){
-        rep.dataset.dragSuspend = "1";
-        rep.draggable = false;
-      }
-    }catch(_){}
-  });
+    // Temporarily disable repeat wrapper dragging so inner blocks drag cleanly
+    el.addEventListener("pointerdown", function(){
+        try{
+        var rep = el.closest(".block.repeat, .block.repeat-until");
+        if (rep && rep !== el){
+            rep.dataset.dragSuspend = "1";
+            rep.draggable = false;
+        }
+        }catch(_){}
+    });
 
-  // Use the existing drag engine (placeholder + payloadBar + indices)
-  el.addEventListener("dragstart", function (e) {
-    if ((el.dataset.root === "fn" || el.closest("#functionBar")) && state.functionLocked) {
-        e.preventDefault();
-        e.stopPropagation();
-        return;
-    }
-    onBlockDragStart(e);
-  });
+    // Use the existing drag engine (placeholder + payloadBar + indices)
+    el.addEventListener("dragstart", function (e) {
+        if ((el.dataset.root === "fn" || el.closest("#functionBar")) && state.functionLocked) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+        onBlockDragStart(e);
+    });
 
-  el.addEventListener("dragend", function(e){
-    // normal cleanup
-    onBlockDragEnd(e);
-    // Restore repeat wrapper if we suspended it
-    try{
-      var rep = el.closest(".block.repeat");
-      if (rep && rep.dataset.dragSuspend === "1"){
-        rep.draggable = true;
-        delete rep.dataset.dragSuspend;
-      }
-    }catch(_){}
-  });
+    el.addEventListener("dragend", function(e){
+        // normal cleanup
+        onBlockDragEnd(e);
+        // Restore repeat wrapper if we suspended it
+        try{
+        var rep = el.closest(".block.repeat, .block.repeat-until");
+        if (rep && rep.dataset.dragSuspend === "1"){
+            rep.draggable = true;
+            delete rep.dataset.dragSuspend;
+        }
+        }catch(_){}
+    });
 }
 
 
@@ -3675,168 +3954,224 @@ function insertAtPath(root, containerPath, index, block){
 
 // === Rendering ===
 function blockContent(el,type,block){
-  el.dataset.type = type;
-  el.textContent=""; 
-  var icon=iconFor(type);
+    el.dataset.type = type;
+    el.textContent=""; 
+    var icon=iconFor(type);
 
-  if(icon){ el.textContent=icon; }
-  else if(type==="cheese"){ el.appendChild(cheeseSVG()); }
-  else if(type==="turnLeft"){ el.appendChild(arrowSVG("left")); }
-  else if(type==="turnRight"){ el.appendChild(arrowSVG("right")); }
-  else if(type==="function"){
-    el.classList.add("function");
-    var s = document.createElement("span");
-    s.className = "fn-label";
-    s.textContent = "F";
-    el.appendChild(s);
-  }
-
-  else if(type==="if"){
-    el.classList.add("if");
-
-    // --- LEFT: label + selector
-    var left = document.createElement("div");
-    left.className = "if-left";
-
-    var lbl = document.createElement("div");
-    lbl.className = "if-label";
-    lbl.textContent = "IF";
-    left.appendChild(lbl);
-
-    // selector cycles: C1, C2, C3, cheese, home
-    var choices = ["C1","C2","C3","cheese","home"];
-    if (!block.choice){ block.choice = "C1"; }
-
-    var sel = document.createElement("div");
-    sel.className = "if-choice";
-    sel.title = "Change IF condition";
-    function paintChoice(){
-        sel.innerHTML = "";          // clear
-        var span = document.createElement("span");
-        span.className = "icon";
-        if (block.choice === "C1"){ sel.style.background = "var(--C1)"; sel.style.color="transparent"; }
-        else if (block.choice === "C2"){ sel.style.background = "var(--C2)"; sel.style.color="transparent"; }
-        else if (block.choice === "C3"){ sel.style.background = "var(--C3)"; sel.style.color="transparent"; }
-        else if (block.choice === "cheese"){ 
-            sel.style.background = "#fff";
-            const svg = cheeseSVG();
-            svg.classList.remove("blk-svg");   // was 42x42
-            svg.classList.add("icon");         // becomes 20x20 per CSS
-            sel.appendChild(svg);
-        }
-        else if (block.choice === "home"){
-            sel.style.background = "var(--home)";   // same background as grid home tile
-            sel.appendChild(homeTinySVG());         // tiny two-colour house (next step)
-        }
+    if(icon){ el.textContent=icon; }
+    else if(type==="cheese"){ el.appendChild(cheeseSVG()); }
+    else if(type==="turnLeft"){ el.appendChild(arrowSVG("left")); }
+    else if(type==="turnRight"){ el.appendChild(arrowSVG("right")); }
+    else if(type==="function"){
+        el.classList.add("function");
+        var s = document.createElement("span");
+        s.className = "fn-label";
+        s.textContent = "F";
+        el.appendChild(s);
     }
-    sel.addEventListener("click", function(e){
-        e.stopPropagation();
-        var idx = choices.indexOf(block.choice);
-        block.choice = choices[(idx+1) % choices.length];
+
+    else if(type==="if"){
+        el.classList.add("if");
+
+        // --- LEFT: label + selector
+        var left = document.createElement("div");
+        left.className = "if-left";
+
+        var lbl = document.createElement("div");
+        lbl.className = "if-label";
+        lbl.textContent = "IF";
+        left.appendChild(lbl);
+
+        // selector cycles: C1, C2, C3, cheese, home
+        var choices = ["C1","C2","C3","cheese","home"];
+        if (!block.choice){ block.choice = "C1"; }
+
+        var sel = document.createElement("div");
+        sel.className = "if-choice";
+        sel.title = "Change IF condition";
+        function paintChoice(){
+            sel.innerHTML = "";          // clear
+            var span = document.createElement("span");
+            span.className = "icon";
+            if (block.choice === "C1"){ sel.style.background = "var(--C1)"; sel.style.color="transparent"; }
+            else if (block.choice === "C2"){ sel.style.background = "var(--C2)"; sel.style.color="transparent"; }
+            else if (block.choice === "C3"){ sel.style.background = "var(--C3)"; sel.style.color="transparent"; }
+            else if (block.choice === "cheese"){ 
+                sel.style.background = "#fff";
+                const svg = cheeseSVG();
+                svg.classList.remove("blk-svg");   // was 42x42
+                svg.classList.add("icon");         // becomes 20x20 per CSS
+                sel.appendChild(svg);
+            }
+            else if (block.choice === "home"){
+                sel.style.background = "var(--home)";   // same background as grid home tile
+                sel.appendChild(homeTinySVG());         // tiny two-colour house (next step)
+            }
+        }
+        sel.addEventListener("click", function(e){
+            e.stopPropagation();
+            var idx = choices.indexOf(block.choice);
+            block.choice = choices[(idx+1) % choices.length];
+            paintChoice();
+            // re-render the correct bar immediately
+            if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
+            else { renderProgram(); }
+            saveProgram();
+        });
         paintChoice();
-        // re-render the correct bar immediately
-        if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
-        else { renderProgram(); }
-        saveProgram();
-    });
-    paintChoice();
-    left.appendChild(sel);
-    el.appendChild(left);
+        left.appendChild(sel);
+        el.appendChild(left);
 
-    // --- RIGHT: inner dropzone (like repeat-inner)
-    var inner = document.createElement("div");
-    var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
-    inner.className = "if-inner" + (inFnLocked ? "" : " dropzone");
-    inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
-    inner.dataset.root = el.dataset.root;
-    el.appendChild(inner);
+        // --- RIGHT: inner dropzone (like repeat-inner)
+        var inner = document.createElement("div");
+        var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
+        inner.className = "if-inner" + (inFnLocked ? "" : " dropzone");
+        inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
+        inner.dataset.root = el.dataset.root;
+        el.appendChild(inner);
     }
 
-  else if(type==="repeat"){
-    el.classList.add("repeat");
+    else if(type==="repeat"){
+        el.classList.add("repeat");
 
-    var ic = document.createElement("div");
-    ic.className = "repeat-icon";
-    ic.appendChild(repeatGlyphIcon());
-    el.appendChild(ic);
+        var ic = document.createElement("div");
+        ic.className = "repeat-icon";
+        ic.appendChild(repeatGlyphIcon());
+        el.appendChild(ic);
 
-    var cnt=document.createElement("div"); 
-    cnt.className="repeat-count"; 
-    cnt.textContent=String(block.count||2);
-    cnt.title="Change repeats (2..9)";
-    cnt.addEventListener("click", function(e){
-      e.stopPropagation();
-      block.count = (block.count||2) + 1;
-      if (block.count > 9) block.count = 2;
-      // Re-render the correct bar immediately
-      if (el.dataset && el.dataset.root === "fn") {
-        renderFunctionBar();
-      } else {
-        renderProgram();
-      }
-      saveProgram();
-      setRunning(false);
-      state.changed = true;
-    });
-    el.appendChild(cnt);
+        var cnt=document.createElement("div"); 
+        cnt.className="repeat-count"; 
+        cnt.textContent=String(block.count||2);
+        cnt.title="Change repeats (2..9)";
+        cnt.addEventListener("click", function(e){
+        e.stopPropagation();
+        block.count = (block.count||2) + 1;
+        if (block.count > 9) block.count = 2;
+        // Re-render the correct bar immediately
+        if (el.dataset && el.dataset.root === "fn") {
+            renderFunctionBar();
+        } else {
+            renderProgram();
+        }
+        saveProgram();
+        setRunning(false);
+        state.changed = true;
+        });
+        el.appendChild(cnt);
 
-    var inner=document.createElement("div"); 
-    var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
-    inner.className = "repeat-inner" + (inFnLocked ? "" : " dropzone"); //  no dropzone when locked
+        var inner=document.createElement("div"); 
+        var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
+        inner.className = "repeat-inner" + (inFnLocked ? "" : " dropzone"); //  no dropzone when locked
 
-    inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
+        inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
 
-    // pass the block's root down to the inner dropzone
-    inner.dataset.root = el.dataset.root;
+        // pass the block's root down to the inner dropzone
+        inner.dataset.root = el.dataset.root;
 
-    el.appendChild(inner);
-  }
+        el.appendChild(inner);
+    }
+    else if (type === "repeatUntil"){
+        el.classList.add("repeat-until");
+
+        // Right-top: circular arrow (purple stroke)
+        var ic = document.createElement("div");
+        ic.className = "repeat-icon";
+        ic.appendChild(repeatUntilGlyphIcon()); // you added this helper
+        el.appendChild(ic);
+
+        // Bottom-right: selector (same widget as IF)
+        var choices = ["C1","C2","C3","cheese","home"];
+        if (!block.choice){ block.choice = "cheese"; }
+
+        var sel = document.createElement("div");
+        sel.className = "if-choice until-choice";
+        sel.title = "Change UNTIL condition";
+
+        function paintRU(){
+            sel.innerHTML = "";
+            // mirror IF visuals:
+            if (block.choice === "C1"){ sel.style.background = "var(--C1)"; sel.style.color="transparent"; }
+            else if (block.choice === "C2"){ sel.style.background = "var(--C2)"; sel.style.color="transparent"; }
+            else if (block.choice === "C3"){ sel.style.background = "var(--C3)"; sel.style.color="transparent"; }
+            else if (block.choice === "cheese"){ 
+            sel.style.background = "#fff";
+            const svg = cheeseSVG(); svg.classList.remove("blk-svg"); svg.classList.add("icon");
+            sel.appendChild(svg);
+            }
+            else if (block.choice === "home"){
+            sel.style.background = "var(--home)";
+            sel.appendChild(homeTinySVG ? homeTinySVG() : (function(){ const s=document.createElement('span'); s.textContent="🏠"; return s; })());
+            }
+        }
+
+        sel.addEventListener("click", function(e){
+            e.stopPropagation();
+            var idx = choices.indexOf(block.choice);
+            block.choice = choices[(idx+1) % choices.length];
+            paintRU();
+            // re-render the correct bar immediately
+            if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
+            else { renderProgram(); }
+            saveProgram();
+        });
+        paintRU();
+        el.appendChild(sel);
+
+        // Body container (identical to repeat)
+        var inner = document.createElement("div");
+        var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
+        inner.className = "repeat-inner" + (inFnLocked ? "" : " dropzone");
+        inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
+        inner.dataset.root = el.dataset.root;
+        el.appendChild(inner);
+        }
+
 }
 
 function makeBlockEl(block, path){
-  var el=document.createElement("div"); el.className="block"; el.dataset.type=block.type; el.dataset.id=block.id; el.dataset.pathJson=JSON.stringify(path); el.draggable=true;
-  blockContent(el,block.type,block);
-  setRunning(false);
-  
-  el.addEventListener("click", function(ev){ 
+    var el=document.createElement("div"); el.className="block"; el.dataset.type=block.type; el.dataset.id=block.id; el.dataset.pathJson=JSON.stringify(path); el.draggable=true;
+    blockContent(el,block.type,block);
+    setRunning(false);
     
-    // alt+click needed to delete the block (added to prevent accidental deletion of blocks - especially repeat blocks)
-    state.changed = true;
-    if (!ev.altKey) return;
+    el.addEventListener("click", function(ev){ 
+        
+        // alt+click needed to delete the block (added to prevent accidental deletion of blocks - especially repeat blocks)
+        state.changed = true;
+        if (!ev.altKey) return;
 
-    ev.stopPropagation();
+        ev.stopPropagation();
+        
+        // remove the clicked block (and its contents)
+        var p = JSON.parse(el.dataset.pathJson||"[]");
+        removeAtPath(state.program, p);
+        renderProgram(); 
+        saveProgram();
+    });
     
-    // remove the clicked block (and its contents)
-    var p = JSON.parse(el.dataset.pathJson||"[]");
-    removeAtPath(state.program, p);
-    renderProgram(); 
-    saveProgram();
-  });
-  
-  // If dragging a child inside a repeat, temporarily disable dragging on the repeat wrapper
-  el.addEventListener("pointerdown", function(ev){
+    // If dragging a child inside a repeat, temporarily disable dragging on the repeat wrapper
+    el.addEventListener("pointerdown", function(ev){
+        try{
+        var rep = el.closest(".block.repeat, .block.repeat-until");
+        if(rep && rep !== el){
+            rep.dataset.dragSuspend = "1";
+            rep.draggable = false;
+        }
+        }catch(_){}
+    });
+
+    el.addEventListener("dragstart", onBlockDragStart);
+    el.addEventListener("dragend", onBlockDragEnd);
+
+    // Restore repeat wrapper draggable if we suspended it
     try{
-      var rep = el.closest(".block.repeat");
-      if(rep && rep !== el){
-        rep.dataset.dragSuspend = "1";
-        rep.draggable = false;
-      }
+        var rep = el.closest(".block.repeat");
+        if(rep && rep.dataset.dragSuspend==="1"){
+        rep.draggable = true;
+        delete rep.dataset.dragSuspend;
+        }
     }catch(_){}
-  });
 
-  el.addEventListener("dragstart", onBlockDragStart);
-  el.addEventListener("dragend", onBlockDragEnd);
-
-  // Restore repeat wrapper draggable if we suspended it
-  try{
-    var rep = el.closest(".block.repeat");
-    if(rep && rep.dataset.dragSuspend==="1"){
-      rep.draggable = true;
-      delete rep.dataset.dragSuspend;
-    }
-  }catch(_){}
-
-  return el;
+    return el;
 }
 
 function resizeLayout(){
@@ -3883,43 +4218,48 @@ function resizeLayout(){
 
 
 function renderContainer(arr, containerEl, pathPrefix){
-  containerEl.innerHTML="";
-  for(var i=0;i<arr.length;i++){
-    var b=arr[i];
-    var p = pathPrefix.concat([i]);
-    var node = makeBlockEl(b, p);
+    containerEl.innerHTML="";
+    for(var i=0;i<arr.length;i++){
+        var b=arr[i];
+        var p = pathPrefix.concat([i]);
+        var node = makeBlockEl(b, p);
 
-    // tag the block with which bar it belongs to
-    node.dataset.root = (containerEl.closest('#functionBar') ? 'fn' : 'program');
+        // tag the block with which bar it belongs to
+        node.dataset.root = (containerEl.closest('#functionBar') ? 'fn' : 'program');
 
-    containerEl.appendChild(node);
-    if(!state.blockEls) state.blockEls = {};
-    if(b && b.id) state.blockEls[b.id] = node;
+        containerEl.appendChild(node);
+        if(!state.blockEls) state.blockEls = {};
+        if(b && b.id) state.blockEls[b.id] = node;
 
-    if (b.type === "repeat" || b.type === "if"){
-        var inner = node.querySelector(b.type === "repeat" ? '.repeat-inner' : '.if-inner');
-        renderContainer(b.children || [], inner, p.concat(['children']));
+        if (b.type === "repeat" || b.type === "if" || b.type === "repeatUntil"){
+            var inner = node.querySelector(b.type === "if" ? ".if-inner" : ".repeat-inner");
+            if (inner){
+                renderContainer(b.children || [], inner, p.concat(["children"]));
+            }
+        }
     }
-  }
 }
 
 function renderProgram(){
-  if(!programBar) return;
-  state.blockEls = {};
-  programBar.innerHTML = "";
-  programBar.classList.add("dropzone");
-  programBar.dataset.containerPath = JSON.stringify([]);
-  programBar.dataset.root = "program";  
-  renderContainerWithRoot(state.program, programBar, [], "program");
-  updateYourCount();
-  attachDnD();
+    if(!programBar) return;
+    state.blockEls = {};
+    programBar.innerHTML = "";
+    programBar.classList.add("dropzone");
+    programBar.dataset.containerPath = JSON.stringify([]);
+    programBar.dataset.root = "program";  
+    renderContainerWithRoot(state.program, programBar, [], "program");
+    updateYourCount();
+    attachDnD();
 
-  // ✅ If we’re mid-function, keep the program call-site highlighted
-  try{
-    if (state.fnPlan && typeof state.fnIp === "number" && state.callId){
-      highlightById(state.callId);
-    }
-  }catch(_){}
+    // ✅ If we’re mid-function, keep the program call-site highlighted
+    try{
+        if (state.fnPlan && typeof state.fnIp === "number" && state.callId){
+        highlightById(state.callId);
+        }
+    }catch(_){}
+
+    try{ resizeLayout(); }catch(_){}
+
 }
 
 function renderFunctionBar(){
@@ -3961,26 +4301,29 @@ function renderFunctionBar(){
       }
     }catch(_){}
 
+    try{ resizeLayout(); }catch(_){}
+
+
 }
 
 function renderContainerWithRoot(arr, containerEl, pathPrefix, rootTag){
-  containerEl.innerHTML = "";
-  for (var i=0;i<arr.length;i++){
-    var b = arr[i];
-    var p = pathPrefix.concat([i]);
-    var node = makeBlockElWithRoot(b, p, rootTag);
-    containerEl.appendChild(node);
-    if(!state.blockEls) state.blockEls = {};
-    if(b && b.id) state.blockEls[b.id] = node;
-    if (b.type==="repeat" || b.type==="if"){
-        var inner = node.querySelector(b.type === "repeat" ? '.repeat-inner' : '.if-inner');
-        if (inner){
-            inner.dataset.root = rootTag;
-            inner.dataset.containerPath = JSON.stringify(p.concat(['children']));
+    containerEl.innerHTML = "";
+    for (var i=0;i<arr.length;i++){
+        var b = arr[i];
+        var p = pathPrefix.concat([i]);
+        var node = makeBlockElWithRoot(b, p, rootTag);
+        containerEl.appendChild(node);
+        if(!state.blockEls) state.blockEls = {};
+        if(b && b.id) state.blockEls[b.id] = node;
+        if (b.type === "repeat" || b.type === "if" || b.type === "repeatUntil"){
+            var inner = node.querySelector(b.type === "if" ? ".if-inner" : ".repeat-inner");
+            if (inner){
+                inner.dataset.root = rootTag;
+                inner.dataset.containerPath = JSON.stringify(p.concat(['children']));
+            }
+            renderContainerWithRoot(b.children || [], inner, p.concat(['children']), rootTag);
         }
-        renderContainerWithRoot(b.children || [], inner, p.concat(['children']), rootTag);
     }
-  }
 }
 
 function makeBlockElWithRoot(block, path, rootTag){
@@ -4025,80 +4368,95 @@ function makeBlockElWithRoot(block, path, rootTag){
 
 
 function renderMenu(){
-  if(!blockMenu) return;
-  blockMenu.innerHTML="";
-  var order=["step","turnLeft","turnRight","cheese","repeat","function","if"];
-  var allowed = (state.level && state.level.allowedBlocks) ? state.level.allowedBlocks.slice() : order;
-  
-  for(var j=0;j<order.length;j++){
-    var type=order[j]; if(allowed.indexOf(type)===-1) continue;
-    var btn=document.createElement("div"); btn.className="menu-block block"; btn.draggable=true; btn.dataset.type=type; btn.dataset.id="menu-"+type;
+    if(!blockMenu) return;
+    blockMenu.innerHTML="";
+    var order=["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function","if"];
+    var allowed = (state.level && state.level.allowedBlocks) ? state.level.allowedBlocks.slice() : order;
     
-    if(type==="repeat"){
-        btn.classList.add("repeat", "is-menu");
+    for(var j=0;j<order.length;j++){
+        var type=order[j]; if(allowed.indexOf(type)===-1) continue;
+        var btn=document.createElement("div"); btn.className="menu-block block"; btn.draggable=true; btn.dataset.type=type; btn.dataset.id="menu-"+type;
+        
+        if(type==="repeat"){
+            btn.classList.add("repeat", "is-menu");
 
-        // icon first (top-right)
-        var ic=document.createElement("div");
-        ic.className="repeat-icon";
-        ic.appendChild(repeatGlyphIcon());
-        btn.appendChild(ic);
+            // icon first (top-right)
+            var ic=document.createElement("div");
+            ic.className="repeat-icon";
+            ic.appendChild(repeatGlyphIcon());
+            btn.appendChild(ic);
 
-        // non-interactive preview count
-        var cnt=document.createElement("div");
-        cnt.className="repeat-count";
-        cnt.textContent="2";
-        btn.appendChild(cnt);
-    }
-    else if (type==="if"){
-        // render IF but without children; default choice C1
-        blockContent(btn, "if", { choice:"cheese", children:[] });
-    }
-    else{
-        blockContent(btn,type,{});
-    }
-
-    btn.addEventListener("click", function(ev){
-        var t = ev.currentTarget.dataset.type;
-        // Respect function enable
-        if (t==="function" && !state.functionEnabled) return;
-
-        var max = Number(programBar.dataset.max || 20);
-        if (countBlocks(state.program) >= max && t!=="repeat") return;
-
-        if (t==="repeat"){ 
-            state.program.push({id:uid(), type:"repeat", count:2, children:[]}); 
+            // non-interactive preview count
+            var cnt=document.createElement("div");
+            cnt.className="repeat-count";
+            cnt.textContent="2";
+            btn.appendChild(cnt);
         }
-        else if (t==="if"){ 
-            state.program.push({id:uid(), type:"if", choice:"cheese", children:[]}); 
+        else if (type==="if"){
+            btn.classList.add("is-menu");
+            // render IF but without children
+            blockContent(btn, "if", { choice:"cheese", children:[] });
         }
-        else { 
-            state.program.push({id:uid(), type:t}); 
+        else if (type==="repeatUntil"){
+            btn.classList.add("repeat-until", "is-menu");
+            var ic=document.createElement("div");
+            ic.className="repeat-icon";
+            ic.appendChild(repeatUntilGlyphIcon());
+            btn.appendChild(ic);
+
+            // selector shown but inactive in the menu (disabled by CSS)
+            blockContent(btn, "repeatUntil", { choice:"cheese", children:[] });
         }
-        renderProgram(); 
-        saveProgram();
-    });
+
+        else{
+            blockContent(btn,type,{});
+        }
+
+        btn.addEventListener("click", function(ev){
+            var t = ev.currentTarget.dataset.type;
+            // Respect function enable
+            if (t==="function" && !state.functionEnabled) return;
+
+            var max = Number(programBar.dataset.max || 20);
+            if (countBlocks(state.program) >= max && t!=="repeat") return;
+
+            if (t==="repeat"){ 
+                state.program.push({id:uid(), type:"repeat", count:2, children:[]}); 
+            }
+            else if (t==="if"){ 
+                state.program.push({id:uid(), type:"if", choice:"cheese", children:[]}); 
+            }
+            else if (t==="repeatUntil"){
+            state.program.push({ id: uid(), type: "repeatUntil", choice: "cheese", children: [] });
+            }
+            else { 
+                state.program.push({id:uid(), type:t}); 
+            }
+            renderProgram(); 
+            saveProgram();
+        });
 
 
-    btn.addEventListener("dragstart", function(e){
-      state.changed = true;
-      if(!e.dataTransfer) return;
-      try{
-        var t = e.currentTarget && e.currentTarget.dataset ? e.currentTarget.dataset.type : null;
-        e.dataTransfer.setData("text/plain", JSON.stringify({from:"menu", type: t}));
-        e.dataTransfer.effectAllowed="copy";
-        // Use a tight drag image so we don't drag the whole menu
-        var ghost = (e.currentTarget||this).cloneNode(true);
-        ghost.style.position="absolute"; ghost.style.top="-1000px"; ghost.style.left="-1000px"; ghost.style.opacity="1";
-        document.body.appendChild(ghost);
-        if(e.dataTransfer.setDragImage){ e.dataTransfer.setDragImage(ghost, ghost.offsetWidth/2, ghost.offsetHeight/2); }
-        // Clean up ghost on dragend
-        (e.currentTarget||this).addEventListener("dragend", function(){
-          try{ if(ghost && ghost.parentNode){ ghost.parentNode.removeChild(ghost); } }catch(_){ }
-        }, { once: true });
-      }catch(_){}
-      });
-    blockMenu.appendChild(btn);
-  }
+        btn.addEventListener("dragstart", function(e){
+        state.changed = true;
+        if(!e.dataTransfer) return;
+        try{
+            var t = e.currentTarget && e.currentTarget.dataset ? e.currentTarget.dataset.type : null;
+            e.dataTransfer.setData("text/plain", JSON.stringify({from:"menu", type: t}));
+            e.dataTransfer.effectAllowed="copy";
+            // Use a tight drag image so we don't drag the whole menu
+            var ghost = (e.currentTarget||this).cloneNode(true);
+            ghost.style.position="absolute"; ghost.style.top="-1000px"; ghost.style.left="-1000px"; ghost.style.opacity="1";
+            document.body.appendChild(ghost);
+            if(e.dataTransfer.setDragImage){ e.dataTransfer.setDragImage(ghost, ghost.offsetWidth/2, ghost.offsetHeight/2); }
+            // Clean up ghost on dragend
+            (e.currentTarget||this).addEventListener("dragend", function(){
+            try{ if(ghost && ghost.parentNode){ ghost.parentNode.removeChild(ghost); } }catch(_){ }
+            }, { once: true });
+        }catch(_){}
+        });
+        blockMenu.appendChild(btn);
+    }
 }
 
 // === DnD with placeholder across containers ===
@@ -4186,117 +4544,124 @@ function getInsertIndex(containerEl, clientX){
 }
 
 function attachDropzone(el, containerPath){
-  if (el.__wiredDnD) return; el.__wiredDnD = true;
-  el.addEventListener("dragover", function(e){
-    if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
+    if (el.__wiredDnD) return; el.__wiredDnD = true;
+    el.addEventListener("dragover", function(e){
+        if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
 
-    e.preventDefault(); e.stopPropagation(); overDropzone=true;
-    el.classList.add("repeat-outline");
-    var idx = getInsertIndex(el, e.clientX);
-    var real = [].slice.call(el.children).filter(function(n){return n!==placeholder});
-    var ref = (idx >= real.length) ? null : real[idx];
-    if (!placeholder.parentElement || placeholder.parentElement!==el) el.insertBefore(placeholder, ref);
-    else if (placeholder.nextSibling !== ref) el.insertBefore(placeholder, ref);
-    // auto-scroll when near edges
-    var r = el.getBoundingClientRect();
-    if (el.scrollWidth > el.clientWidth){ if (e.clientX > r.right - 40) el.scrollLeft += 20; else if (e.clientX < r.left + 40) el.scrollLeft -= 20; }
-  });
+        e.preventDefault(); e.stopPropagation(); overDropzone=true;
+        el.classList.add("repeat-outline");
+        var idx = getInsertIndex(el, e.clientX);
+        var real = [].slice.call(el.children).filter(function(n){return n!==placeholder});
+        var ref = (idx >= real.length) ? null : real[idx];
+        if (!placeholder.parentElement || placeholder.parentElement!==el) el.insertBefore(placeholder, ref);
+        else if (placeholder.nextSibling !== ref) el.insertBefore(placeholder, ref);
+        // auto-scroll when near edges
+        var r = el.getBoundingClientRect();
+        if (el.scrollWidth > el.clientWidth){ if (e.clientX > r.right - 40) el.scrollLeft += 20; else if (e.clientX < r.left + 40) el.scrollLeft -= 20; }
+    });
 
-  el.addEventListener("dragleave", function(e){
-    if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
+    el.addEventListener("dragleave", function(e){
+        if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
 
-    e.stopPropagation();
-    var r = el.getBoundingClientRect();
-    if (e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom){ overDropzone=false;
-      el.classList.remove("repeat-outline");
-      if (placeholder.parentElement===el) el.removeChild(placeholder);
-    }
-  });
-
-  el.addEventListener("drop", function(e){
-    if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
-
-    e.preventDefault(); e.stopPropagation(); dropHandled=true;
-    el.classList.remove("repeat-outline");
-    var idx = 0;
-    for (var n=0;n<el.children.length;n++){
-      var node = el.children[n];
-      if (node===placeholder) break;
-      if (!node.classList.contains("placeholder")) idx++;
-    }
-    var raw = "{}"; try{ raw=e.dataTransfer.getData("text/plain")||"{}"; }catch(_){}
-    var data=null; try{ data=JSON.parse(raw); }catch(_){}
-    var contPath = JSON.parse(containerPath);
-   
-    // Adjust container path if removal shifts indices in the same parent array
-    if (payloadBar && payloadBar.from==="bar" && Array.isArray(payloadBar.path) && payloadBar.root === el.dataset.root){
-      try{
-        var sp = payloadBar.path.slice();
-        var spParent = sp.slice(0, sp.length-1);
-        var srcIdx = sp[sp.length-1];
-        var dp = contPath.slice();
-        for (var k=0;k<dp.length;k++){
-          if (typeof dp[k] === "number"){
-            var parentPath = dp.slice(0,k);
-            if (JSON.stringify(parentPath) === JSON.stringify(spParent) && typeof srcIdx==="number" && srcIdx < dp[k]){
-              dp[k] = dp[k]-1;
-              contPath = dp;
-              break;
-            }
-          }
+        e.stopPropagation();
+        var r = el.getBoundingClientRect();
+        if (e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom){ overDropzone=false;
+        el.classList.remove("repeat-outline");
+        if (placeholder.parentElement===el) el.removeChild(placeholder);
         }
-      }catch(_){}
-    }
-  
-    var targetRoot = (el.dataset.root === "fn") ? state.functionProgram : state.program;
-    var targetMax  = Number(el.dataset.max || (el.dataset.root === "fn" ? 10 : 20));
-    var currCount  = countBlocks(targetRoot);
+    });
 
-    // --- Insert from palette/menu
-    if (data && data.from === 'menu') {
-      var t = data.type;
+    el.addEventListener("drop", function(e){
+        if (el.dataset.root === "fn" && state.functionLocked) return;  // locked
 
-      // Block function blocks inside the function bar
-      if (el.dataset.root === "fn" && t === "function") { /* ignore */ }
-      else {
-        // Enforce max (repeat counts as 1 as before)
-        if (currCount >= targetMax && t !== "repeat") { /* ignore */ }
-        var block = (t==='repeat') ? {id:uid(), type:'repeat', count:2, children:[]}: (t==='if') ? {id:uid(), type:'if', choice:'cheese', children:[]} : {id:uid(), type:t};
-        insertAtPath(targetRoot, contPath, idx, block);
-      }
-    }
-    // --- Move within/between bars
-    else if (payloadBar && payloadBar.from === 'bar') {
-      var sourceRoot = (payloadBar.root === "fn") ? state.functionProgram : state.program;
-      var item = removeAtPath(sourceRoot, payloadBar.path);
-      if (item){
-        // Prevent dropping a function block into function bar
-        if (el.dataset.root === "fn" && item.type === "function") {
-          // put it back where it came from
-          insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
-        } else {
-          // Enforce target max
-          if (currCount >= targetMax) {
-            // return to source if full
-            insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
-          } else {
-            insertAtPath(targetRoot, contPath, idx, item);
-          }
+        e.preventDefault(); e.stopPropagation(); dropHandled=true;
+        el.classList.remove("repeat-outline");
+        var idx = 0;
+        for (var n=0;n<el.children.length;n++){
+        var node = el.children[n];
+        if (node===placeholder) break;
+        if (!node.classList.contains("placeholder")) idx++;
         }
-      }
-    }
-
-    if (placeholder.parentElement===el) el.removeChild(placeholder);
-    if (state.functionEnabled) renderFunctionBar();
-
-    if (el.dataset.root === "fn") {
-      state.functionInit = (state.functionProgram || []).slice();
-    }
-
-    renderProgram(); 
-    saveProgram();
+        var raw = "{}"; try{ raw=e.dataTransfer.getData("text/plain")||"{}"; }catch(_){}
+        var data=null; try{ data=JSON.parse(raw); }catch(_){}
+        var contPath = JSON.parse(containerPath);
     
-  });
+        // Adjust container path if removal shifts indices in the same parent array
+        if (payloadBar && payloadBar.from==="bar" && Array.isArray(payloadBar.path) && payloadBar.root === el.dataset.root){
+        try{
+            var sp = payloadBar.path.slice();
+            var spParent = sp.slice(0, sp.length-1);
+            var srcIdx = sp[sp.length-1];
+            var dp = contPath.slice();
+            for (var k=0;k<dp.length;k++){
+            if (typeof dp[k] === "number"){
+                var parentPath = dp.slice(0,k);
+                if (JSON.stringify(parentPath) === JSON.stringify(spParent) && typeof srcIdx==="number" && srcIdx < dp[k]){
+                dp[k] = dp[k]-1;
+                contPath = dp;
+                break;
+                }
+            }
+            }
+        }catch(_){}
+        }
+    
+        var targetRoot = (el.dataset.root === "fn") ? state.functionProgram : state.program;
+        var targetMax  = Number(el.dataset.max || (el.dataset.root === "fn" ? 10 : 20));
+        var currCount  = countBlocks(targetRoot);
+
+        // --- Insert from palette/menu
+        if (data && data.from === 'menu') {
+        var t = data.type;
+
+        // Block function blocks inside the function bar
+        if (el.dataset.root === "fn" && t === "function") { /* ignore */ }
+        else {
+            // Enforce max (repeat counts as 1 as before)
+            if (currCount >= targetMax && t !== "repeat" && t !== "repeatUntil") { /* ignore */ }
+            var block = (t==='repeat') 
+                ? {id:uid(), type:'repeat', count:2, children:[]}
+                : (t==='if')
+                    ? {id:uid(), type:'if', choice:'cheese', children:[]}
+                    : (t==='repeatUntil')
+                    ? {id:uid(), type:'repeatUntil', choice:'cheese', children:[]}
+                    : {id:uid(), type:t};
+
+            insertAtPath(targetRoot, contPath, idx, block);
+        }
+        }
+        // --- Move within/between bars
+        else if (payloadBar && payloadBar.from === 'bar') {
+        var sourceRoot = (payloadBar.root === "fn") ? state.functionProgram : state.program;
+        var item = removeAtPath(sourceRoot, payloadBar.path);
+        if (item){
+            // Prevent dropping a function block into function bar
+            if (el.dataset.root === "fn" && item.type === "function") {
+            // put it back where it came from
+            insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
+            } else {
+            // Enforce target max
+            if (currCount >= targetMax) {
+                // return to source if full
+                insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
+            } else {
+                insertAtPath(targetRoot, contPath, idx, item);
+            }
+            }
+        }
+        }
+
+        if (placeholder.parentElement===el) el.removeChild(placeholder);
+        if (state.functionEnabled) renderFunctionBar();
+
+        if (el.dataset.root === "fn") {
+        state.functionInit = (state.functionProgram || []).slice();
+        }
+
+        renderProgram(); 
+        saveProgram();
+        
+    });
 }
 
   
@@ -4398,7 +4763,12 @@ function attachRepeatWrapper(el){
 
         if (data && data.from==='menu'){
             var t=data.type;
-            var block = (t==='repeat') ? {id:uid(), type:'repeat', count:2, children:[]}: (t==='if') ? {id:uid(), type:'if', choice:'C1', children:[]} : {id:uid(), type:t};
+            var block =
+                (t==='repeat')       ? { id: uid(), type: 'repeat',       count: 2,     children: [] } :
+                (t==='if')           ? { id: uid(), type: 'if',           choice:'cheese', children: [] } :
+                (t==='repeatUntil')  ? { id: uid(), type: 'repeatUntil',  choice:'cheese', children: [] } :
+                                        { id: uid(), type: t };
+
             insertAtPath(targetRoot, contPath, idx, block);
         } else if (payloadBar && payloadBar.from==='bar'){
             // remove from the correct source root
@@ -4495,11 +4865,16 @@ function attachIfWrapper(el){
         if (data && data.from === 'menu'){
         var t = data.type;
         if (!(rootTag === "fn" && t === "function")){
-            if (currCount >= targetMax && t !== "repeat"){ /* ignore */ }
+            if (currCount >= targetMax && t !== "repeat" && t !== "repeatUntil"){ /* ignore */ }
             else {
-            var block = (t==='repeat') ? {id:uid(), type:'repeat', count:2, children:[]} 
-                                        : (t==='if') ? {id:uid(), type:'if', choice:'C1', children:[]}
-                                                    : {id:uid(), type:t};
+            var block = (t==='repeat')
+                ? { id: uid(), type:'repeat', count:2, children:[] }
+                : (t==='if')
+                    ? { id: uid(), type:'if', choice:'cheese', children:[] }
+                    : (t==='repeatUntil')
+                    ? { id: uid(), type:'repeatUntil', choice:'cheese', children:[] }
+                    : { id: uid(), type:t };
+
             insertAtPath(targetRoot, contPath, idx, block);
             }
         }
@@ -4537,6 +4912,8 @@ function attachDnD(){
     });
     // make entire repeat blocks accept drops (proxy to inner)
     document.querySelectorAll('.block.repeat').forEach(function(rep){ attachRepeatWrapper(rep); });
+    // repeatUntil block accepts drops
+    document.querySelectorAll('.block.repeat-until').forEach(rep => attachRepeatWrapper(rep)); 
     // if blocks accepts drops
     document.querySelectorAll('.block.if').forEach(function(node){ attachIfWrapper(node); });
     
@@ -4677,9 +5054,9 @@ function findNodeById(arr, id){
         var b = arr[i];
         if (b && b.id === id) return b;
         // look into containers
-        if ((b.type === "repeat" || b.type === "if") && Array.isArray(b.children)){
-        var hit = findNodeById(b.children, id);
-        if (hit) return hit;
+        if ((b.type === "repeat" || b.type === "if" || b.type === "repeatUntil") && Array.isArray(b.children)){
+            var hit = findNodeById(b.children, id);
+            if (hit) return hit;
         }
     }
     return null;
@@ -4844,6 +5221,34 @@ function stepOnce(fromTimer){
             state.fnIp++;   // consume the IF itself
             return;
         }
+        else if (fblk.type === "repeatUntil"){
+            const node = findNodeById(state.functionProgram || [], fblk.id);
+            const done = isIfTrue(node && node.choice);
+
+            if (done){
+                state.fnIp++;           // exit loop in function
+            } else {
+                // inline-inject children *and* a re-check of the same repeatUntil
+                const p = getBlockPathById(state.functionProgram, fblk.id);
+                if (p){
+                    const container = getContainerByPath(state.functionProgram, p.slice(0,-1));
+                    const node = container && container[p[p.length-1]];
+                    const kids = (node && Array.isArray(node.children)) ? node.children : [];
+                    const sub  = flatten(kids);
+                    if (sub.length){
+                        // insert: body..., then a self re-check step
+                        state.fnPlan.splice(state.fnIp+1, 0, ...sub, { type:'repeatUntil', id: fblk.id });
+                        state.fnIp++; // step into the first injected child
+                        return;
+                    }
+                }
+                // no children → just advance (behaves like an empty loop)
+                state.fnIp++;
+            }
+            return;
+        }
+
+
 
         if (stop){
             // highlight offending block as error (in function)
@@ -4873,20 +5278,20 @@ function stepOnce(fromTimer){
     
     // If this is a function call, "pause" main and enter function
     if (blk.type === "function"){
-      // Keep program call highlighted
-      highlightById(blk.id);
-      state.callId = blk.id;
+        // Keep program call highlighted
+        highlightById(blk.id);
+        state.callId = blk.id;
 
-      // Build function plan from current functionProgram (flattened, repeats expanded)
-      var fp = state.functionProgram || [];
-      state.fnPlan = flatten(fp);
-      state.fnIp   = 0;
-      // If function empty, just advance past call next tick
-      if (state.fnPlan.length === 0){
-        state.fnPlan = null; state.fnIp = 0; state.ip++;
-      }
-      // No draw here; actual function step will run next tick/next step
-      return;
+        // Build function plan from current functionProgram (flattened, repeats expanded)
+        var fp = state.functionProgram || [];
+        state.fnPlan = flatten(fp);
+        state.fnIp   = 0;
+        // If function empty, just advance past call next tick
+        if (state.fnPlan.length === 0){
+            state.fnPlan = null; state.fnIp = 0; state.ip++;
+        }
+        // No draw here; actual function step will run next tick/next step
+        return;
     }
 
     highlightById(blk.id); 
@@ -4894,23 +5299,23 @@ function stepOnce(fromTimer){
     var stop=false;
 
     if(blk.type==="step"){
-      var v=dirVec(state.dir), nx=state.pos.x+v.x, ny=state.pos.y+v.y; var t=tileAt(nx,ny);
-      if(t==="off"||t==="tree"||t==="wall"||t==="water"){ 
-        if (t === "off") { try { triggerCatCapture(state.dir); } catch(_){} }
-        
-        beep("bonk"); 
-        stop=true; 
-      } else { 
-        state.pos.x=nx; 
-        state.pos.y=ny;
-        checkMouseHoleLanding(); 
-        beep("move"); 
-        if (!state.running && state.teleport) {
-            draw();
-            const TELEPORT_STEP_DELAY = 300;
-            scheduleStepPause(TELEPORT_STEP_DELAY, () => stepOnce(false));
+        var v=dirVec(state.dir), nx=state.pos.x+v.x, ny=state.pos.y+v.y; var t=tileAt(nx,ny);
+        if(t==="off"||t==="tree"||t==="wall"||t==="water"){ 
+            if (t === "off") { try { triggerCatCapture(state.dir); } catch(_){} }
+            
+            beep("bonk"); 
+            stop=true; 
+        } else { 
+            state.pos.x=nx; 
+            state.pos.y=ny;
+            checkMouseHoleLanding(); 
+            beep("move"); 
+            if (!state.running && state.teleport) {
+                draw();
+                const TELEPORT_STEP_DELAY = 300;
+                scheduleStepPause(TELEPORT_STEP_DELAY, () => stepOnce(false));
+            }
         }
-      }
 
     } else if(blk.type==="turnLeft"){ 
         state.dir=turnLeft(state.dir); 
@@ -4934,6 +5339,35 @@ function stepOnce(fromTimer){
         // either false branch or empty body → just advance past IF
         state.ip++;
         return;
+    }
+    else if (blk.type === "repeatUntil"){
+        // find current node in the program to read its 'choice'
+        const node = findNodeById(state.program, blk.id);
+        const done = isIfTrue(node && node.choice);   // true when on the selected square
+
+        if (done){
+            // exit the loop: continue after the repeatUntil
+            state.ip++;
+            return;
+        } else {
+            // not done: run the body once, then re-check on next tick
+            // inline-inject children *and* a re-check of the same repeatUntil
+            const p = getBlockPathById(state.program, blk.id);
+                if (p){
+                const container = getContainerByPath(state.program, p.slice(0,-1));
+                const node = container && container[p[p.length-1]];
+                const kids = (node && Array.isArray(node.children)) ? node.children : [];
+                const sub  = flatten(kids);
+                if (sub.length){
+                    // insert: body..., then a self re-check step
+                    state.plan.splice(state.ip+1, 0, ...sub, { type:'repeatUntil', id: blk.id });
+                    state.ip++; // step into the first injected child
+                    return;
+                }
+            }
+            state.ip++;      // step into the first injected child
+            return;
+        }
     }
 
 
@@ -5790,6 +6224,11 @@ function showWin(runStars){
     setWinMessage(n);
     drawWinMouse();
 
+    try{
+        var wm = document.getElementById('winMouse');
+        if (wm) setCanvasBackingScale(wm);
+    }catch(_){}
+
     var btnHome = document.getElementById('btnWinHome');   // left
     var btnRedo = document.getElementById('btnWinRedo');   // center (only on 3★)
     var btnNext = document.getElementById('btnWinNext');   // right
@@ -6375,6 +6814,8 @@ if (window.visualViewport){
       sel.dataset.wired='1';}
 
     SaveSys.bootstrap(); // Load on startup
+    try{ resizeLayout(); }catch(_){}
+
     // On initial load, render + enforce guards
     try { 
       renderStartScreen && renderStartScreen(); 
@@ -6395,6 +6836,7 @@ if (window.visualViewport){
         return __origShowWin ? __origShowWin(runStars) : undefined;
         };
   }catch(e){}
-})();</script>
+})();
+</script>
 </body>
 </html>
