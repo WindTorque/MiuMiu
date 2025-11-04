@@ -12,7 +12,7 @@
     /* SCALING */
     /* base sizes stay as “design” values */
     --blockH: calc(48px * var(--scale));
-    --blockW: calc(48px * var(--scale));
+    --blockW: calc(46px * var(--scale));
     --btnSmall: calc(42px * var(--scale));
 
     /* optional: topbar + icons scale too */
@@ -635,13 +635,13 @@ main.layout{
 
 .block-menu .block[data-type="repeat"] .repeat-count{
         cursor: inherit;
-  border: var(--border-2) solid #0b2a33;
-  border-radius: var(--radius-1);
-  bottom: calc(var(--u)*2.5);
-  font: 600 var(--font-18)/1 ui-sans-serif;
-  padding: calc(var(--u)*0.5) var(--space-4);
-  right: var(--space-3);
-}
+        /* border: var(--border-2) solid #0b2a33;
+        border-radius: var(--radius-1);
+        bottom: calc(var(--u)*2.5);
+        font: 600 var(--font-18)/1 ui-sans-serif;
+        padding: calc(var(--u)*0.5) var(--space-4);
+        right: var(--space-3); */
+    }
 
 .menu-block.block[data-type="if"]{
         align-items: stretch;
@@ -706,7 +706,7 @@ main.layout{
         margin-bottom: calc(var(--u));
         width:auto;
         margin-left: 2px;
-  font: 800 var(--font-20)/1 ui-sans-serif;
+        /* font: 800 var(--font-20)/1 ui-sans-serif; */
 }
 
 .block-menu .block[data-type="if"] .if-choice{
@@ -1022,6 +1022,36 @@ main.layout{
 #functionBar.locked .if-choice{ pointer-events:none; cursor:not-allowed; }
 #functionBar.locked .if-choice:hover{ transform:none; }
 
+/* === Make simple blocks perfectly square (menu + bars) === */
+.block-menu .block[data-type="step"],
+.block-menu .block[data-type="turnLeft"],
+.block-menu .block[data-type="turnRight"],
+.block-menu .block[data-type="cheese"],
+.program-bar .block[data-type="step"],
+.program-bar .block[data-type="turnLeft"],
+.program-bar .block[data-type="turnRight"],
+.program-bar .block[data-type="cheese"],
+.function-bar .block[data-type="step"],
+.function-bar .block[data-type="turnLeft"],
+.function-bar .block[data-type="turnRight"],
+.function-bar .block[data-type="cheese"]{
+  /* keep height as-is, force the width to match */
+  width: var(--blockH);
+  min-width: var(--blockH);
+
+  /* keep the box truly square since we use border-box sizing */
+  height: var(--blockH);
+  min-height: var(--blockH);
+
+  /* avoid extra horizontal growth from uneven padding */
+  padding: 6px;           /* was 6px 10px on .block; equal padding keeps square */
+
+  /* center the icon nicely */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
 
 /* === Banners (Win/Delete) === */
 
@@ -1336,6 +1366,32 @@ button.ghost{
     padding-right: calc(var(--space-6) + env(safe-area-inset-right));
   }
 }
+
+/* === Win banner responsive scaling for small landscape phones === */
+@media (orientation: landscape) and (max-height: 480px),
+       (max-width: 900px) {
+  .win-banner .banner-inner {
+    transform: scale(0.8);
+    max-width: 90vw;
+    padding: 12px;
+  }
+  .win-banner .win-btn {
+    width: 60px;
+    height: 60px;
+  }
+  .win-banner .win-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+  .win-banner .msg {
+    font-size: 20px;
+  }
+  .win-banner .stars-row svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
 </style>
 </head>
 
@@ -6224,10 +6280,10 @@ function showWin(runStars){
     setWinMessage(n);
     drawWinMouse();
 
-    try{
-        var wm = document.getElementById('winMouse');
-        if (wm) setCanvasBackingScale(wm);
-    }catch(_){}
+    // try{
+    //     var wm = document.getElementById('winMouse');
+    //     if (wm) setCanvasBackingScale(wm);
+    // }catch(_){}
 
     var btnHome = document.getElementById('btnWinHome');   // left
     var btnRedo = document.getElementById('btnWinRedo');   // center (only on 3★)
