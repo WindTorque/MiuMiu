@@ -39,6 +39,8 @@
     --home: #bbdfc0;
     --ifBgnd: #ffe9d7;
     --ifLabel: #ff7a00;
+    --varLabel: #255285;
+    --varBg: #b5b8cc;
     --ink: #23303d;
     --left: #6CC1E5;
     --mhole-blue: #1e88e5;
@@ -65,53 +67,54 @@
     --wallBg: #e9bd8d;
     --repeatUntil: #ead8ff;
     --repeatUntilInk: var(--cheeseInk);
-/* === Scaling variables injected (v6.5 scalable) === */
---u: calc(2px * var(--scale));
---space-1: calc(var(--u)*2);
---space-2: calc(var(--u)*3);
---space-3: calc(var(--u)*4);
---space-4: calc(var(--u)*5);
---space-5: calc(var(--u)*6);
---space-6: calc(var(--u)*7);
---space-7: calc(var(--u)*8);
---space-8: calc(var(--u)*10);
---space-9: calc(var(--u)*12);
+    
+    /* === Scaling variables injected (v6.5 scalable) === */
+    --u: calc(2px * var(--scale));
+    --space-1: calc(var(--u)*2);
+    --space-2: calc(var(--u)*3);
+    --space-3: calc(var(--u)*4);
+    --space-4: calc(var(--u)*5);
+    --space-5: calc(var(--u)*6);
+    --space-6: calc(var(--u)*7);
+    --space-7: calc(var(--u)*8);
+    --space-8: calc(var(--u)*10);
+    --space-9: calc(var(--u)*12);
 
---radius-1: 8px;
---radius-2: 10px;
---radius-3: 12px;
---radius-4: 14px;
---radius-5: 16px;
---radius-round: 999px;
+    --radius-1: 8px;
+    --radius-2: 10px;
+    --radius-3: 12px;
+    --radius-4: 14px;
+    --radius-5: 16px;
+    --radius-round: 999px;
 
---font-12: 12px;
---font-16: 16px;
---font-18: 18px;
---font-20: 20px;
---font-22: 22px;
---font-26: 26px;
---font-28: 28px;
+    --font-12: 12px;
+    --font-16: 16px;
+    --font-18: 18px;
+    --font-20: 20px;
+    --font-22: 22px;
+    --font-26: 26px;
+    --font-28: 28px;
 
---barH: calc(var(--blockH) + 24px);  /* keeps bars snug to their blocks */
---topbarH: 40px;
---icon-22: 22px;
---icon-32: 32px;
---icon-36: 36px;
---icon-42: 42px;
---repeat-icon-menu: 16px;
---repeat-icon-live: 22px;
+    --barH: calc(var(--blockH) + 24px);  /* keeps bars snug to their blocks */
+    --topbarH: 40px;
+    --icon-22: 22px;
+    --icon-32: 32px;
+    --icon-36: 36px;
+    --icon-42: 42px;
+    --repeat-icon-menu: 16px;
+    --repeat-icon-live: 22px;
 
---border-1: 1px;
---border-2: 2px;
---outline-4: 4px;
+    --border-1: 1px;
+    --border-2: 2px;
+    --outline-4: 4px;
 
---shadow-1: 0 6px 20px rgba(0,0,0,0.08);
---shadow-2: 0 10px 30px rgba(0,0,0,0.15);
+    --shadow-1: 0 6px 20px rgba(0,0,0,0.08);
+    --shadow-2: 0 10px 30px rgba(0,0,0,0.15);
 
---minProgramW: 600px;
---boardBorder: 6px;
-
---menuRightGap: 55px; /* default for repeat menu; if-menu IF uses 35px */
+    --minProgramW: 600px;
+    --boardBorder: 6px;
+    --fnBarW: 500px;   /* For desktop displays */
+    --menuRightGap: 55px; /* default for repeat menu; if-menu IF uses 35px */
     --scale: 1;
 }
 
@@ -323,11 +326,6 @@ main.layout{
         min-height: 0;
     }
 
-/* When #functionBar is visible, shrink Program bar width */
-main.layout:has(#functionBar:not([hidden])){
-  --minProgramW: 300px;
-}
-
 .board-wrap{
         margin: 0 auto;
         max-width: 90vw;
@@ -429,21 +427,20 @@ main.layout:has(#functionBar:not([hidden])){
         box-shadow: inset 0 0 0 2px var(--function-bar-border);
     }
 
-.program-bar .block.if .if-inner.dropzone,
-.function-bar .block.if .if-inner.dropzone{
+.block.if .if-inner.dropzone,
+.block.if .if-inner.dropzone{
         padding: 4px 0px 4px 2px;
     }
 
-.program-bar .block.if,
-.function-bar .block.if{
+.block.if,
+.block.if{
         height: calc(var(--blockH) + 12px);
         min-height: calc(var(--blockH) + 12px);
         padding-left: 0px;
         gap: 0px;
     }
 
-.program-bar .block.repeat,
-.function-bar .block.repeat{
+.block.repeat{
     align-items: center;
     border: 1px solid var(--cheeseInk);
     height: calc(var(--blockH) + 12px);
@@ -454,8 +451,7 @@ main.layout:has(#functionBar:not([hidden])){
     position: relative;
 }
 
-.program-bar .block.repeat .repeat-inner.dropzone,
-.function-bar .block.repeat .repeat-inner.dropzone{
+.block.repeat .repeat-inner.dropzone{
     align-items: center;
     min-height: calc(var(--blockH));
     padding-left: 4px;
@@ -472,16 +468,11 @@ main.layout:has(#functionBar:not([hidden])){
 #functionBar.locked .block{
     background-clip: padding-box;
     cursor: not-allowed;
-    border-radius: var(--radius-3);
-    font-size: var(--font-26);
-    padding: var(--space-2) var(--space-4);
 }
 
 #functionBar{
-    flex: 0 1 min(100%, var(--fnBarW, 470px));
-    max-width: 100%;
-    min-width: auto;
-    overflow-x: auto; /* keep safe */
+    min-width: var(--fnBarW);
+    overflow-x: visible; /* keep safe */
     overflow-y: hidden;
     scrollbar-width: none;
 }
@@ -493,7 +484,8 @@ main.layout:has(#functionBar:not([hidden])){
 /* Function bar locked: no changing of repeat count or IF selector */
 #functionBar.locked .repeat-count,
 #functionBar.locked .if-choice,
-#functionBar.locked .if-selector {
+#functionBar.locked .if-selector,
+#functionBar.locked .var-value{
     pointer-events: none;
     cursor: not-allowed;
 }
@@ -501,7 +493,8 @@ main.layout:has(#functionBar:not([hidden])){
 /* kill any hover wiggle you may have */
 #functionBar.locked .repeat-count:hover,
 #functionBar.locked .if-choice:hover,
-#functionBar.locked .if-selector:hover {
+#functionBar.locked .if-selector:hover
+#functionBar.locked .var-value:hover {
     transform: none;
 }
 
@@ -649,12 +642,6 @@ main.layout:has(#functionBar:not([hidden])){
 
 .block-menu .block[data-type="repeat"] .repeat-count{
         cursor: inherit;
-        /* border: var(--border-2) solid #0b2a33;
-        border-radius: var(--radius-1);
-        bottom: calc(var(--u)*2.5);
-        font: 600 var(--font-18)/1 ui-sans-serif;
-        padding: calc(var(--u)*0.5) var(--space-4);
-        right: var(--space-3); */
     }
 
 .menu-block.block[data-type="if"]{
@@ -832,12 +819,21 @@ main.layout:has(#functionBar:not([hidden])){
         bottom: 5px;
         color: #1b1b1b;
         cursor: pointer;
-        font: 600 18px/1 ui-sans-serif;
+        font: 600 20px/1 ui-sans-serif;
         padding: 1px 6px;
         position: absolute;
         right: 6px;
         user-select: none;
     }
+
+/* When repeat is using variable C, style like the defineVariable icon */
+.repeat-count.is-var{
+    color: var(--varLabel);
+    font-weight: 900;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1;
+}
 
 .repeat-outline{
         outline: 0px dashed #b493ff;
@@ -859,7 +855,15 @@ main.layout:has(#functionBar:not([hidden])){
 
 .menu-block.block[data-type="repeat"],
 .repeat.is-menu{
-  padding-right: 55px;     /* same space the menu version used for the icon */
+  padding-right: 55px;   
+  min-width: var(--blockW);
+  height: var(--blockH);
+  min-height: var(--blockH);
+  position: relative;
+}
+
+.menu-block.block[data-type="repeatUntil"]{
+  padding-right: 12px;     
   min-width: var(--blockW);
   height: var(--blockH);
   min-height: var(--blockH);
@@ -875,11 +879,11 @@ main.layout:has(#functionBar:not([hidden])){
         gap: 0px;
         height: 100%;
         justify-content: center;
-        min-width: 40px;
-        padding: 6px 6px 6px 8px;
+        min-width: 24px;
         padding-bottom: 0;
-        padding-left: 0px;
+        padding-left: 4px;
         padding-top: 0;
+        padding-right: 0px;
     }
 
 .if-label{
@@ -914,7 +918,7 @@ main.layout:has(#functionBar:not([hidden])){
 .if.is-menu{
     height: var(--blockH);
     min-height: var(--blockH);
-    padding-right: 25px;   /* same right reserve as repeat */
+    padding-right: 25px; 
     position: relative;
   
 }
@@ -937,8 +941,8 @@ main.layout:has(#functionBar:not([hidden])){
 /* ===== Repeat-Until block (UI only) ===== */
 
 /* Same outer box as repeat */
-.program-bar .block.repeat-until,
-.function-bar .block.repeat-until{
+.block.repeat-until,
+.block.repeat-until{
     align-items: center;
     border: 1px solid var(--cheeseInk);
     height: calc(var(--blockH) + 12px);
@@ -952,15 +956,15 @@ main.layout:has(#functionBar:not([hidden])){
 }
 
 /* Inner dropzone – identical to repeat */
-.program-bar .block.repeat-until .repeat-inner.dropzone,
-.function-bar .block.repeat-until .repeat-inner.dropzone{
+.block.repeat-until .repeat-inner.dropzone,
+.block.repeat-until .repeat-inner.dropzone{
     align-items: center;
     min-height: var(--blockH);
     padding-left: 4px;
     padding-right: 4px;
 }
 
-/* Icon position – identical to repeat */
+/* Icon position */
 .repeat-until .repeat-icon{
     height: 16px;
     opacity: 0.9;
@@ -1033,39 +1037,85 @@ main.layout:has(#functionBar:not([hidden])){
     right: 9px; 
 }
 
-/* Locked function bar: disable selector (reuse existing) */
+/* ===== Define-Variable block ===== */
+.block.define-var{
+    align-items: center;
+    position: relative;
+    background: var(--varBg, #d8e6f3);
+    color: var(--varInk, var(--cheeseInk));
+}
+
+
+/* The 'C' icon: centred at the top */
+.define-var .var-icon{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 900;  /* bolder */
+    font-size: 20px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji"; /* sans-serif stack */
+    color: var(--varLabel);
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+/* Selector: centred at the bottom (bars) */
+.define-var .var-value{
+    position: absolute;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 2px;
+    width: 30px;
+    height: 21px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    border: 2px solid var(--cheeseInk);
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* MENU: make both selectors non-interactive */
+.block-menu .block[data-type="defineVariable"] .var-value,
+.block-menu .block[data-type="incrementVariable"] .var-value{
+  pointer-events: none;
+  cursor: inherit;
+}
+
+
+/* Locked function bar: disable selectors (reuse existing) */
 #functionBar.locked .if-choice{ pointer-events:none; cursor:not-allowed; }
 #functionBar.locked .if-choice:hover{ transform:none; }
+#functionBar.locked .var-value{ pointer-events: none; cursor: not-allowed; }
+
 
 /* === Make simple blocks perfectly square (menu + bars) === */
-.block-menu .block[data-type="step"],
-.block-menu .block[data-type="turnLeft"],
-.block-menu .block[data-type="turnRight"],
-.block-menu .block[data-type="cheese"],
-.program-bar .block[data-type="step"],
-.program-bar .block[data-type="turnLeft"],
-.program-bar .block[data-type="turnRight"],
-.program-bar .block[data-type="cheese"],
-.function-bar .block[data-type="step"],
-.function-bar .block[data-type="turnLeft"],
-.function-bar .block[data-type="turnRight"],
-.function-bar .block[data-type="cheese"]{
-  /* keep height as-is, force the width to match */
-  width: var(--blockH);
-  min-width: var(--blockH);
+.block[data-type="step"],
+.block[data-type="turnLeft"],
+.block[data-type="turnRight"],
+.block[data-type="cheese"]{
+    /* keep height as-is, force the width to match */
+    width: var(--blockH);
+    min-width: var(--blockH);
 
-  /* keep the box truly square since we use border-box sizing */
-  height: var(--blockH);
-  min-height: var(--blockH);
+    /* keep the box truly square since we use border-box sizing */
+    height: var(--blockH);
+    min-height: var(--blockH);
 
-  /* avoid extra horizontal growth from uneven padding */
-  padding: 6px;           /* was 6px 10px on .block; equal padding keeps square */
+    /* avoid extra horizontal growth from uneven padding */
+    padding: 6px;           /* was 6px 10px on .block; equal padding keeps square */
 
-  /* center the icon nicely */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
+    /* center the icon nicely */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
 }
 
 /* === Banners (Win/Delete) === */
@@ -1336,14 +1386,32 @@ button.ghost{
     text-overflow: ellipsis; 
     vertical-align: middle;
     }
-  }
+}
+
+#saveControls{
+  display:flex; 
+  align-items:center; 
+  justify-content:center; /* ensure centre alignment for whatever is visible */
+  gap: 8px;
+}
+
+.var-indicator{
+  font-family: var(--blockSans, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans");
+  font-weight: 800;
+  font-size: var(--font-22);
+  color: var(--varLabel, #2c3e50); 
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+
 
 /* === Mobile Landscape Overrides === */
 @media (orientation: landscape) and (max-height: 480px), 
        (orientation: landscape) and (max-width: 900px) {
     :root{
         --scale: 0.88;            /* scales spacing/fonts/icons via --u */
-        --minProgramW: 350px;     /* allow program bar to fit smaller screens */
+        --minProgramW: 300px;     /* allow program bar to fit smaller screens */
         --fnBarW: 420px;
         --boardBorder: calc(6px * var(--scale));
         --uiPx: 720px;
@@ -1369,10 +1437,39 @@ button.ghost{
     .block-menu{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .block-menu .block{ touch-action: none; } /* prevent accidental scroll while dragging */
 
+    .repeat:not(.is-menu) .repeat-icon{
+        top: 0px;
+    }
+
+    .repeat-until:not(.is-menu) .repeat-icon{
+        top: 0px;   /* was calc(var(--u) * 2.5) on desktop */
+    }
+
+    .if:not(.is-menu) .if-choice{
+        bottom: calc(var(--u) * 0); /* up from ~5px on desktop */
+    }
+
+    .block-menu .if-label{
+        top: 4px;
+    } 
+
+    .block-menu .var-icon{
+        top: 0px;
+        font-size: 12px;
+    }   
+    .block[data-type="defineVariable"] .var-icon{
+        top: 0px;
+        font-size: 12px;
+    }  
+    .block[data-type="incrementVariable"] .var-icon{
+        top: 0px;
+        font-size: 12px;
+    }    
+
     /* — compress the header layout — */
     .topbar{
-    gap: 8px;                 /* tighter gaps */
-    padding: 6px 10px;        /* smaller paddings; safe-area padding is added below already */
+        gap: 8px;                 /* tighter gaps */
+        padding: 6px 10px;        /* smaller paddings; safe-area padding is added below already */
     }
 
     /* keep your safe-area padding logic */
@@ -1478,6 +1575,9 @@ button.ghost{
 
     <!-- CENTER: Save controls (Start Screen only) -->
     <div class="center-tools" id="saveControls">
+        <span id="varIndicatorCenter" class="var-indicator" style="display:none" aria-live="polite">C = 0</span>
+
+        
         <button aria-label="Choose save folder" class="icon-btn ghost" id="chooseSaveFolderBtn" title="Choose save folder">
 
             <!-- Folder icon -->
@@ -1571,9 +1671,9 @@ button.ghost{
     <div class="program-area">
       <div class="pf-wrap" id="pfWrap">
         <!-- Program bar -->
-        <div aria-label="Program bar" class="program-bar dropzone" data-max="20" data-root="program" id="programBar"></div>
+        <div aria-label="Program bar" class="program-bar dropzone" data-max="15" data-root="program" id="programBar"></div>
         <!-- Function bar: only shown when 'function' is in allowedBlocks -->
-        <div aria-label="Function bar" class="program-bar function-bar dropzone" data-max="10" data-root="fn" hidden="" id="functionBar"></div>
+        <div aria-label="Function bar" class="program-bar function-bar dropzone" data-max="14" data-root="fn" hidden="" id="functionBar"></div>
       </div>
     </div>
   </section>
@@ -1581,25 +1681,26 @@ button.ghost{
 </main>
 
 <script>
+
 /* === DPR Canvas Helper (v6.6) === */
 function setCanvasBackingScale(canvas){
-  try{
-    const dpr = Math.max(1, (window.devicePixelRatio || 1));
-    const cssW = Math.round(canvas.getBoundingClientRect().width);
-    const cssH = Math.round(canvas.getBoundingClientRect().height);
-    const needW = Math.max(1, Math.round(cssW * dpr));
-    const needH = Math.max(1, Math.round(cssH * dpr));
-    if (canvas.width !== needW || canvas.height !== needH){
-      const ctx = canvas.getContext('2d');
-      // Save existing transform-aware state by resetting width/height (resets transform)
-      canvas.width = needW;
-      canvas.height = needH;
-      // Scale drawing so 1 unit = 1 CSS pixel
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    try{
+        const dpr = Math.max(1, (window.devicePixelRatio || 1));
+        const cssW = Math.round(canvas.getBoundingClientRect().width);
+        const cssH = Math.round(canvas.getBoundingClientRect().height);
+        const needW = Math.max(1, Math.round(cssW * dpr));
+        const needH = Math.max(1, Math.round(cssH * dpr));
+        if (canvas.width !== needW || canvas.height !== needH){
+        const ctx = canvas.getContext('2d');
+        // Save existing transform-aware state by resetting width/height (resets transform)
+        canvas.width = needW;
+        canvas.height = needH;
+        // Scale drawing so 1 unit = 1 CSS pixel
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+    }catch(e){
+        console.warn("setCanvasBackingScale:", e);
     }
-  }catch(e){
-    console.warn("setCanvasBackingScale:", e);
-  }
 }
 
 
@@ -1614,20 +1715,20 @@ function setCanvasBackingScale(canvas){
 //   true   LOCAL DATA      data saved to browser only
 //   false  JSON DATA       data saved to JSON files (in selected directoy) only
 
-const ENABLE_LOCAL_SAVE = true;     
+const ENABLE_LOCAL_SAVE = false;     
 
 
 
 
 // Hard block of native context menus as early as possible
 (function(){
-  var handler=function(e){ e.preventDefault(); return false; };
-  try{
-    window.addEventListener('contextmenu', handler, {capture:true});
-    document.addEventListener('contextmenu', handler, {capture:true});
-    if(document.body){ document.body.addEventListener('contextmenu', handler, {capture:true}); }
-    document.oncontextmenu = handler;
-  }catch(_){}
+    var handler=function(e){ e.preventDefault(); return false; };
+    try{
+        window.addEventListener('contextmenu', handler, {capture:true});
+        document.addEventListener('contextmenu', handler, {capture:true});
+        if(document.body){ document.body.addEventListener('contextmenu', handler, {capture:true}); }
+        document.oncontextmenu = handler;
+    }catch(_){}
 })();
 
 // --- Delete All Progress banner logic ---
@@ -1712,16 +1813,26 @@ try{
     if (!onStart && !ENABLE_LOCAL_SAVE) updateCurrentUserUI();
 
     var _sf = document.getElementById('chooseSaveFolderBtn');
+    var _cf = document.getElementById('chosenFolderBadge');
     var _sp = document.getElementById('playerSelect');
     var _sn = document.getElementById('newPlayerBtn');
     var _grp = document.getElementById('saveControls');
+
+    const varC = document.getElementById('varIndicatorCenter');
 
     const showSaveCtrls = onStart && !ENABLE_LOCAL_SAVE;
     if (_sf) _sf.style.display = showSaveCtrls ? '' : 'none';
     if (_sp) _sp.style.display = showSaveCtrls ? '' : 'none';
     if (_sn) _sn.style.display = showSaveCtrls ? '' : 'none';
-    if (_grp) _grp.style.visibility = showSaveCtrls ? 'visible' : 'hidden';
-
+    if (_cf) _cf.style.display = showSaveCtrls ? '' : 'none';
+    // variable indicator is only for the programming screen *and*
+    // only when the challenge actually uses variables (see helper below)
+    if (varC){
+        const showVar = (!showSaveCtrls && shouldShowVarIndicator());
+        varC.style.display = showVar ? '' : 'none';
+        if (showVar) { try{ refreshVarIndicatorCenter(); }catch(_){ } }
+    }
+    
     try{
         var info = document.querySelector('.level-info');
         var nameEl = document.getElementById('levelName');
@@ -1768,6 +1879,35 @@ function updateCurrentUserUI(){
     const el = document.getElementById('currentUserName');
     if (el) el.textContent = resolveCurrentPlayerName();
 }
+
+function currentVarValue(){
+    try{
+        if (state && state.vars && typeof state.vars.C !== 'undefined') return state.vars.C;
+        if (state && typeof state.varC !== 'undefined') return state.varC;
+    }catch(_){}
+    return null;
+}
+
+function shouldShowVarIndicator(){
+    try{
+        if (!state || !state.level) return false;
+        const allowed = state.level.allowedBlocks || [];
+        // Visible if the challenge exposes defineVariable *or* if one is seeded in program/function:
+        if (allowed.indexOf('defineVariable') !== -1) return true;
+        const hasDef = (arr)=>Array.isArray(arr) && arr.some(b=>b && b.type==='defineVariable');
+        return hasDef(state.program) || hasDef(state.functionProgram) || hasDef(state.functionInit);
+    }catch(_){}
+    return false;
+}
+
+function refreshVarIndicatorCenter(){
+    const el = document.getElementById('varIndicatorCenter');
+    if (!el) return;
+    const v = currentVarValue();
+    el.textContent = "C = " + (v === null ? "?" : v);
+}
+
+
 
 
 // Update the header's per-challenge star display (best achieved so far for this challenge)
@@ -1903,17 +2043,17 @@ function totalAvailableStars(){
 }
 function totalAchievedStars(){
     if (!ENABLE_LOCAL_SAVE && window.SaveSys && SaveSys._snapshot){
-        // Prefer explicit totals if present; else sum the per-challenge stars from snapshot
-        const t = SaveSys._snapshot.totals && Number(SaveSys._snapshot.totals.stars);
-        if (!isNaN(t)) return t;
+        // Always derive from the per-challenge records to avoid stale totals
         let sum = 0;
-        (window.CHALLENGES||[]).forEach(function(ch){
-        const key = challengeKey(ch);
-        const rec = SaveSys._snapshot.challenges && SaveSys._snapshot.challenges[key];
-        sum += rec ? (Number(rec.stars)||0) : 0;
+        const snap = SaveSys._snapshot;
+        (window.CHALLENGES || []).forEach(function(ch){
+            const key = challengeKey(ch);
+            const rec = snap.challenges && snap.challenges[key];
+            if (rec) sum += (Number(rec.stars) || 0);
         });
         return sum;
     }
+
     // Local mode
     let sum = 0;
     (window.CHALLENGES||[]).forEach(function(ch){ sum += getStarsFor(ch); });
@@ -2113,7 +2253,8 @@ function startChallenge(levelId, challengeId){
         try{ updateChallengeStarsUI && updateChallengeStarsUI(); }catch(_){}
         try{ updateTopBarForScreen && updateTopBarForScreen(); }catch(_){}
         try{ updateTopBarForScreen && updateTopBarForScreen(); }catch(_){} 
-        updateTopBarForScreen(); 
+        updateTopBarForScreen();
+        try{ refreshVarIndicatorCenter(); }catch(_){} 
         updateTotalsUI();
         try{ resizeLayout && resizeLayout(); }catch(_){}
         resetToStart();
@@ -2143,9 +2284,9 @@ function showError(msg, err){
         box.appendChild(line);
     }catch(_){}
 }
-  window.addEventListener('error',function(e){ showError('Unhandled: '+e.message); });
 
-  // === Level ===
+window.addEventListener('error',function(e){ showError('Unhandled: '+e.message); });
+
   
 // === Challenges (multi-grid) ===
 window.CHALLENGES = [
@@ -2154,8 +2295,8 @@ window.CHALLENGES = [
         challengeId: 1,
         name: "Sequencing",
         grid: { cols: 7, rows: 4 },
-        start: { x: 1, y: 1, dir: "E" },     // arrow on the tan tile
-        home:  { x: 4, y: 1 },               // house
+        start: { x: 1, y: 1, dir: "E" },  
+        home:  { x: 4, y: 1 }, 
         obstacles: [
         // row 0 (top): trees + right wall
         {x:0,y:0,type:"tree"},{x:1,y:0,type:"tree"},{x:2,y:0,type:"tree"},{x:3,y:0,type:"tree"},
@@ -3589,7 +3730,7 @@ window.CHALLENGES = [
         cheeses:[{"x":4,"y":1},{"x":5,"y":3},{"x":2,"y":4},{"x":6,"y":4}],
         mouseHoles: [],
         optimalBlocks:10,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","function","repeatUntil","if","repeat"]
+        allowedBlocks:["turnLeft","turnRight","cheese","function"]
         ,
         functionLocked:false,
         functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]},{"type":"if","choice":"C2","children":[]}]}]
@@ -3598,25 +3739,814 @@ window.CHALLENGES = [
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
         }; })(),
 
-    // (function(){ var L = {
-    //     levelId: 8,
-    //     challengeId: 8,
-    //     name: "\"If\" block",
-    //     grid: { cols: 8, rows: 6 },
-    //     start: { x: 1, y: 2, dir: "S" },
-    //     home:{x:7,y:4},
-    //     obstacles:[{"x":1,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":3,"y":1,"type":"C2"},{"x":5,"y":1,"type":"C2"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":3,"y":4,"type":"C1"},{"x":5,"y":4,"type":"C1"},{"x":0,"y":5,"type":"tree"},{"x":7,"y":5,"type":"tree"}],
-    //     cheeses:[{"x":4,"y":1},{"x":5,"y":3},{"x":2,"y":4},{"x":6,"y":4}],
-    //     mouseHoles: [],
-    //     optimalBlocks:10,
-    //     allowedBlocks:["turnLeft","turnRight","cheese","function"]
-    //     ,
-    //     functionLocked:false,
-    //     functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]},{"type":"if","choice":"C2","children":[]}]}]
+    (function(){ var L = {
+        levelId: 8,
+        challengeId: 9,
+        name: "\"If\" Block",
+        grid: { cols: 10, rows: 4 },
+        start: { x: 0, y: 2, dir: "E" },
+        home:{x:9,y:2},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"}],
+        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
+        mouseHoles: [],
+        optimalBlocks:5,
+        allowedBlocks:["step","repeat","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"if","choice":"cheese","children":[{"type":"cheese"}]}]
 
-    //     }
-    //     return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-    //     }; })(),
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 8,
+        challengeId: 10,
+        name: "\"If\" Block",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 2, y: 2, dir: "E" },
+        home:{x:3,y:0},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"C3"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":6,"y":2,"type":"C3"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:4,
+        allowedBlocks:["step","turnLeft","repeat","if"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+    
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 1,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 5, rows: 5 },
+        start: { x: 0, y: 2, dir: "E" },
+        home:{x:4,y:2},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:3,
+        allowedBlocks:["function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"home","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 2,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 0, dir: "S" },
+        home:{x:0,y:2},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"home","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 3,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 2, dir: "W" },
+        home:{x:0,y:0},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":0,"y":2,"type":"C2"},{"x":2,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"C2","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+        
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 4,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 0, y: 4, dir: "E" },
+        home:{x:4,y:2},
+        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":6,"y":2,"type":"C3"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":0,"y1":0,"x2":6,"y2":4}],
+        optimalBlocks:7,
+        allowedBlocks:["step","turnLeft","turnRight","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"C3","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+   
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 5,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:4,y:4},
+        obstacles:[{"x":2,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"C1"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:9,
+        allowedBlocks:["step","turnLeft","turnRight","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"C1","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 6,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:1,y:2},
+        obstacles:[{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":1,"y":0}],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 7,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:2,y:3},
+        obstacles:[{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":1,"y":0},{"x":1,"y":3}],
+        mouseHoles: [],
+        optimalBlocks:7,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 8,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:6,y:1},
+        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C2"},{"x":6,"y":4,"type":"C3"}],
+        cheeses:[{"x":1,"y":1},{"x":6,"y":3},{"x":2,"y":4}],
+        mouseHoles: [],
+        optimalBlocks:14,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 9,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:6,y:1},
+        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":6,"y":4,"type":"C1"}],
+        cheeses:[{"x":1,"y":1},{"x":6,"y":3},{"x":2,"y":4}],
+        mouseHoles: [],
+        optimalBlocks:9,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 9,
+        challengeId: 10,
+        name: "\"Repeat Until\" Block",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 7, y: 0, dir: "W" },
+        home:{x:0,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"C1"},{"x":2,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":3,"y":2,"type":"C1"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
+        cheeses:[{"x":1,"y":1},{"x":2,"y":2},{"x":3,"y":3}],
+        mouseHoles: [{"color":1,"x1":7,"y1":1,"x2":1,"y2":2},{"color":2,"x1":7,"y1":2,"x2":2,"y2":3},{"color":3,"x1":7,"y1":3,"x2":3,"y2":4}],
+        optimalBlocks:11,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 1,
+        name: "Combining blocks",
+        grid: { cols: 5, rows: 5 },
+        start: { x: 4, y: 0, dir: "W" },
+        home:{x:1,y:4},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"C2"},{"x":0,"y":2,"type":"C2"},{"x":2,"y":2,"type":"C1"},{"x":4,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"C2"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:7,
+        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[{"type":"if","choice":"C2","children":[]},{"type":"if","choice":"C1","children":[]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+    
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 2,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 0, y: 1, dir: "E" },
+        home:{x:8,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"C1"},{"x":5,"y":1,"type":"C1"},{"x":7,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"}],
+        cheeses:[{"x":1,"y":2},{"x":5,"y":2},{"x":7,"y":2}],
+        mouseHoles: [],
+        optimalBlocks:9,
+        allowedBlocks:["step","cheese","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"turnRight"},{"type":"step"},{"type":"turnRight"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 3,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 0, y: 1, dir: "E" },
+        home:{x:8,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"C1"},{"x":3,"y":1,"type":"C2"},{"x":4,"y":1,"type":"C2"},{"x":7,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"}],
+        cheeses:[{"x":3,"y":0},{"x":4,"y":0},{"x":1,"y":2},{"x":7,"y":2}],
+        mouseHoles: [],
+        optimalBlocks:15,
+        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"step"},{"type":"turnRight"},{"type":"cheese"},{"type":"turnRight"},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 4,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 4, dir: "E" },
+        home:{x:8,y:0},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
+        cheeses:[],
+        mouseHoles: [{"color":2,"x1":4,"y1":0,"x2":4,"y2":4}],
+        optimalBlocks:8,
+        allowedBlocks:["repeatUntil","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"step"},{"type":"turnRight"},{"type":"step"},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 5,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 4, dir: "E" },
+        home:{x:8,y:0},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
+        cheeses:[{"x":2,"y":2},{"x":6,"y":2}],
+        mouseHoles: [{"color":2,"x1":4,"y1":0,"x2":4,"y2":4}],
+        optimalBlocks:10,
+        allowedBlocks:["cheese","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"step"},{"type":"turnRight"},{"type":"step"},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 6,
+        name: "Combining blocks",
+        grid: { cols: 10, rows: 4 },
+        start: { x: 3, y: 3, dir: "N" },
+        home:{x:6,y:0},
+        obstacles:[{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":9,"y":0,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":9,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":9,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"}],
+        cheeses:[{"x":1,"y":1},{"x":4,"y":1},{"x":2,"y":2},{"x":8,"y":2}],
+        mouseHoles: [{"color":1,"x1":3,"y1":0,"x2":9,"y2":3},{"color":3,"x1":0,"y1":0,"x2":6,"y2":3}],
+        optimalBlocks:8,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function","if"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 7,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:8,y:0},
+        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":3,"y":0,"type":"C1"},{"x":4,"y":0,"type":"C1"},{"x":7,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"},{"x":8,"y":4,"type":"tree"}],
+        cheeses:[{"x":3,"y":1},{"x":4,"y":2},{"x":7,"y":3},{"x":1,"y":4}],
+        mouseHoles: [],
+        optimalBlocks:13,
+        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"cheese"},{"type":"turnRight"},{"type":"turnRight"},{"type":"repeatUntil","choice":"C1","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 8,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 2, dir: "E" },
+        home:{x:8,y:2},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":1,"y":2,"type":"C1"},{"x":2,"y":2,"type":"C2"},{"x":3,"y":2,"type":"C1"},{"x":4,"y":2,"type":"C2"},{"x":6,"y":2,"type":"C1"},{"x":7,"y":2,"type":"C2"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
+        cheeses:[{"x":1,"y":1},{"x":6,"y":1},{"x":4,"y":3},{"x":7,"y":3}],
+        mouseHoles: [{"color":1,"x1":1,"y1":0,"x2":2,"y2":3},{"color":2,"x1":3,"y1":0,"x2":4,"y2":4},{"color":3,"x1":6,"y1":0,"x2":7,"y2":4}],
+        optimalBlocks:10,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function","if"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 9,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 2, dir: "E" },
+        home:{x:8,y:0},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"C2"},{"x":3,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":1,"y":2,"type":"C1"},{"x":3,"y":2,"type":"tree"},{"x":6,"y":2,"type":"C1"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
+        cheeses:[{"x":1,"y":1},{"x":2,"y":1},{"x":4,"y":1},{"x":5,"y":1},{"x":6,"y":1},{"x":7,"y":1},{"x":2,"y":2},{"x":4,"y":2},{"x":7,"y":2},{"x":2,"y":3},{"x":4,"y":3},{"x":7,"y":3}],
+        mouseHoles: [{"color":1,"x1":1,"y1":0,"x2":2,"y2":4},{"color":2,"x1":5,"y1":0,"x2":4,"y2":4},{"color":3,"x1":6,"y1":0,"x2":7,"y2":4}],
+        optimalBlocks:14,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function","if"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 10,
+        challengeId: 10,
+        name: "Combining blocks",
+        grid: { cols: 9, rows: 5 },
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:7,y:1},
+        obstacles:[{"x":8,"y":0,"type":"C2"},{"x":0,"y":1,"type":"C1"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"C1"},{"x":4,"y":4,"type":"C1"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"C2"},{"x":8,"y":4,"type":"C2"}],
+        cheeses:[{"x":1,"y":1},{"x":4,"y":1},{"x":6,"y":1},{"x":0,"y":3},{"x":3,"y":4}],
+        mouseHoles: [],
+        optimalBlocks:11,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","if"]
+        ,
+        functionLocked:false,
+        functionContents:[]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 1,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 1, y: 1, dir: "E" },
+        home:{x:7,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:4,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 2,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 8, y: 1, dir: "W" },
+        home:{x:0,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:4,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 3,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 1, y: 2, dir: "E" },
+        home:{x:7,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":6,"y":1},{"x":4,"y":2}],
+        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":5,"y2":2}],
+        optimalBlocks:8,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 4,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 3, dir: "W" },
+        home:{x:1,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"}],
+        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
+        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
+        optimalBlocks:10,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 5,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 3, dir: "W" },
+        home:{x:1,y:1},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":2,"y":3,"type":"wall"}],
+        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
+        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
+        optimalBlocks:9,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"},{"type":"incrementVariable","name":"C","delta":1}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 6,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 1, dir: "W" },
+        home:{x:3,y:3},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":2,"y":3,"type":"wall"}],
+        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
+        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":7,"y2":2},{"color":2,"x1":2,"y1":2,"x2":7,"y2":3}],
+        optimalBlocks:9,
+        allowedBlocks:["defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"},{"type":"incrementVariable","name":"C","delta":-1}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 7,
+        name: "Variables",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 3, y: 2, dir: "W" },
+        home:{x:0,y:4},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:7,
+        allowedBlocks:["repeat","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnRight"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 8,
+        name: "Variables",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 0, y: 4, dir: "E" },
+        home:{x:3,y:2},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:7,
+        allowedBlocks:["repeat","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 9,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 3, dir: "W" },
+        home:{x:4,y:0},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"}],
+        cheeses:[{"x":4,"y":1},{"x":2,"y":2},{"x":0,"y":3}],
+        mouseHoles: [{"color":1,"x1":0,"y1":2,"x2":7,"y2":2},{"color":2,"x1":2,"y1":1,"x2":7,"y2":1}],
+        optimalBlocks:10,
+        allowedBlocks:["defineVariable","incrementVariable","repeatUntil","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"turnRight"},{"type":"step"},{"type":"turnLeft"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 11,
+        challengeId: 10,
+        name: "Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 3, dir: "W" },
+        home:{x:1,y:0},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"}],
+        cheeses:[{"x":2,"y":0},{"x":3,"y":0},{"x":4,"y":0},{"x":5,"y":0},{"x":6,"y":0},{"x":3,"y":1},{"x":4,"y":1},{"x":5,"y":1},{"x":6,"y":1},{"x":4,"y":2},{"x":5,"y":2},{"x":6,"y":2},{"x":5,"y":3},{"x":6,"y":3}],
+        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":4,"y2":3},{"color":2,"x1":7,"y1":1,"x2":3,"y2":2},{"color":3,"x1":7,"y1":0,"x2":2,"y2":1}],
+        optimalBlocks:8,
+        allowedBlocks:["step","repeat","defineVariable","incrementVariable","repeatUntil","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"step"},{"type":"cheese"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 1,
+        name: "Advanced Variables",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 1, y: 1, dir: "E" },
+        home:{x:5,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":3,"y":1,"count":2}],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","cheese"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 2,
+        name: "Advanced Variables",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 1, y: 1, dir: "E" },
+        home:{x:5,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":3,"y":1,"count":5}],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","cheese","repeat"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 3,
+        name: "Advanced Variables",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 1, y: 1, dir: "E" },
+        home:{x:5,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
+        cheeses:[{"x":3,"y":1,"count":4},{"x":4,"y":1,"count":5}],
+        mouseHoles: [],
+        optimalBlocks:9,
+        allowedBlocks:["step","defineVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"incrementVariable","name":"C","delta":1},{"type":"step"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 4,
+        name: "Advanced Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 3, dir: "W" },
+        home:{x:1,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":2,"y":3,"type":"tree"}],
+        cheeses:[{"x":2,"y":1,"count":5},{"x":3,"y":2,"count":4},{"x":4,"y":3,"count":3}],
+        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
+        optimalBlocks:9,
+        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 5,
+        name: "Advanced Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 1, dir: "W" },
+        home:{x:1,y:1},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":7,"y":3,"type":"tree"}],
+        cheeses:[{"x":2,"y":1,"count":5},{"x":3,"y":1,"count":4},{"x":4,"y":1,"count":3},{"x":5,"y":1,"count":2},{"x":6,"y":1,"count":1}],
+        mouseHoles: [],
+        optimalBlocks:8,
+        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 6,
+        name: "Advanced Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 7, y: 1, dir: "W" },
+        home:{x:1,y:2},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"}],
+        cheeses:[{"x":2,"y":1,"count":1},{"x":3,"y":1,"count":2},{"x":4,"y":1,"count":3},{"x":5,"y":1,"count":4},{"x":6,"y":1,"count":5},{"x":2,"y":2,"count":5},{"x":3,"y":2,"count":4},{"x":4,"y":2,"count":3},{"x":5,"y":2,"count":2},{"x":6,"y":2,"count":1}],
+        mouseHoles: [{"color":4,"x1":1,"y1":1,"x2":7,"y2":2}],
+        optimalBlocks:11,
+        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 7,
+        name: "Advanced Variables",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 0, dir: "W" },
+        home:{x:6,y:1},
+        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":6,"y":4,"type":"C1"}],
+        cheeses:[{"x":1,"y":1,"count":1},{"x":6,"y":3,"count":3},{"x":2,"y":4,"count":2}],
+        mouseHoles: [],
+        optimalBlocks:10,
+        allowedBlocks:["step","defineVariable","incrementVariable","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 8,
+        name: "Advanced Variables",
+        grid: { cols: 9, rows: 4 },
+        start: { x: 8, y: 0, dir: "W" },
+        home:{x:0,y:0},
+        obstacles:[{"x":1,"y":0,"type":"C2"},{"x":2,"y":0,"type":"C1"},{"x":4,"y":0,"type":"C1"},{"x":5,"y":0,"type":"C2"},{"x":7,"y":0,"type":"C1"},{"x":0,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":6,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"}],
+        cheeses:[{"x":2,"y":2,"count":2},{"x":4,"y":2,"count":2},{"x":7,"y":2,"count":2},{"x":1,"y":3,"count":3},{"x":5,"y":3,"count":3}],
+        mouseHoles: [],
+        optimalBlocks:18,
+        allowedBlocks:["step","defineVariable","repeatUntil","function","if"]
+        ,
+        functionLocked:true,
+        functionContents:[{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnLeft"},{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 9,
+        name: "Advanced Variables",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 1, y: 0, dir: "S" },
+        home:{x:1,y:4},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"}],
+        cheeses:[{"x":3,"y":1,"count":2},{"x":6,"y":2,"count":5},{"x":4,"y":3,"count":3}],
+        mouseHoles: [],
+        optimalBlocks:19,
+        allowedBlocks:["step","defineVariable","incrementVariable","function"]
+        ,
+        functionLocked:false,
+        functionContents:[{"type":"turnLeft"},{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnLeft"},{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
 
 ];
 
@@ -3640,7 +4570,8 @@ var state={
     functionEnabled: false,
     functionLocked: false,
     functionProgram: [],   // editable contents
-    functionInit: []      // initial contents (from challenge)
+    functionInit: [],      // initial contents (from challenge)
+    vars: {}
 };
 
 // --- Cat capture visual state ---
@@ -3782,6 +4713,15 @@ function turnLeft(d){return d==="N"?"W": d==="W"?"S": d==="S"?"E":"N"}
 function turnRight(d){return d==="N"?"E": d==="E"?"S": d==="S"?"W":"N"}
 function tileAt(x,y){ var L=state.level; if(x<0||y<0||x>=L.grid.cols||y>=L.grid.rows) return "off"; for(var i=0;i<L.obstacles.length;i++){ var o=L.obstacles[i]; if(o.x===x&&o.y===y) return o.type; } if(L.home.x===x&&L.home.y===y) return "home"; if(L.start.x===x&&L.start.y===y) return "start"; return "empty"; }
 function getCSS(n){ var v=getComputedStyle(document.documentElement).getPropertyValue(n); return (v||'').trim(); }
+
+function defaultRepeatCount(){
+    const hasVar = !!(state &&
+        state.level &&
+        Array.isArray(state.level.allowedBlocks) &&
+        state.level.allowedBlocks.indexOf("defineVariable") !== -1);
+    return hasVar ? "C" : 2;
+}
+
 
 function saveProgram(){ 
   try{ 
@@ -4159,41 +5099,63 @@ function blockContent(el,type,block){
     else if(type==="repeat"){
         el.classList.add("repeat");
 
-        var ic = document.createElement("div");
+        const ic = document.createElement("div");
         ic.className = "repeat-icon";
-        ic.appendChild(repeatGlyphIcon());
+        ic.appendChild(repeatGlyphIcon());   // reuse your existing glyph helper
         el.appendChild(ic);
+        
+        var hasVar = (state.level && Array.isArray(state.level.allowedBlocks) 
+                    && state.level.allowedBlocks.indexOf("defineVariable") !== -1);
 
-        var cnt=document.createElement("div"); 
-        cnt.className="repeat-count"; 
-        cnt.textContent=String(block.count||2);
-        cnt.title="Change repeats (2..9)";
-        cnt.addEventListener("click", function(e){
-        e.stopPropagation();
-        block.count = (block.count||2) + 1;
-        if (block.count > 9) block.count = 2;
-        // Re-render the correct bar immediately
-        if (el.dataset && el.dataset.root === "fn") {
-            renderFunctionBar();
-        } else {
-            renderProgram();
+        // values the selector will cycle through
+        var values = hasVar ? ["C",2,3,4,5,6,7,8,9] : [2,3,4,5,6,7,8,9];
+
+        if (values.indexOf(block.count) === -1){
+            // ensure a valid default (C if available; otherwise 2)
+            block.count = values[0];
         }
-        saveProgram();
-        setRunning(false);
-        state.changed = true;
+
+        var cnt = document.createElement("div");
+        cnt.className = "repeat-count";
+        cnt.title = "Change repeat count";
+
+        // paints either "C" or a number
+        function paintCount(){
+            cnt.textContent = String(block.count);
+            // To change the font of the 'C' to match variable blocks
+            if (block.count === "C"){
+                cnt.classList.add("is-var");
+            } else {
+                cnt.classList.remove("is-var");
+            }
+        }
+
+        // cycle on click: C→2→3→...→9→C (if hasVar), otherwise 2→...→9→2
+        cnt.addEventListener("click", function(e){
+            e.stopPropagation();
+            var i = values.indexOf(block.count);
+            block.count = values[(i+1) % values.length];
+            paintCount();
+
+            // re-render the correct bar immediately (matches your pattern)
+            if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
+            else { renderProgram(); }
+            saveProgram();
+            setRunning(false);
+            state.changed = true;
         });
+
+        paintCount();
         el.appendChild(cnt);
 
-        var inner=document.createElement("div"); 
+        // --- RIGHT: inner dropzone for child blocks (same pattern as IF)
+        var inner = document.createElement("div");
         var inFnLocked = (el.dataset.root === "fn" && state.functionLocked);
-        inner.className = "repeat-inner" + (inFnLocked ? "" : " dropzone"); //  no dropzone when locked
-
+        inner.className = "repeat-inner" + (inFnLocked ? "" : " dropzone");
         inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
-
-        // pass the block's root down to the inner dropzone
         inner.dataset.root = el.dataset.root;
-
         el.appendChild(inner);
+
     }
     else if (type === "repeatUntil"){
         el.classList.add("repeat-until");
@@ -4249,8 +5211,84 @@ function blockContent(el,type,block){
         inner.dataset.containerPath = JSON.stringify((el.dataset.pathJson?JSON.parse(el.dataset.pathJson):[]).concat(["children"]));
         inner.dataset.root = el.dataset.root;
         el.appendChild(inner);
+    }
+    else if (type === "defineVariable"){
+        el.classList.add("define-var");
+
+        // Ensure defaults
+        if (!block.name)  block.name  = "C";
+        if (typeof block.value !== "number") block.value = 0;
+
+        // Top-left badge with the variable name (e.g., "C")
+        var badge = document.createElement("div");
+        badge.className = "var-icon";
+        badge.textContent = String(block.name).toUpperCase();
+        el.appendChild(badge);
+
+        // Bottom-right numeric selector (0..9, cycles)
+        var vv = document.createElement("div");
+        vv.className = "var-value";
+        vv.title = "Set variable value (0..9)";
+        vv.textContent = String(block.value);
+
+        vv.addEventListener("click", function(e){
+            e.stopPropagation();
+            var v = (Number(block.value)||0);
+            v = (v + 1) % 10;                    // 0..9..0
+            block.value = v;
+            // re-render the correct bar immediately
+            if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
+            else { renderProgram(); }
+            saveProgram();
+            setRunning(false);
+            state.changed = true;
+        });
+
+        el.appendChild(vv);
+    }   
+    
+    else if (type === "incrementVariable"){
+        // share the same look & sizing as defineVariable
+        el.classList.add("define-var");
+
+        // defaults
+        if (!block.name)  block.name  = "C";
+        if (typeof block.delta !== "number") block.delta = 1;
+
+        // Top icon: "C+"
+        var badge = document.createElement("div");
+        badge.className = "var-icon";
+        badge.textContent = String(block.name).toUpperCase() + "+";
+        el.appendChild(badge);
+
+        // Bottom selector: cycles through -4..4 (wraps)
+        var vv = document.createElement("div");
+        vv.className = "var-value";
+        vv.title = "Change by -4..4";
+        vv.textContent = (block.delta >= 0 ? "+" : "") + String(block.delta);
+
+        vv.addEventListener("click", function(e){
+            e.stopPropagation();
+            // sequence: -4,-3,-2,-1,+1,+2,+3,+4  (wrap)
+            var seq = [-4,-3,-2,-1,1,2,3,4];
+            var i = seq.indexOf(block.delta);
+            block.delta = seq[(i + 1 + seq.length) % seq.length];
+            vv.textContent = (block.delta >= 0 ? "+" : "") + String(block.delta);
+
+            // re-render the correct bar immediately
+            if (el.dataset && el.dataset.root === "fn") { renderFunctionBar(); }
+            else { renderProgram(); }
+            saveProgram();
+        });
+
+        // disable in locked function bar (same behaviour as defineVariable)
+        if (el.dataset.root === "fn" && state.functionLocked){
+            vv.style.pointerEvents = "none";
+            vv.style.cursor = "not-allowed";
         }
 
+        el.appendChild(vv);
+    }
 }
 
 function makeBlockEl(block, path){
@@ -4440,13 +5478,14 @@ function renderContainerWithRoot(arr, containerEl, pathPrefix, rootTag){
         containerEl.appendChild(node);
         if(!state.blockEls) state.blockEls = {};
         if(b && b.id) state.blockEls[b.id] = node;
+
         if (b.type === "repeat" || b.type === "if" || b.type === "repeatUntil"){
             var inner = node.querySelector(b.type === "if" ? ".if-inner" : ".repeat-inner");
             if (inner){
                 inner.dataset.root = rootTag;
                 inner.dataset.containerPath = JSON.stringify(p.concat(['children']));
+                renderContainerWithRoot(b.children || [], inner, p.concat(['children']), rootTag);
             }
-            renderContainerWithRoot(b.children || [], inner, p.concat(['children']), rootTag);
         }
     }
 }
@@ -4495,7 +5534,7 @@ function makeBlockElWithRoot(block, path, rootTag){
 function renderMenu(){
     if(!blockMenu) return;
     blockMenu.innerHTML="";
-    var order=["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function","if"];
+    var order=["step","turnLeft","turnRight","cheese","defineVariable","incrementVariable","repeat","repeatUntil","function","if"];
     var allowed = (state.level && state.level.allowedBlocks) ? state.level.allowedBlocks.slice() : order;
     
     for(var j=0;j<order.length;j++){
@@ -4514,7 +5553,9 @@ function renderMenu(){
             // non-interactive preview count
             var cnt=document.createElement("div");
             cnt.className="repeat-count";
-            cnt.textContent="2";
+            var hasVar = (state.level && Array.isArray(state.level.allowedBlocks) 
+                        && state.level.allowedBlocks.indexOf("defineVariable") !== -1);
+            cnt.textContent = hasVar ? "C" : "2";
             btn.appendChild(cnt);
         }
         else if (type==="if"){
@@ -4532,6 +5573,14 @@ function renderMenu(){
             // selector shown but inactive in the menu (disabled by CSS)
             blockContent(btn, "repeatUntil", { choice:"cheese", children:[] });
         }
+        else if (type==="defineVariable"){
+            btn.classList.add("is-menu");
+            blockContent(btn, "defineVariable", { name:"C", value:0 });
+        }
+        else if (type==="incrementVariable"){
+            btn.classList.add("is-menu");
+            blockContent(btn, "incrementVariable", { name:"C", delta:1 });
+        }
 
         else{
             blockContent(btn,type,{});
@@ -4539,6 +5588,7 @@ function renderMenu(){
 
         btn.addEventListener("click", function(ev){
             var t = ev.currentTarget.dataset.type;
+
             // Respect function enable
             if (t==="function" && !state.functionEnabled) return;
 
@@ -4546,13 +5596,21 @@ function renderMenu(){
             if (countBlocks(state.program) >= max && t!=="repeat") return;
 
             if (t==="repeat"){ 
-                state.program.push({id:uid(), type:"repeat", count:2, children:[]}); 
+                var hasVar = (state.level && Array.isArray(state.level.allowedBlocks) 
+                                && state.level.allowedBlocks.indexOf("defineVariable") !== -1);
+                state.program.push({ id: uid(), type:"repeat", count: defaultRepeatCount(), children: [] });
             }
             else if (t==="if"){ 
                 state.program.push({id:uid(), type:"if", choice:"cheese", children:[]}); 
             }
             else if (t==="repeatUntil"){
-            state.program.push({ id: uid(), type: "repeatUntil", choice: "cheese", children: [] });
+                state.program.push({ id: uid(), type: "repeatUntil", choice: "cheese", children: [] });
+            }
+            else if (t==="defineVariable"){
+                state.program.push({ id: uid(), type:"defineVariable", name:"C", value:0 }); 
+            }
+            else if (t==="incrementVariable"){
+                state.program.push({ id: uid(), type:"incrementVariable", name:"C", delta:1 });
             }
             else { 
                 state.program.push({id:uid(), type:t}); 
@@ -4719,20 +5777,20 @@ function attachDropzone(el, containerPath){
             var srcIdx = sp[sp.length-1];
             var dp = contPath.slice();
             for (var k=0;k<dp.length;k++){
-            if (typeof dp[k] === "number"){
-                var parentPath = dp.slice(0,k);
-                if (JSON.stringify(parentPath) === JSON.stringify(spParent) && typeof srcIdx==="number" && srcIdx < dp[k]){
-                dp[k] = dp[k]-1;
-                contPath = dp;
-                break;
+                if (typeof dp[k] === "number"){
+                    var parentPath = dp.slice(0,k);
+                    if (JSON.stringify(parentPath) === JSON.stringify(spParent) && typeof srcIdx==="number" && srcIdx < dp[k]){
+                    dp[k] = dp[k]-1;
+                    contPath = dp;
+                    break;
+                    }
                 }
-            }
             }
         }catch(_){}
         }
     
         var targetRoot = (el.dataset.root === "fn") ? state.functionProgram : state.program;
-        var targetMax  = Number(el.dataset.max || (el.dataset.root === "fn" ? 10 : 20));
+        var targetMax  = Number(el.dataset.max || (el.dataset.root === "fn" ? 14 : 20));
         var currCount  = countBlocks(targetRoot);
 
         // --- Insert from palette/menu
@@ -4744,37 +5802,64 @@ function attachDropzone(el, containerPath){
         else {
             // Enforce max (repeat counts as 1 as before)
             if (currCount >= targetMax && t !== "repeat" && t !== "repeatUntil") { /* ignore */ }
-            var block = (t==='repeat') 
-                ? {id:uid(), type:'repeat', count:2, children:[]}
-                : (t==='if')
-                    ? {id:uid(), type:'if', choice:'cheese', children:[]}
-                    : (t==='repeatUntil')
-                    ? {id:uid(), type:'repeatUntil', choice:'cheese', children:[]}
-                    : {id:uid(), type:t};
-
+            var block;
+            if (t === 'repeat'){
+                var hasVar = (state.level && Array.isArray(state.level.allowedBlocks)
+                                && state.level.allowedBlocks.indexOf("defineVariable") !== -1);
+                block = { id: uid(), type: 'repeat', count: hasVar ? "C" : 2, children: [] };
+            } else if (t === 'if'){
+                block = { id: uid(), type:'if', choice:'cheese', children:[] };
+            } else if (t === 'repeatUntil'){
+                block = { id: uid(), type:'repeatUntil', choice:'cheese', children:[] };
+            } else {
+                block = { id: uid(), type:t };
+            }
             insertAtPath(targetRoot, contPath, idx, block);
         }
         }
         // --- Move within/between bars
         else if (payloadBar && payloadBar.from === 'bar') {
-        var sourceRoot = (payloadBar.root === "fn") ? state.functionProgram : state.program;
-        var item = removeAtPath(sourceRoot, payloadBar.path);
-        if (item){
-            // Prevent dropping a function block into function bar
-            if (el.dataset.root === "fn" && item.type === "function") {
-            // put it back where it came from
-            insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
-            } else {
-            // Enforce target max
-            if (currCount >= targetMax) {
-                // return to source if full
-                insertAtPath(sourceRoot, payloadBar.path.slice(0, -1), payloadBar.path[payloadBar.path.length-1], item);
-            } else {
+            var sourceRoot = (payloadBar.root === "fn") ? state.functionProgram : state.program;
+            var item = removeAtPath(sourceRoot, payloadBar.path);
+            if (item){
+                var sameRoot = (payloadBar.root === el.dataset.root);
+
+                // 1) Never allow a function block to be dropped into the function bar
+                if (el.dataset.root === "fn" && item.type === "function") {
+                // put it back where it came from
+                insertAtPath(
+                    sourceRoot,
+                    payloadBar.path.slice(0, -1),
+                    payloadBar.path[payloadBar.path.length - 1],
+                    item
+                );
+                }
+
+                // 2) Moving within the SAME bar: total count doesn't change, so ignore max
+                else if (sameRoot) {
                 insertAtPath(targetRoot, contPath, idx, item);
-            }
+                }
+
+                // 3) Moving BETWEEN bars: enforce the same max rule as the menu
+                else {
+                    // For non-repeat blocks, block if target is "full"
+                    // For repeat / repeatUntil, allow even when currCount >= targetMax
+                    if (currCount >= targetMax && item.type !== "repeat" && item.type !== "repeatUntil") {
+                        // return to source if full for this block type
+                        insertAtPath(
+                        sourceRoot,
+                        payloadBar.path.slice(0, -1),
+                        payloadBar.path[payloadBar.path.length - 1],
+                        item
+                        );
+                    } else {
+                        insertAtPath(targetRoot, contPath, idx, item);
+                    }
+                }
             }
         }
-        }
+
+
 
         if (placeholder.parentElement===el) el.removeChild(placeholder);
         if (state.functionEnabled) renderFunctionBar();
@@ -4902,15 +5987,14 @@ function attachRepeatWrapper(el){
             if (item) {
                 insertAtPath(targetRoot, contPath, idx, item);
             }
-            // if we pulled the item out of the Function bar, keep UI + template in sync
-            if (payloadBar.root === 'fn') {
-                if (state.functionEnabled) renderFunctionBar();
+            // If the Function bar may have changed, keep UI + template in sync
+            if ((rootTag === 'fn') || (payloadBar && payloadBar.root === 'fn')) {
                 state.functionInit = (state.functionProgram || []).slice();
             }
         }
 
         if (placeholder.parentElement===inner) inner.removeChild(placeholder);
-        renderProgram(); saveProgram();
+        renderProgram(); saveProgram(); renderFunctionBar();
 
         try{}finally{ try{ if(placeholder && placeholder.parentElement===inner) inner.removeChild(placeholder);}catch(_){} }
 
@@ -5101,19 +6185,28 @@ function cancelStepPause(){
 }
 
 function flatten(arr){
-  var out=[];
-  for(var i=0;i<arr.length;i++){
-    var b=arr[i];
-    if(b.type==="repeat"){
-      var times = Math.max(2, Math.min(9, b.count||2));
-      for(var t=0;t<times;t++){ out = out.concat(flatten(b.children||[])); }
-    } else {
-      // KEEP 'function' as a step so the runner can "call" it
-      out.push({type:b.type, id:b.id});
+    var out=[];
+    for (var i=0;i<arr.length;i++){
+        var b=arr[i];
+        if (b.type==="repeat"){
+        if (b.count === "C"){
+            // DEFER: expand at runtime using current state.vars.C
+            out.push({ type:"repeatC", id:b.id });
+        } else {
+            var times = Number(b.count || 2);
+            for (var t=0; t<times; t++){
+            out = out.concat(flatten(b.children || []));
+            }
+        }
+        } else {
+        // KEEP 'function' as a step so the runner can "call" it
+        out.push({type:b.type, id:b.id});
+        }
     }
-  }
-  return out;
+    return out;
 }
+
+
   
 function checkMouseHoleLanding(){
   var mh = state.mouseHoles && state.mouseHoles.holesByPos;
@@ -5150,6 +6243,31 @@ function injectIfChildrenInto(plan, ip, rootArray, blockId){
     if (sub.length){
         Array.prototype.splice.apply(plan, [ip+1, 0].concat(sub));
     }
+}
+
+function injectRepeatCInto(plan, ip, rootArray, blockId){
+    // find the repeat node by id inside the appropriate root array
+    var p = getBlockPathById(rootArray, blockId);
+    if (!p) return;
+    var container = getContainerByPath(rootArray, p.slice(0,-1));
+    if (!container) return;
+    var node = container[p[p.length-1]];
+    if (!node || !Array.isArray(node.children)) return;
+
+    // read current C (default 0), clamp to 0..9 and coerce to int
+    var v = (state && state.vars && typeof state.vars.C === "number") ? state.vars.C : 0;
+    var times = Math.max(0, Math.min(9, v|0));
+
+    if (times <= 0) return; // nothing to inject
+
+    // flatten the children once, then repeat it 'times'
+    var one = flatten(node.children || []);
+    if (!one.length) return;
+    var sub = [];
+    for (var t=0; t<times; t++) sub = sub.concat(one);
+
+    // splice steps *after* the current ip so the next tick runs the first child
+    Array.prototype.splice.apply(plan, [ip+1, 0].concat(sub));
 }
 
 
@@ -5308,6 +6426,34 @@ function stepOnce(fromTimer){
                 }
             }
         }
+        else if (fblk.type === "repeatC"){
+            // Read C and detect "not defined"
+            const hasC = !!(state && state.vars && Object.prototype.hasOwnProperty.call(state.vars, 'C'));
+            if (!hasC){
+                setErrorHighlight(fblk.id);
+                state.halted = true;
+                try{ beep("bonk"); }catch(_){}
+                if (fromTimer) setRunning(false);
+                return;
+            }
+            
+            // Read current C (default 0)
+            const v = (state && state.vars && typeof state.vars.C === "number") ? (state.vars.C|0) : 0;
+
+            // ERROR if C < 0
+            if (v < 0){
+                // In function path, early-return with explicit error handling
+                setErrorHighlight(fblk.id);
+                state.halted = true;
+                try{ beep("bonk"); }catch(_){}
+                if (fromTimer) setRunning(false);
+                return;
+            }
+            
+            injectRepeatCInto(state.fnPlan, state.fnIp, state.functionProgram || [], fblk.id);
+            state.fnIp++;
+            return; 
+        }
         else if (fblk.type==="turnLeft"){
             state.dir=turnLeft(state.dir); 
             beep("turn"); 
@@ -5372,8 +6518,37 @@ function stepOnce(fromTimer){
             }
             return;
         }
+        else if (fblk.type === "defineVariable"){
+            const node = findNodeById(state.functionProgram || [], fblk.id);
+            const name  = node && node.name ? String(node.name).toUpperCase() : "C";
+            const value = Number(node && typeof node.value !== "undefined" ? node.value : 0) || 0;
+            if (!state.vars) state.vars = {};
+            state.vars[name] = value;
+            try{ refreshVarIndicatorCenter(); }catch(_){}
+            state.fnIp++;
+            return;
+        }
+        else if (fblk.type === "incrementVariable"){
+            const node  = findNodeById(state.functionProgram || [], fblk.id);
+            const name  = node && node.name  ? String(node.name).toUpperCase() : "C";
+            const delta = Number(node && typeof node.delta !== "undefined" ? node.delta : 0) || 0;
+            if (!state.vars) state.vars = {};
 
+            // NEW: error if variable not previously defined
+            if (!(name in state.vars)) {
+                stop = true;                 // let the shared stop handler highlight+halt
+            } else {
+                const cur = Number(state.vars[name] || 0);
+                state.vars[name] = cur + delta;           // apply increment (can be negative)
+                try{ refreshVarIndicatorCenter(); }catch(_){}
+            }
 
+            // advance only if no error
+            if (!stop) {
+                state.fnIp++;
+                return;
+            }
+        }
 
         if (stop){
             // highlight offending block as error (in function)
@@ -5442,7 +6617,36 @@ function stepOnce(fromTimer){
             }
         }
 
-    } else if(blk.type==="turnLeft"){ 
+    } 
+    else if (blk.type === "repeatC"){
+        // Read C and detect "not defined"
+        const hasC = !!(state && state.vars && Object.prototype.hasOwnProperty.call(state.vars, 'C'));
+        if (!hasC){
+            try{ beep("bonk"); }catch(_){}
+            setErrorHighlight(blk.id);
+            state.halted = true;
+            if (fromTimer) setRunning(false);
+            return;
+        }
+        
+        // Read current C (default 0)
+        const v = (state && state.vars && typeof state.vars.C === "number") ? (state.vars.C|0) : 0;
+
+        // ERROR if C < 0
+        if (v < 0){
+            try{ beep("bonk"); }catch(_){}
+            setErrorHighlight(blk.id);
+            state.halted = true;
+            if (fromTimer) setRunning(false);
+            return;
+        }
+
+        // Expand children now using the *current* C,
+        // then execute the first injected child on the next tick.
+        injectRepeatCInto(state.plan, state.ip, state.program, blk.id);
+        state.ip++;
+        return;
+    }else if(blk.type==="turnLeft"){ 
         state.dir=turnLeft(state.dir); 
         beep("turn"); 
     }
@@ -5491,6 +6695,35 @@ function stepOnce(fromTimer){
                 }
             }
             state.ip++;      // step into the first injected child
+            return;
+        }
+    }
+    else if (blk.type === "defineVariable"){
+        const node = findNodeById(state.program, blk.id);
+        const name  = node && node.name ? String(node.name).toUpperCase() : "C";
+        const value = Number(node && typeof node.value !== "undefined" ? node.value : 0) || 0;
+        if (!state.vars) state.vars = {};
+        state.vars[name] = value;             // set variable
+        try{ refreshVarIndicatorCenter(); }catch(_){}
+        state.ip++;                           // advance
+        return;
+    }
+    else if (blk.type === "incrementVariable"){
+        const node  = findNodeById(state.program, blk.id);
+        const name  = node && node.name  ? String(node.name).toUpperCase() : "C";
+        const delta = Number(node && typeof node.delta !== "undefined" ? node.delta : 0) || 0;
+
+        // ERROR if variable hasn't been defined yet
+        if (!state.vars || !(name in state.vars)){
+            // PROGRAM path has no bonk in the generic stop handler → play it here
+            try{ beep("bonk"); }catch(_){}
+            stop = true;
+            // do NOT advance ip and do NOT return; fall through to the generic stop handler below
+        } else {
+            const cur = Number(state.vars[name] || 0);
+            state.vars[name] = cur + delta;   // apply increment (can be negative)
+            try{ refreshVarIndicatorCenter(); }catch(_){}
+            state.ip++;                        // advance main program counter
             return;
         }
     }
@@ -5674,7 +6907,29 @@ function draw(){
     drawMouseHoles(cw, ch);
 
     // cheeses
-    for(var k=0;k<state.cheeses.length;k++){ var c=state.cheeses[k]; drawCheeseTile(c.x*cw, c.y*ch, cw, ch); }
+    // build counts per (x,y)
+    var cheeseCounts = Object.create(null);
+    for (var k = 0; k < state.cheeses.length; k++){
+        var c = state.cheeses[k];
+        var key = c.x + "," + c.y;
+        var info = cheeseCounts[key];
+        if (!info){
+            info = cheeseCounts[key] = { total: 0, explicit: false };
+        }
+        info.total++;
+        if (c.explicitCount) info.explicit = true;
+    }
+
+    for (var key in cheeseCounts){
+        var parts = key.split(",");
+        var cx = parseInt(parts[0], 10);
+        var cy = parseInt(parts[1], 10);
+        var info = cheeseCounts[key];
+
+        // Only show a number if the level explicitly used a "count" field
+        var displayCount = info.explicit ? info.total : null;
+        drawCheeseTile(cx * cw, cy * ch, cw, ch, displayCount);
+    }
     
     // mouse
     drawMouse(state.pos.x*cw+cw/2, state.pos.y*ch+ch/2, Math.min(cw,ch)*0.7, state.dir);
@@ -6050,10 +7305,12 @@ function drawWater(x,y,w,h){
     ctx.restore();
 }
 
-function drawCheeseTile(x,y,w,h){
+function drawCheeseTile(x, y, w, h, count){
     ctx.save();
+
+    // Draw the cheese
     var cx = x + w/2, cy = y + h/2;
-    var s = Math.min(w, h) * 0.70;
+    var s = Math.min(w, h) * 0.50;
     ctx.translate(cx, cy);
     var topY = -s*0.45, leftX = -s*0.32, rightX = s*0.32, tipY = s*0.48;
     var lg = ctx.createLinearGradient(0, topY, 0, tipY);
@@ -6067,6 +7324,26 @@ function drawCheeseTile(x,y,w,h){
     ctx.fillStyle = "#dda52a";
     var holes = [{dx:-s*0.10, dy:-s*0.02, r:s*0.06},{dx: s*0.05, dy: s*0.10, r:s*0.08},{dx:-s*0.02, dy: s*0.22, r:s*0.06},{dx: s*0.12, dy: s*0.00, r:s*0.05}];
     holes.forEach(function(hh){ ctx.beginPath(); ctx.arc(hh.dx, hh.dy, hh.r, 0, Math.PI*2); ctx.fill(); });
+
+    // draw count in bottom-left corner if it is explicitly provided
+    if (count != null){
+        ctx.font = Math.floor(h * 0.25) + "px system-ui";
+        ctx.textBaseline = "bottom";
+        ctx.textAlign = "left";
+
+        // cheese-coloured text
+        ctx.fillStyle = "#e0a82d";
+        ctx.strokeStyle = "#e0a82d";
+        ctx.lineWidth = 1;
+
+        // coordinates relative to the tile centre (because we already did ctx.translate(cx, cy))
+        var px = -w/2 + w * 0.12;   // a bit in from the left edge
+        var py =  h/2 - h * 0.06;   // a bit up from the bottom edge
+
+        ctx.strokeText(String(count), px, py);
+        ctx.fillText(String(count), px, py);
+    }
+
     ctx.restore();
 }
 
@@ -6240,7 +7517,20 @@ function resetToStart(){
     state.teleportCooldown = null;    // clear the 'just came out' cooldown
     checkMouseHoleLanding(); 
     state.dir=state.level.start.dir; 
-    state.cheeses=(state.level.cheeses||[]).map(function(c){return {x:c.x,y:c.y};}); 
+    
+    // Rebuild cheeses from the level, keeping explicitCount info
+    state.cheeses = [];
+    (state.level.cheeses || []).forEach(function(c){
+        var count = (typeof c.count === "number" && c.count > 0) ? c.count : 1;
+        var hasExplicitCount = Object.prototype.hasOwnProperty.call(c, "count");
+        for (var i = 0; i < count; i++){
+            state.cheeses.push({ x: c.x, y: c.y, explicitCount: hasExplicitCount });
+        }
+    });
+    
+    state.vars = {};
+    try{ updateTopBarForScreen(); }catch(_){}
+    try{ refreshVarIndicatorCenter(); }catch(_){}
     hideWin(); 
     state.catActive = false;
     state.catFx = null;
@@ -6462,7 +7752,15 @@ function applyLevel(lvl){
     state.hidden = false;
     state.teleportCooldown = null;
 
-    state.cheeses = (lvl.cheeses||[]).map(function(c){ return {x:c.x,y:c.y}});
+     // Build cheeses array, supporting optional c.count (default 1)
+    state.cheeses = [];
+    (lvl.cheeses || []).forEach(function(c){
+        var count = (typeof c.count === "number" && c.count > 0) ? c.count : 1;
+        var hasExplicitCount = Object.prototype.hasOwnProperty.call(c, "count");
+        for (var i = 0; i < count; i++){
+            state.cheeses.push({ x: c.x, y: c.y, explicitCount: hasExplicitCount });
+        }
+    });
 
     try{ updateChallengeStarsUI && updateChallengeStarsUI(); }catch(_){ } 
     if (levelNameEl) {
@@ -6731,18 +8029,19 @@ if (window.visualViewport){
         currentPlayerId:null,
 
         async chooseFolder(){ 
-            if (ENABLE_LOCAL_SAVE) return;   // ← no folder selection in local mode
-            const d=await chooseSaveDir();
-            
-             // reset selection so UI shows the placeholder
-            this.currentPlayerId = null;
-            if (ENABLE_LOCAL_SAVE){ try { localStorage.removeItem(LAST_PLAYER_KEY); } catch (_){}} 
+            if (ENABLE_LOCAL_SAVE) return;
+            const d = await chooseSaveDir();
 
-            await this.refreshPlayersUI(); 
-            try{
-              updateChosenFolderUI();
-            }catch(_){} return d; 
+            // reset selection so UI shows the placeholder
+            this.currentPlayerId = null;
+            // always clear last-player, it belongs to the previous folder
+            try { localStorage.removeItem(LAST_PLAYER_KEY); } catch (_){}
+
+            await this.refreshPlayersUI();
+            try { updateChosenFolderUI(); } catch(_) {}
+            return d;
         },
+
 
 
         async refreshPlayersUI(){
@@ -6866,17 +8165,23 @@ if (window.visualViewport){
         async bootstrap(){ 
             await ensureSaveDir(); 
             await this.refreshPlayersUI(); 
-            
+                    
             if (!ENABLE_LOCAL_SAVE) {
                 let last = null;
                 try { last = localStorage.getItem(LAST_PLAYER_KEY); } catch(_){}
-                if (last){
-                await this.selectPlayer(last);
-                const sel = document.getElementById('playerSelect');
-                if (sel) sel.value = last;
+
+                // Only restore if that player actually exists in this folder
+                if (last && Array.isArray(this.players) && this.players.some(p => p.id === last)) {
+                    await this.selectPlayer(last);
+                    const sel = document.getElementById('playerSelect');
+                    if (sel) sel.value = last;
+                } else {
+                    // Stale / mismatched: don't auto-create a phantom user
+                    try { localStorage.removeItem(LAST_PLAYER_KEY); } catch(_){}
                 }
             }
         }
+
     };
   window.SaveSys = SaveSys;
 
