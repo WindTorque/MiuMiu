@@ -2097,11 +2097,12 @@ function totalAchievedStars(){
 
 
 function updateTotalsUI(){
-    // Hide totals when "(choose player)" is active
+    // Hide totals when "(choose player)" is active, but ONLY in JSON/multi-player mode.
+    // In local mode (ENABLE_LOCAL_SAVE = true) we always show totals.
     var noPlayerSelected = false;
     try{
         var sel = document.getElementById('playerSelect');
-        noPlayerSelected = !!(sel && !sel.value);
+        noPlayerSelected = !ENABLE_LOCAL_SAVE && !!(sel && !sel.value);
     }catch(_){}
 
     var txt = "";
@@ -2113,6 +2114,7 @@ function updateTotalsUI(){
     var b = document.getElementById("totalStarsPlay");  if(b) b.textContent = txt;
     var c = document.getElementById("totalStarsRight"); if(c) c.textContent = txt;
 }
+
 
 
 // Checking valid user
@@ -2170,11 +2172,12 @@ function renderStartScreen(){
     if(!host) return;
     host.innerHTML = "";
 
-    // If "(choose player)" is selected, suppress all stars
+    // If "(choose player)" is selected AND we are in JSON/multi-player mode,
+    // suppress stars. In local mode (ENABLE_LOCAL_SAVE = true), always show stars.
     var noPlayerSelected = false;
     try{
-        var sel = document.getElementById('playerSelect');
-        noPlayerSelected = !!(sel && !sel.value);
+      var sel = document.getElementById('playerSelect');
+      noPlayerSelected = !ENABLE_LOCAL_SAVE && !!(sel && !sel.value);
     }catch(_){}
 
     var groups = {};
