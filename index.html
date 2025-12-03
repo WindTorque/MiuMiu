@@ -1627,57 +1627,80 @@ button.ghost{
 </header>
 
 <section class="layout" id="startScreen">
-  <div aria-labelledby="deleteBannerQ" aria-modal="true" id="deleteBanner" role="dialog">
-    <div class="row">
-      <div class="q" id="deleteBannerQ">Delete all progress?</div>
-      <div class="actions">
-        <button aria-label="Confirm delete (reset all programs and stars)" id="deleteConfirm">✓</button>
-        <button aria-label="Cancel" id="deleteCancel">✗</button>
-      </div>
+    <div aria-labelledby="deleteBannerQ" aria-modal="true" id="deleteBanner" role="dialog">
+        <div class="row">
+            <div class="q" id="deleteBannerQ">Delete all progress?</div>
+            <div class="actions">
+                <button aria-label="Confirm delete (reset all programs and stars)" id="deleteConfirm">✓</button>
+                <button aria-label="Cancel" id="deleteCancel">✗</button>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="levels-list" id="levelsList" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;"></div>
+    <div class="levels-list" id="levelsList" style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;"></div>
 </section>
 
 <main class="layout">
-  <section class="board-wrap">
-    <canvas height="350" id="board" width="350"></canvas>
-    <div class="win-banner" hidden="" id="winBanner">
-      <div class="banner-inner">
-        <div aria-live="polite" class="stars-row">
-          <svg aria-hidden="true" class="win-star" data-index="1" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
-          <svg aria-hidden="true" class="win-star" data-index="2" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
-          <svg aria-hidden="true" class="win-star" data-index="3" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
+    <section class="board-wrap">
+        <canvas height="350" id="board" width="350"></canvas>
+        <div class="win-banner" hidden="" id="winBanner">
+            <div class="banner-inner">
+                <div aria-live="polite" class="stars-row">
+                <svg aria-hidden="true" class="win-star" data-index="1" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
+                <svg aria-hidden="true" class="win-star" data-index="2" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
+                <svg aria-hidden="true" class="win-star" data-index="3" height="100" viewbox="0 0 100 100" width="100"><polygon points="50,5 61,36 94,36 67,55 77,86 50,68 23,86 33,55 6,36 39,36"></polygon></svg>
+                </div>
+                <div class="msg" id="winMsg"></div>
+                <canvas height="200" id="winMouse" style="display:block; margin: 6px auto 10px auto;" width="200"></canvas>
+                <div class="win-actions">
+                <button aria-label="Home" class="icon-btn ghost win-btn" id="btnWinHome" title="Home">
+                    <svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M3 11.5l9-8 9 8v8.5a1 1 0 0 1-1 1h-5.5a1 1 0 0 1-1-1V15a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v5.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8.5z"></path></svg>
+                </button>
+                    <button aria-label="Retry" class="win-btn" id="btnWinRedo" title="Retry"></button>
+                    <button aria-label="Next or Retry" class="win-btn" id="btnWinNext" title="Next/Retry"></button>
+                </div>
+            </div>
         </div>
-        <div class="msg" id="winMsg"></div>
-        <canvas height="200" id="winMouse" style="display:block; margin: 6px auto 10px auto;" width="200"></canvas>
-        <div class="win-actions">
-          <button aria-label="Home" class="icon-btn ghost win-btn" id="btnWinHome" title="Home">
-            <svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="M3 11.5l9-8 9 8v8.5a1 1 0 0 1-1 1h-5.5a1 1 0 0 1-1-1V15a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v5.5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-8.5z"></path></svg>
-          </button>
-            <button aria-label="Retry" class="win-btn" id="btnWinRedo" title="Retry"></button>
-            <button aria-label="Next or Retry" class="win-btn" id="btnWinNext" title="Next/Retry"></button>
+        
+        <!-- Level completion banner (shown after finishing the last challenge in a level) -->
+        <div class="win-banner" hidden id="levelCompletionBanner">
+            <div class="banner-inner" id="levelCompletionInner">
+                <div class="msg" id="levelCompletionTitle">CONGRATULATIONS!</div>
+                <div style="font-size:20px; margin-bottom:4px;">Now entering</div>
+                <div class="msg" id="levelCompletionLevel" style="font-size:50px; font-weight:800; margin-top:30px;margin-bottom:0px"></div>
+                <div id="levelCompletionChallengeName" style="font-size:30px; margin-top:0px; margin-bottom:40px;font-weight:600;"></div>
+                <div class="win-actions">
+                    <button aria-label="Home"
+                            class="icon-btn ghost win-btn"
+                            id="btnLevelCompleteHome"
+                            title="Home">
+                    </button>
+                    <button aria-label="Next level"
+                            class="win-btn"
+                            id="btnLevelCompleteNext"
+                            title="Next">
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="code-ui">
-    <div class="runner">
-      <button class="start btn" id="btnStart" title="Start/Pause">▶️</button>
-      <button class="step btn" id="btnStep" title="Step">⏭️</button>
-      <button class="reset btn" id="btnReset" title="Reset">🔄</button>
-    </div>
-    <div class="program-area">
-      <div class="pf-wrap" id="pfWrap">
-        <!-- Program bar -->
-        <div aria-label="Program bar" class="program-bar dropzone" data-max="15" data-root="program" id="programBar"></div>
-        <!-- Function bar: only shown when 'function' is in allowedBlocks -->
-        <div aria-label="Function bar" class="program-bar function-bar dropzone" data-max="14" data-root="fn" hidden="" id="functionBar"></div>
-      </div>
-    </div>
-  </section>
-  <section class="block-menu" id="blockMenu"></section>
+    <section class="code-ui">
+        <div class="runner">
+            <button class="start btn" id="btnStart" title="Start/Pause">▶️</button>
+            <button class="step btn" id="btnStep" title="Step">⏭️</button>
+            <button class="reset btn" id="btnReset" title="Reset">🔄</button>
+        </div>
+
+        <div class="program-area">
+            <div class="pf-wrap" id="pfWrap">
+                <!-- Program bar -->
+                <div aria-label="Program bar" class="program-bar dropzone" data-max="15" data-root="program" id="programBar"></div>
+                <!-- Function bar: only shown when 'function' is in allowedBlocks -->
+                <div aria-label="Function bar" class="program-bar function-bar dropzone" data-max="14" data-root="fn" hidden="" id="functionBar"></div>
+            </div>
+        </div>
+    </section>
+    <section class="block-menu" id="blockMenu"></section>
 </main>
 
 <script>
@@ -1715,9 +1738,19 @@ function setCanvasBackingScale(canvas){
 //   true   LOCAL DATA      data saved to browser only
 //   false  JSON DATA       data saved to JSON files (in selected directoy) only
 
-const ENABLE_LOCAL_SAVE = false;     
+const ENABLE_LOCAL_SAVE = true;     
 
-
+// Shared level colours (used on start screen and level-completion banner)
+const LEVEL_COLORS = [
+  '#fcead4', // peach
+  '#d4ddfa', // indigo
+  '#cfe9fa', // sky tint
+  '#dad5f7', // violet tint
+  '#f0f0c2', // soft yellow
+  '#dcfce7', // mint
+  '#e0f2fe', // baby blue
+  '#fae8ff'  // pink tint
+];
 
 
 // Hard block of native context menus as early as possible
@@ -2064,11 +2097,23 @@ function totalAchievedStars(){
 
 
 function updateTotalsUI(){
-    var txt = totalAchievedStars() + "/" + totalAvailableStars() + " ★";
+    // Hide totals when "(choose player)" is active
+    var noPlayerSelected = false;
+    try{
+        var sel = document.getElementById('playerSelect');
+        noPlayerSelected = !!(sel && !sel.value);
+    }catch(_){}
+
+    var txt = "";
+    if (!noPlayerSelected){
+        txt = totalAchievedStars() + "/" + totalAvailableStars() + " ★";
+    }
+
     var a = document.getElementById("totalStarsStart"); if(a) a.textContent = txt;
     var b = document.getElementById("totalStarsPlay");  if(b) b.textContent = txt;
     var c = document.getElementById("totalStarsRight"); if(c) c.textContent = txt;
 }
+
 
 // Checking valid user
 (function () {
@@ -2124,68 +2169,99 @@ function renderStartScreen(){
     var host = document.getElementById("levelsList");
     if(!host) return;
     host.innerHTML = "";
+
+    // If "(choose player)" is selected, suppress all stars
+    var noPlayerSelected = false;
+    try{
+        var sel = document.getElementById('playerSelect');
+        noPlayerSelected = !!(sel && !sel.value);
+    }catch(_){}
+
     var groups = {};
+
     (window.CHALLENGES||[]).forEach(function(ch){
-      (groups[ch.levelId] = groups[ch.levelId] || []).push(ch);
+        (groups[ch.levelId] = groups[ch.levelId] || []).push(ch);
     });
+
     var levelIds = Object.keys(groups).map(Number).sort(function(a,b){return a-b;});
     levelIds.forEach(function(lid){
-      var col = document.createElement("div");
-      col.className = "level-col";
-      col.style.cssText = "background:#fff; border-radius:20px; padding:16px 20px; min-width:260px; box-shadow:0 6px 20px rgba(0,0,0,.08);";
+        var col = document.createElement("div");
 
+        col.className = "level-col";
+        col.style.cssText = "background:#fff; border-radius:20px; padding:16px 20px; min-width:260px; box-shadow:0 6px 20px rgba(0,0,0,.08);";
 
-      const LEVEL_COLORS = [
-        '#fcead4', // peach
-        '#d4ddfa', // indigo
-        '#cfe9fa', // sky tint
-        '#dad5f7', // violet tint
-        '#f0f0c2', // soft yellow
-        '#dcfce7', // mint
-        '#e0f2fe', // baby blue
-        '#fae8ff'  // pink tint
-        ];
         const bg = LEVEL_COLORS[(lid - 1) % LEVEL_COLORS.length];
         col.style.background = bg; // override the default white
 
-      var h = document.createElement("h2"); h.textContent = "LEVEL " + lid; h.style.margin="0 0 4px 0"; col.appendChild(h);
-      var sub = document.createElement("div"); sub.textContent = ""; sub.style.opacity="0.8"; col.appendChild(sub);
-      var ul = document.createElement("div"); ul.style.marginTop="10px"; col.appendChild(ul);
-      groups[lid].sort(function(a,b){ return a.challengeId - b.challengeId; }).forEach(function(ch){
-        var row = document.createElement("button");
+        var h = document.createElement("h2");
+        h.textContent = "LEVEL " + lid;
+        h.style.margin = "0 0 2px 0";
+        col.appendChild(h);
 
-        // Locked if the user or dir not selected
-        const locked = !(window.Guards && Guards.canPlay());
-        if (locked) {
-          row.disabled = true;
-          row.classList.add("disabled");
+        var sub = document.createElement("div");
+        sub.style.opacity = "0.8";
+        sub.style.textAlign = "center";
+        col.appendChild(sub);
+
+        var ul = document.createElement("div");
+        ul.style.marginTop = "10px";
+        col.appendChild(ul);
+
+        // Sort this level's challenges and use the first one's name as subtitle
+        var levelChallenges = groups[lid].slice().sort(function(a, b){
+        return a.challengeId - b.challengeId;
+        });
+
+        if (levelChallenges.length && levelChallenges[0].name){
+        sub.textContent = levelChallenges[0].name;
         } else {
-          row.disabled = false;
-          row.classList.remove("disabled");
+        sub.textContent = "";
         }
 
-        row.type = "button";
-        row.className = "challenge-row";
-        row.style.cssText = "display:flex; justify-content:space-between; align-items:center; width:100%; background:#f7fafc; border:1px solid #e0e4ea; padding:8px 10px; border-radius:12px; margin:6px 0;";
-        var left = document.createElement("span"); left.textContent = "Challenge " + lid + "." + ch.challengeId; row.appendChild(left);
-        var stars = getStarsFor(ch);
-        
-        var right = document.createElement("span");
-        right.className = "challenge-stars";
-        var _n = Number(stars)||0;
-        var _html = "";
-        for (var i=1;i<=3;i++){
-          if(i<=_n) _html += '<span class="start-star filled">★</span>';
-          else _html += '<span class="start-star empty">☆</span>';
-          if(i<3) _html += ' ';
-        }
-        right.innerHTML = _html;
-        row.appendChild(right);
+        // Render the challenge list
+        levelChallenges.forEach(function(ch){
 
-        row.addEventListener("click", function(){ startChallenge(lid, ch.challengeId); });
-        ul.appendChild(row);
-      });
-      host.appendChild(col);
+            var row = document.createElement("button");
+
+            // Locked if the user or dir not selected
+            const locked = !(window.Guards && Guards.canPlay());
+            if (locked) {
+            row.disabled = true;
+            row.classList.add("disabled");
+            } else {
+            row.disabled = false;
+            row.classList.remove("disabled");
+            }
+
+            row.type = "button";
+            row.className = "challenge-row";
+            row.style.cssText = "display:flex; justify-content:space-between; align-items:center; width:100%; background:#f7fafc; border:1px solid #e0e4ea; padding:8px 10px; border-radius:12px; margin:6px 0;";
+            var left = document.createElement("span"); left.textContent = "Challenge " + lid + "." + ch.challengeId; row.appendChild(left);
+            
+            var right = document.createElement("span");
+            right.className = "challenge-stars";
+
+            if (!noPlayerSelected){
+                // Normal behaviour: show stars for the current player
+                var stars = getStarsFor(ch);
+                var _n = Number(stars) || 0;
+                var _html = "";
+                for (var i = 1; i <= 3; i++){
+                    if (i <= _n) _html += '<span class="start-star filled">★</span>';
+                    else _html += '<span class="start-star empty">☆</span>';
+                    if (i < 3) _html += ' ';
+                }
+                right.innerHTML = _html;
+            } else {
+                // "(choose player)" selected → no stars at all
+                right.innerHTML = "";
+            }
+
+            row.appendChild(right);
+            row.addEventListener("click", function(){ startChallenge(lid, ch.challengeId); });
+            ul.appendChild(row);
+        });
+        host.appendChild(col);    
     });
     updateTotalsUI();
     refreshStartScreenLockState();
@@ -2452,15 +2528,14 @@ window.CHALLENGES = [
         grid: { cols: 8, rows: 5 },
         start: { x: 0, y: 0, dir: "E" },
         home:{x:6,y:4},
-        obstacles:[],
+        obstacles:[{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
         cheeses:[],
         mouseHoles: [{"color":1,"x1":2,"y1":0,"x2":1,"y2":1},{"color":2,"x1":3,"y1":1,"x2":2,"y2":2},{"color":3,"x1":4,"y1":2,"x2":3,"y2":3},{"color":4,"x1":5,"y1":3,"x2":4,"y2":4}],
         optimalBlocks:3,
         allowedBlocks:["step","repeat"]
+
         }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
     (function(){ var L = {
@@ -4531,22 +4606,44 @@ window.CHALLENGES = [
     (function(){ var L = {
         levelId: 12,
         challengeId: 9,
-        name: "Advanced Variables",
+        name: "Advance Variable",
         grid: { cols: 8, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:1,y:4},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"}],
-        cheeses:[{"x":3,"y":1,"count":2},{"x":6,"y":2,"count":5},{"x":4,"y":3,"count":3}],
-        mouseHoles: [],
-        optimalBlocks:19,
-        allowedBlocks:["step","defineVariable","incrementVariable","function"]
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:6,y:4},
+        obstacles:[{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
+        cheeses:[{"x":4,"y":0,"count":4},{"x":6,"y":1,"count":5},{"x":4,"y":2,"count":2},{"x":6,"y":3,"count":3},{"x":5,"y":4,"count":1}],
+        mouseHoles: [{"color":1,"x1":5,"y1":0,"x2":1,"y2":1},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2},{"color":3,"x1":5,"y1":2,"x2":3,"y2":3},{"color":4,"x1":7,"y1":3,"x2":4,"y2":4}],
+        optimalBlocks:9,
+        allowedBlocks:["step","defineVariable","incrementVariable","repeatUntil","function"]
         ,
-        functionLocked:false,
-        functionContents:[{"type":"turnLeft"},{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnLeft"},{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
+        functionLocked:true,
+        functionContents:[{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"step"}]
 
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
         }; })(),
+    
+    (function(){ var L = {
+        levelId: 12,
+        challengeId: 10,
+        name: "Advanced Variables",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 1, y: 0, dir: "S" },
+        home:{x:1,y:4},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":6,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"}],
+        cheeses:[{"x":3,"y":1,"count":2},{"x":6,"y":2,"count":5},{"x":4,"y":3,"count":3},{"x":5,"y":4,"count":4}],
+        mouseHoles: [],
+        optimalBlocks:15,
+        allowedBlocks:["step","turnLeft","defineVariable","incrementVariable","repeatUntil","function"]
+        ,
+        functionLocked:false,
+        functionContents:[{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnRight"},{"type":"turnRight"},{"type":"repeat","count":"C","children":[{"type":"step"}]}]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
+        }; })(),
+
+    
 
 ];
 
@@ -4583,7 +4680,7 @@ state.changed = false;
 
 // Top-bar element refs
 var muteToggle = null, btnClear = null;
-var board,ctx,programBar,blockMenu,startBtn,stepBtn,resetBtn,optimalEl,yourEl,levelNameEl,winBanner,nextOrResetBtn,muteToggle,btnClear; var btnPlay;
+var board,ctx,programBar,blockMenu,startBtn,stepBtn,resetBtn,optimalEl,yourEl,levelNameEl,winBanner,nextOrResetBtn,muteToggle,btnClear; 
 var dropHandled=false, overDropzone=false;
 
 
@@ -4634,13 +4731,13 @@ function repeatUntilGlyphIcon(){
 }
 
 function renderButtons(){ 
-  btnPlay.innerHTML=""; 
-  btnStep.innerHTML=""; 
-  btnReset.innerHTML=""; 
-  btnStep.appendChild(stepIcon()); 
-  btnReset.appendChild(resetIcon()); 
-  if(state.running) btnPlay.appendChild(pauseIcon()); 
-  else btnPlay.appendChild(playIcon()); 
+    startBtn.innerHTML=""; 
+    btnStep.innerHTML=""; 
+    btnReset.innerHTML=""; 
+    btnStep.appendChild(stepIcon()); 
+    btnReset.appendChild(resetIcon()); 
+    if(state.running) startBtn.appendChild(pauseIcon()); 
+    else startBtn.appendChild(playIcon()); 
 }
 
 // === Audio ===
@@ -6137,34 +6234,49 @@ state.callId = null;    // the program call-site block id (to keep highlighted)
 
 
   
-function setRunning(on){
+function setRunning(on, resume){
     state.running = on;
     if(on){
-        if(timer){ clearInterval(timer); timer=null; }
-        if(typeof clearErrorHighlight==='function'){ clearErrorHighlight(); }
-        state.plan = flatten(state.program);
-        state.ip = 0;
-        state.fnPlan = null; state.fnIp = 0; state.callId = null;
-        if(!state || !state.errorId){ highlightById(null); }
+        if (timer){ 
+            clearInterval(timer); 
+            timer = null; 
+        }
+        if (typeof clearErrorHighlight === 'function'){ 
+            clearErrorHighlight(); 
+        }
+
+        // Fresh start: rebuild plan and reset instruction pointers
+        if (!resume){
+            state.plan   = flatten(state.program);
+            state.ip     = 0;
+            state.fnPlan = null; 
+            state.fnIp   = 0; 
+            state.callId = null;
+        }
+
+        if (!state || !state.errorId){ 
+            highlightById(null); 
+        }
 
         // Game timer
         timer = setInterval(function(){
-        stepOnce(true);
+            stepOnce(true);
         }, TICK_MS);
 
     } else {
         clearInterval(timer); 
-        timer=null;
+        timer = null;
         cancelStepPause();
         // Only clear program highlight when we are *not* pausing (e.g., stop/reset/end)
         if (!state.pauseIntent && (!state || !state.errorId)) {
-        highlightById(null);
+            highlightById(null);
         }
     }
 
-    state.pauseIntent=false;
+    state.pauseIntent = false;
     renderButtons();
 }
+
 
 let stepPauseTimer = null;
 let stepPauseToken = 0;
@@ -7416,84 +7528,117 @@ function drawMouse(cx,cy,size,dir){
 
 // === Controls ===
 function wireControls(){
-  var btnBack = document.getElementById('btnBack');
+    var btnBack = document.getElementById('btnBack');
 
-  if (startBtn) startBtn.addEventListener("click", function(){ 
-    
-    if(state.running){ 
-      state.pauseIntent=true; 
-      setRunning(false); 
-      
-      } else { 
-        try{ clearErrorHighlight(); }catch(_){}
-        resetToStart();
-        setRunning(true);
-      } 
-  });
+    if (startBtn) startBtn.addEventListener("click", function(){ 
+        if (state.running){ 
+            // Currently running → pause
+            state.pauseIntent = true; 
+            setRunning(false); 
+        } else {
+            // Not running → either RESUME from pause, or START from the top
 
-  if (stepBtn) stepBtn.addEventListener("click", function(){ 
-      if (state.halted) return;  // ignore presses after collision
-      if (state.changed) {       // reset if the code's changed
-        resetToStart();
-      }
-      setRunning(false); 
-      if(state.ip===0) draw(); 
-      if(state.plan.length===0) state.plan = flatten(state.program); 
-      stepOnce(false); 
-      renderButtons(); 
-  });
+            // Length of current execution plan (may be 0 if never started)
+            var planLen = (state.plan && Array.isArray(state.plan)) ? state.plan.length : 0;
 
-  if (resetBtn) resetBtn.addEventListener("click", function(){ 
-      clearErrorHighlight(); 
-      if(typeof clearErrorHighlight==='function'){ clearErrorHighlight(); } 
-      resetToStart(); 
-      renderButtons(); 
-  });
+            // Detect if the main program has already finished
+            var mainFinished = (!state.fnPlan || state.fnIp >= state.fnPlan.length) &&
+                                (typeof state.ip === "number" && planLen > 0 && state.ip >= planLen);
 
-  if (muteToggle) muteToggle.addEventListener("click", function(){ state.soundsMuted = !state.soundsMuted; muteToggle.textContent = state.soundsMuted ? "🔇" : "🔊"; });
-  
-  if(btnClear){ 
-    btnClear.addEventListener("click", function(){ 
-      clearErrorHighlight(); 
-      if(typeof clearErrorHighlight==='function'){ 
+            // We can resume only if:
+            //  - program is not finished
+            //  - we have a plan
+            //  - ip is within the plan
+            //  - we are not halted and code hasn't changed
+            var canResume = !mainFinished &&
+                            !state.halted &&
+                            !state.changed &&
+                            planLen > 0 &&
+                            typeof state.ip === "number" &&
+                            state.ip >= 0 &&
+                            state.ip < planLen;
+
+            try { clearErrorHighlight(); } catch(_){}
+
+            if (canResume){
+                // Resume from where we paused
+                setRunning(true, true);
+            } else {
+                // Fresh start from the beginning
+                resetToStart();
+                setRunning(true);
+            }
+        }
+    });
+
+
+    if (stepBtn) stepBtn.addEventListener("click", function(){ 
+        if (state.halted) return;  // ignore presses after collision
+        if (state.changed) {       // reset if the code's changed
+            resetToStart();
+        }
+        setRunning(false); 
+        if(state.ip===0) draw(); 
+        if(state.plan.length===0) state.plan = flatten(state.program); 
+        stepOnce(false); 
+        renderButtons(); 
+    });
+
+    if (resetBtn) resetBtn.addEventListener("click", function(){ 
         clearErrorHighlight(); 
-      } 
-      
-      resetToStart(); 
-      renderButtons(); 
+        if(typeof clearErrorHighlight==='function'){ clearErrorHighlight(); } 
+        resetToStart(); 
+        renderButtons(); 
+    });
 
-        
-      try{ setRunning(false); }catch(_){}
-      state.program=[]; 
-
-      // Added for restoring function to initial state
-      // Restore function bar from the level seed, not the mutable snapshot
-      if (state.functionEnabled){
-      var seed = (state.level && Array.isArray(state.level.functionContents))
-          ? state.level.functionContents : [];
-      // deep clone to avoid aliasing nested children
-      state.functionProgram = JSON.parse(JSON.stringify(seed));
-
-      // (optional) also reset the mutable snapshot so future clears stay correct
-      state.functionInit = state.functionProgram.slice();
-      }
-
-      renderProgram(); 
-      if (state.functionEnabled) renderFunctionBar();
-      saveProgram(); }
-    )}; 
+    if (muteToggle) muteToggle.addEventListener("click", function(){ 
+        state.soundsMuted = !state.soundsMuted; 
+        muteToggle.textContent = state.soundsMuted ? "🔇" : "🔊"; 
+    });
     
-  if(btnBack){ 
+    if(btnClear){ 
+        btnClear.addEventListener("click", function(){ 
+            clearErrorHighlight(); 
+            if(typeof clearErrorHighlight==='function'){ 
+                clearErrorHighlight(); 
+            } 
+            
+            resetToStart(); 
+            renderButtons(); 
+
+                
+            try{ setRunning(false); }catch(_){}
+            state.program=[]; 
+
+            // Added for restoring function to initial state
+            // Restore function bar from the level seed, not the mutable snapshot
+            if (state.functionEnabled){
+            var seed = (state.level && Array.isArray(state.level.functionContents))
+                ? state.level.functionContents : [];
+            // deep clone to avoid aliasing nested children
+            state.functionProgram = JSON.parse(JSON.stringify(seed));
+
+            // (optional) also reset the mutable snapshot so future clears stay correct
+            state.functionInit = state.functionProgram.slice();
+            }
+
+            renderProgram(); 
+            if (state.functionEnabled) renderFunctionBar();
+            saveProgram(); 
+        }
+    )}; 
+        
+    if(btnBack){ 
         btnBack.addEventListener("click", function(){
-        try{ setRunning(false);}catch(_){}
-        try{ hideWin(); }catch(_){}
-        try{ saveProgram(); }catch(_){}
-        var main = document.querySelector("main.layout"); if(main) main.hidden = true;
-        var start = document.getElementById("startScreen"); if(start) start.hidden = false;
-        try{ updateTopBarForScreen && updateTopBarForScreen(); }catch(_){} updateTopBarForScreen(); updateTopBarForScreen(); if(typeof renderStartScreen==="function") renderStartScreen();
-        if(typeof updateTotalsUI==="function") updateTotalsUI();
-    }); }
-  
+            try{ setRunning(false);}catch(_){}
+            try{ hideWin(); }catch(_){}
+            try{ saveProgram(); }catch(_){}
+            var main = document.querySelector("main.layout"); if(main) main.hidden = true;
+            var start = document.getElementById("startScreen"); if(start) start.hidden = false;
+            try{ updateTopBarForScreen && updateTopBarForScreen(); }catch(_){} updateTopBarForScreen(); updateTopBarForScreen(); if(typeof renderStartScreen==="function") renderStartScreen();
+            if(typeof updateTotalsUI==="function") updateTotalsUI();
+        }); 
+    }
 }
   
 function resetToStart(){ 
@@ -7639,11 +7784,6 @@ function showWin(runStars){
     setWinMessage(n);
     drawWinMouse();
 
-    // try{
-    //     var wm = document.getElementById('winMouse');
-    //     if (wm) setCanvasBackingScale(wm);
-    // }catch(_){}
-
     var btnHome = document.getElementById('btnWinHome');   // left
     var btnRedo = document.getElementById('btnWinRedo');   // center (only on 3★)
     var btnNext = document.getElementById('btnWinNext');   // right
@@ -7688,24 +7828,50 @@ function showWin(runStars){
         }
         // Right: green continue
         if(btnNext){
-        btnNext.classList.add('green');
-        btnNext.title = 'Continue';
-        btnNext.setAttribute('aria-label','Continue');
-        btnNext.appendChild(rightArrowSVG());
-        btnNext.onclick = function(){
-            try{
-            if(!state.current) { return; }
-            var list = (window.CHALLENGES||[]);
-            var idx = list.findIndex(function(c){ return c.levelId===state.current.levelId && c.challengeId===state.current.challengeId; });
-            if(idx>=0 && idx < list.length-1){
-                var next = list[idx+1];
-                hideWin();
-                startChallenge(next.levelId, next.challengeId);
-            } else {
-                if(btnHome && typeof btnHome.onclick==='function') btnHome.onclick();
-            }
-            }catch(_){}
-        };
+            btnNext.classList.add('green');
+            btnNext.title = 'Continue';
+            btnNext.setAttribute('aria-label','Continue');
+            btnNext.appendChild(rightArrowSVG());
+            btnNext.onclick = function(){
+                try{
+                    if (!state.current) { return; }
+
+                    var list = (window.CHALLENGES || []);
+                    var idx = list.findIndex(function(c){
+                        return c.levelId === state.current.levelId &&
+                            c.challengeId === state.current.challengeId;
+                    });
+                    if (idx < 0){
+                        return;
+                    }
+
+                    var current = list[idx];
+                    var next    = (idx < list.length - 1) ? list[idx + 1] : null;
+
+                    // No further challenges at all → behave as before and go Home
+                    if (!next){
+                        if (btnHome && typeof btnHome.onclick === 'function'){
+                            btnHome.onclick();
+                        }
+                        return;
+                    }
+
+                    // If the next challenge belongs to a NEW level, show level completion banner
+                    if (next.levelId !== current.levelId){
+                        hideWin();
+                        // next is the first challenge of the next level, because CHALLENGES
+                        // is ordered by levelId then challengeId.
+                        if (!showLevelCompletionBanner(next.levelId, next)){
+                            // Fallback: just go straight into the next challenge
+                            startChallenge(next.levelId, next.challengeId);
+                        }
+                    } else {
+                        // Same level: just continue as before
+                        hideWin();
+                        startChallenge(next.levelId, next.challengeId);
+                    }
+                }catch(_){}
+            };
         }
     } else {
         // 1–2 stars: two buttons (Home + right red repeat); hide center
@@ -7724,6 +7890,97 @@ function hideWin(){
     var wb=document.getElementById('winBanner');
     if(wb) wb.hidden=true;
     state.winPending = false;
+}
+
+function hideLevelCompletionBanner(){
+    var b = document.getElementById('levelCompletionBanner');
+    if (b) b.hidden = true;
+}
+
+/**
+ * Show the “Now entering Level X” banner.
+ * @param {number} nextLevelId - the level number we are about to enter
+ * @param {Object} firstChallenge - first challenge object in that level
+ */
+function showLevelCompletionBanner(nextLevelId, firstChallenge){
+    try{
+        var banner = document.getElementById('levelCompletionBanner');
+        if (!banner) return false;
+
+        var inner = document.getElementById('levelCompletionInner') ||
+                    banner.querySelector('.banner-inner');
+
+        var titleEl   = document.getElementById('levelCompletionTitle');
+        var levelEl   = document.getElementById('levelCompletionLevel');
+        var nameEl    = document.getElementById('levelCompletionChallengeName');
+
+        if (titleEl) titleEl.textContent = "CONGRATULATIONS!";
+        if (levelEl) levelEl.textContent = "Level " + nextLevelId;
+        if (nameEl)  nameEl.textContent =
+            (firstChallenge && firstChallenge.name) ? firstChallenge.name : "";
+
+        // Set background to match the next level colour used on the start screen
+        if (inner && Array.isArray(LEVEL_COLORS) && LEVEL_COLORS.length){
+            var bg = LEVEL_COLORS[(nextLevelId - 1) % LEVEL_COLORS.length];
+            inner.style.background = bg;
+        }
+
+        // Wire buttons
+        var btnHome = document.getElementById('btnLevelCompleteHome');
+        var btnNext = document.getElementById('btnLevelCompleteNext');
+
+        [btnHome, btnNext].forEach(function(b){
+            if (!b) return;
+            b.classList.remove('green','red');
+            b.innerHTML = '';
+            b.onclick = null;
+        });
+
+        // Home button (same behaviour as Home on win banner)
+        if (btnHome){
+            btnHome.title = 'Home';
+            btnHome.setAttribute('aria-label','Home');
+            if (typeof homeSVG === 'function'){ btnHome.appendChild(homeSVG()); }
+
+            btnHome.onclick = function(){
+                try{ setRunning(false); }catch(_){}
+                hideLevelCompletionBanner();
+                try{ hideWin(); }catch(_){}
+                try{ saveProgram(); }catch(_){}
+
+                var main  = document.querySelector('main.layout');
+                var start = document.getElementById('startScreen');
+                if (main)  main.hidden  = true;
+                if (start) start.hidden = false;
+
+                try{ updateTopBarForScreen && updateTopBarForScreen(); }catch(_){}
+                if (typeof renderStartScreen === 'function') renderStartScreen();
+                if (typeof updateTotalsUI     === 'function') updateTotalsUI();
+            };
+        }
+
+        // Next button → actually enter the next level’s first challenge
+        if (btnNext){
+            btnNext.classList.add('green');
+            btnNext.title = 'Next level';
+            btnNext.setAttribute('aria-label','Next level');
+            if (typeof rightArrowSVG === 'function'){ btnNext.appendChild(rightArrowSVG()); }
+
+            btnNext.onclick = function(){
+                hideLevelCompletionBanner();
+                try{ hideWin(); }catch(_){}
+                if (firstChallenge){
+                    startChallenge(firstChallenge.levelId, firstChallenge.challengeId);
+                }
+            };
+        }
+
+        banner.hidden = false;
+        return true;
+    }catch(e){
+        try{ showError("showLevelCompletionBanner()", e); }catch(_){}
+        return false;
+    }
 }
 
 function syncWidths(){ var boardW = board.getBoundingClientRect().width; var uiW = Math.max(boardW, 840); document.documentElement.style.setProperty('--uiPx', uiW + 'px'); }
@@ -7835,10 +8092,16 @@ function updateChosenFolderUI(){
 
 function init(){
     try{
-        board=document.getElementById("board"); ctx=board && board.getContext && board.getContext("2d");
-        programBar=document.getElementById("programBar"); blockMenu=document.getElementById("blockMenu");
-        startBtn=document.getElementById("btnStart"); stepBtn=document.getElementById("btnStep"); resetBtn=document.getElementById("btnReset"); btnPlay=startBtn;
-        optimalEl=document.getElementById("optimalBlocks"); yourEl=document.getElementById("yourBlocks"); levelNameEl=document.getElementById("levelName");
+        board=document.getElementById("board"); 
+        ctx=board && board.getContext && board.getContext("2d");
+        programBar=document.getElementById("programBar"); 
+        blockMenu=document.getElementById("blockMenu");
+        startBtn=document.getElementById("btnStart"); 
+        stepBtn=document.getElementById("btnStep"); 
+        resetBtn=document.getElementById("btnReset"); 
+        optimalEl=document.getElementById("optimalBlocks"); 
+        yourEl=document.getElementById("yourBlocks"); 
+        levelNameEl=document.getElementById("levelName");
         
         // Wire top-bar buttons
         muteToggle = document.getElementById('muteToggle');
@@ -8215,15 +8478,24 @@ if (window.visualViewport){
         if (!sel.value) {
             // Clear current player and lock the UI
             if (window.SaveSys) {
-            SaveSys.currentPlayerId = "";
-            if (ENABLE_LOCAL_SAVE){ try { localStorage.removeItem(LAST_PLAYER_KEY); } catch (_){} }
+                SaveSys.currentPlayerId = "";
+                if (ENABLE_LOCAL_SAVE){ 
+                    try { localStorage.removeItem(LAST_PLAYER_KEY); } catch (_){} 
+                }
             }
             // Make sure UI reflects "(choose player)"
             try { sel.value = ""; } catch(_) {}
+
+            // Rebuild the start screen and totals so stars disappear
+            try { if (typeof renderStartScreen === 'function') renderStartScreen(); } catch(_){}
+            try { if (typeof updateTotalsUI === 'function') updateTotalsUI(); } catch(_){}
+
+            // Still run the existing helpers
             refreshStartScreenLockState();
             updateCurrentUserUI && updateCurrentUserUI();
             return;
         }
+
         
         // Normal path: a real player was chosen
         await SaveSys.selectPlayer(sel.value); 
@@ -8239,6 +8511,10 @@ if (window.visualViewport){
 
         refreshStartScreenLockState();
         updateCurrentUserUI && updateCurrentUserUI();
+
+         // Rebuild level cards + totals for the newly selected player
+        try { if (typeof renderStartScreen === 'function') renderStartScreen(); } catch(_){}
+        try { if (typeof updateTotalsUI === 'function') updateTotalsUI(); } catch(_){}
 
       }); 
       sel.dataset.wired='1';}
