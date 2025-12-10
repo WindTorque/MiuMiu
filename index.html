@@ -2432,106 +2432,33 @@ window.CHALLENGES = [
         cheeses:[],
         mouseHoles: [],
         optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
+        allowedBlocks:["step"]
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
         grid: L.grid, start: L.start, home: L.home,
         obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 1,
+        challengeId: 4,
+        name: "Sequencing with Mouse Holes",
+        grid: { cols: 6, rows: 5 },
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:3,y:4},
+        obstacles:[{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":1,"y":4,"type":"wall"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":1,"y2":2},{"color":2,"x1":4,"y1":2,"x2":2,"y2":4}],
+        optimalBlocks:8,
+        allowedBlocks:["step"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
   
     (function(){ var L = {
         levelId: 1,
-        challengeId: 4,
-        name: "Sequencing with Loops",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 0, y: 1, dir: "E" },
-        home:{x:3,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":2,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 1,
         challengeId: 5,
-        name: "Sequencing with Loops",
-        grid: { cols: 5, rows: 6 },
-        start: { x: 2, y: 5, dir: "N" },
-        home:{x:2,y:1},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":0,"y":5,"type":"water"},{"x":1,"y":5,"type":"tree"},{"x":3,"y":5,"type":"tree"},{"x":4,"y":5,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 1,
-        challengeId: 6,
-        name: "Sequencing with Loops",
-        grid: { cols: 5, rows: 6 },
-        start: { x: 2, y: 1, dir: "S" },
-        home:{x:2,y:4},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-    }; })(),
-
-    (function(){ var L = {
-        levelId: 1,
-        challengeId: 7,
-        name: "Sequencing with Mouse Holes",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 2, y: 1, dir: "S" },
-        home:{x:4,y:2},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":2,"y2":4}],
-        optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 1,
-        challengeId: 8,
-        name: "Sequencing with Mouse Holes",
-        grid: { cols: 6, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:4,y:4},
-        obstacles:[{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":5,"y":3,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":1,"y2":2},{"color":2,"x1":4,"y1":2,"x2":2,"y2":4}],
-        optimalBlocks:2,
-        allowedBlocks:["step","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 1,
-        challengeId: 9,
         name: "Sequencing with Mouse Holes",
         grid: { cols: 8, rows: 5 },
         start: { x: 0, y: 0, dir: "E" },
@@ -2539,8 +2466,8 @@ window.CHALLENGES = [
         obstacles:[{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
         cheeses:[],
         mouseHoles: [{"color":1,"x1":2,"y1":0,"x2":1,"y2":1},{"color":2,"x1":3,"y1":1,"x2":2,"y2":2},{"color":3,"x1":4,"y1":2,"x2":3,"y2":3},{"color":4,"x1":5,"y1":3,"x2":4,"y2":4}],
-        optimalBlocks:3,
-        allowedBlocks:["step","repeat"]
+        optimalBlocks:10,
+        allowedBlocks:["step"]
 
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
@@ -2548,20 +2475,19 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 1,
-        challengeId: 10,
+        challengeId: 6,
         name: "Sequencing with Mouse Holes",
         grid: { cols: 7, rows: 5 },
-        start: { x: 0, y: 4, dir: "N" },
-        home:{x:6,y:1},
-        obstacles:[{"x":1,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":3,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":5,"y":4,"type":"water"}],
+        start: { x: 1, y: 4, dir: "N" },
+        home:{x:5,y:1},
+        obstacles:[{"x":0,"y":0,"type":"water"},{"x":2,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":2,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":6,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":2,"y":2,"type":"water"},{"x":4,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":2,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":2,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"},{"x":6,"y":4,"type":"water"}],
         cheeses:[],
-        mouseHoles: [{"color":1,"x1":0,"y1":1,"x2":2,"y2":4},{"color":2,"x1":2,"y1":1,"x2":4,"y2":4},{"color":3,"x1":4,"y1":1,"x2":6,"y2":4}],
-        optimalBlocks:4,
-        allowedBlocks:["step","repeat"]
+        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":3,"y2":4},{"color":2,"x1":3,"y1":1,"x2":5,"y2":4}],
+        optimalBlocks:9,
+        allowedBlocks:["step"]
+
         }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
     (function(){ var L = {
@@ -2600,9 +2526,45 @@ window.CHALLENGES = [
         obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
         }; })(),
 
-   (function(){ var L = {
+    (function(){ var L = {
         levelId: 2,
         challengeId: 3,
+        name: "Turning",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 5, y: 3, dir: "N" },
+        home:{x:1,y:2},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 2,
+        challengeId: 4,
+        name: "Turning with Loops",
+        grid: { cols: 6, rows: 4 },
+        start: { x: 5, y: 2, dir: "W" },
+        home:{x:1,y:0},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:7,
+        allowedBlocks:["step","turnLeft","turnRight"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 2,
+        challengeId: 5,
         name: "Turning",
         grid: { cols: 6, rows: 4 },
         start: { x: 0, y: 0, dir: "S" },
@@ -2620,7 +2582,7 @@ window.CHALLENGES = [
 
     (function(){ var L = {
         levelId: 2,
-        challengeId: 4,
+        challengeId: 6,
         name: "Turning",
         grid: { cols: 6, rows: 4 },
         start: { x: 4, y: 0, dir: "S" },
@@ -2630,113 +2592,6 @@ window.CHALLENGES = [
         mouseHoles: [],
         optimalBlocks:6,
         allowedBlocks:["step","turnLeft","turnRight"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 5,
-        name: "Turning",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 5, y: 3, dir: "N" },
-        home:{x:1,y:2},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 6,
-        name: "Turning with Loops",
-        grid: { cols: 6, rows: 4 },
-        start: { x: 5, y: 2, dir: "W" },
-        home:{x:1,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 7,
-        name: "Turning with Loops",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 2, dir: "W" },
-        home:{x:1,y:1},
-        obstacles:[{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":4,"x1":3,"y1":2,"x2":1,"y2":4}],
-        optimalBlocks:5,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 8,
-        name: "Turning with Loops",
-        grid: { cols: 8, rows: 6 },
-        start: { x: 3, y: 4, dir: "N" },
-        home:{x:1,y:1},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"water"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":2,"y":4,"type":"wall"},{"x":2,"y":5,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":2,"x1":7,"y1":4,"x2":1,"y2":5}],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 9,
-        name: "Advanced Turning",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 4, y: 0, dir: "S" },
-        home:{x:6,y:4},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":5,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":1,"y2":3}],
-        optimalBlocks:10,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 2,
-        challengeId: 10,
-        name: "Advanced Turning",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 1, y: 4, dir: "E" },
-        home:{x:4,y:4},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"tree"},{"x":3,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [{"color":3,"x1":1,"y1":0,"x2":6,"y2":1}],
-        optimalBlocks:10,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
         grid: L.grid, start: L.start, home: L.home,
@@ -2825,8 +2680,8 @@ window.CHALLENGES = [
         obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":5,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
         cheeses:[{"x":2,"y":1}],
         mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":1,"y2":3}],
-        optimalBlocks:9,
-        allowedBlocks:["step","turnLeft","cheese","repeat"]
+        optimalBlocks:10,
+        allowedBlocks:["step","turnLeft","turnRight","cheese"]
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
         grid: L.grid, start: L.start, home: L.home,
@@ -2836,6 +2691,256 @@ window.CHALLENGES = [
     (function(){ var L = {
         levelId: 3,
         challengeId: 6,
+        name: "Cheeses and Loops",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 3, y: 0, dir: "N" },
+        home:{x:1,y:2},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":2,"y":3,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":2,"y":1,"type":"wall"}],
+        cheeses:[{"x":3,"y":3}],
+        mouseHoles: [{"color":2,"x1":1,"y1":4,"x2":3,"y2":4}],
+        optimalBlocks:11,
+        allowedBlocks:["step","turnRight","cheese"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 1,
+        name: "Introducing Loops",
+        grid: { cols: 5, rows: 6 },
+        start: { x: 2, y: 5, dir: "N" },
+        home:{x:2,y:1},
+        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":0,"y":5,"type":"water"},{"x":1,"y":5,"type":"tree"},{"x":3,"y":5,"type":"tree"},{"x":4,"y":5,"type":"water"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:2,
+        allowedBlocks:["step","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 2,
+        name: "Introducing Loops",
+        grid: { cols: 5, rows: 6 },
+        start: { x: 2, y: 1, dir: "S" },
+        home:{x:2,y:4},
+        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"water"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:2,
+        allowedBlocks:["step","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+    }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 3,
+        name: "Loops with Mouse Holes",
+        grid: { cols: 5, rows: 5 },
+        start: { x: 2, y: 1, dir: "S" },
+        home:{x:4,y:2},
+        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":2,"y2":4}],
+        optimalBlocks:2,
+        allowedBlocks:["step","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 4,
+        name: "Loops with Mouse Holes",
+        grid: { cols: 6, rows: 5 },
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:4,y:4},
+        obstacles:[{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":5,"y":3,"type":"wall"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":1,"y2":2},{"color":2,"x1":4,"y1":2,"x2":2,"y2":4}],
+        optimalBlocks:2,
+        allowedBlocks:["step","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 5,
+        name: "Loops with Mouse Holes",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 0, y: 0, dir: "E" },
+        home:{x:6,y:4},
+        obstacles:[{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":2,"y1":0,"x2":1,"y2":1},{"color":2,"x1":3,"y1":1,"x2":2,"y2":2},{"color":3,"x1":4,"y1":2,"x2":3,"y2":3},{"color":4,"x1":5,"y1":3,"x2":4,"y2":4}],
+        optimalBlocks:3,
+        allowedBlocks:["step","repeat"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 4,
+        challengeId: 6,
+        name: "Loops with Mouse Holes",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 0, y: 4, dir: "N" },
+        home:{x:6,y:1},
+        obstacles:[{"x":1,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":5,"y":1,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":3,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":5,"y":4,"type":"water"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":0,"y1":1,"x2":2,"y2":4},{"color":2,"x1":2,"y1":1,"x2":4,"y2":4},{"color":3,"x1":4,"y1":1,"x2":6,"y2":4}],
+        optimalBlocks:4,
+        allowedBlocks:["step","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 1,
+        name: "Turning with Loops",
+        grid: { cols: 7, rows: 4 },
+        start: { x: 5, y: 3, dir: "N" },
+        home:{x:1,y:2},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:4,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 2,
+        name: "Turning with Loops",
+        grid: { cols: 6, rows: 4 },
+        start: { x: 5, y: 2, dir: "W" },
+        home:{x:1,y:0},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [],
+        optimalBlocks:5,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 3,
+        name: "Turning with Loops",
+        grid: { cols: 7, rows: 5 },
+        start: { x: 6, y: 2, dir: "W" },
+        home:{x:1,y:1},
+        obstacles:[{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [{"color":4,"x1":3,"y1":2,"x2":1,"y2":4}],
+        optimalBlocks:5,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 4,
+        name: "Turning with Loops",
+        grid: { cols: 8, rows: 6 },
+        start: { x: 3, y: 4, dir: "N" },
+        home:{x:1,y:1},
+        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"water"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":2,"y":4,"type":"wall"},{"x":2,"y":5,"type":"wall"}],
+        cheeses:[],
+        mouseHoles: [{"color":2,"x1":7,"y1":4,"x2":1,"y2":5}],
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 5,
+        name: "Advanced Turning",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 4, y: 0, dir: "S" },
+        home:{x:6,y:4},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":5,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
+        cheeses:[],
+        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":1,"y2":3}],
+        optimalBlocks:10,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 5,
+        challengeId: 6,
+        name: "Advanced Turning",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 1, y: 4, dir: "E" },
+        home:{x:4,y:4},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":5,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"tree"},{"x":3,"y":4,"type":"water"}],
+        cheeses:[],
+        mouseHoles: [{"color":3,"x1":1,"y1":0,"x2":6,"y2":1}],
+        optimalBlocks:10,
+        allowedBlocks:["step","turnLeft","turnRight","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+        (function(){ var L = {
+        levelId: 6,
+        challengeId: 1,
+        name: "Cheeses and Loops",
+        grid: { cols: 8, rows: 5 },
+        start: { x: 6, y: 0, dir: "S" },
+        home:{x:1,y:4},
+        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":5,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
+        cheeses:[{"x":2,"y":1}],
+        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":1,"y2":3}],
+        optimalBlocks:8,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
+        }
+        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
+        grid: L.grid, start: L.start, home: L.home,
+        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
+        }; })(),
+
+    (function(){ var L = {
+        levelId: 6,
+        challengeId: 2,
         name: "Cheeses and Loops",
         grid: { cols: 8, rows: 5 },
         start: { x: 3, y: 0, dir: "N" },
@@ -2852,8 +2957,8 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 3,
-        challengeId: 7,
+        levelId: 6,
+        challengeId: 3,
         name: "Cheeses and Loops",
         grid: { cols: 7, rows: 5 },
         start: { x: 6, y: 2, dir: "W" },
@@ -2861,8 +2966,8 @@ window.CHALLENGES = [
         obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":5,"y":0,"type":"water"},{"x":6,"y":0,"type":"water"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
         cheeses:[{"x":0,"y":3}],
         mouseHoles: [{"color":2,"x1":0,"y1":2,"x2":1,"y2":4},{"color":4,"x1":3,"y1":2,"x2":4,"y2":3}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","cheese","repeat"]
+        optimalBlocks:6,
+        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
 
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
@@ -2870,8 +2975,8 @@ window.CHALLENGES = [
 
         
     (function(){ var L = {
-        levelId: 3,
-        challengeId: 8,
+        levelId: 6,
+        challengeId: 4,
         name: "Difficult cheesy challenges",
         grid: { cols: 8, rows: 6 },
         start: { x: 1, y: 0, dir: "S" },
@@ -2887,8 +2992,8 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 3,
-        challengeId: 9,
+        levelId: 6,
+        challengeId: 5,
         name: "Difficult cheesy challenges",
         grid: { cols: 7, rows: 5 },
         start: { x: 5, y: 0, dir: "W" },
@@ -2904,8 +3009,8 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 3,
-        challengeId: 10,
+        levelId: 6,
+        challengeId: 6,
         name: "Difficult cheesy challenges",
         grid: { cols: 7, rows: 5 },
         start: { x: 0, y: 4, dir: "N" },
@@ -2921,7 +3026,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 1,
         name: "Advanced Loops",
         grid: { cols: 7, rows: 5 },
@@ -2939,7 +3044,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 2,
         name: "Advanced Loops",
         grid: { cols: 7, rows: 5 },
@@ -2957,7 +3062,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 3,
         name: "Advanced Loops",
         grid: { cols: 9, rows: 5 },
@@ -2975,7 +3080,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 4,
         name: "Advanced Loops",
         grid: { cols: 5, rows: 5 },
@@ -2993,7 +3098,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 5,
         name: "Advanced Loops",
         grid: { cols: 7, rows: 4 },
@@ -3011,7 +3116,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
+        levelId: 7,
         challengeId: 6,
         name: "Advanced Loops",
         grid: { cols: 8, rows: 5 },
@@ -3029,78 +3134,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 4,
-        challengeId: 7,
-        name: "Advanced Loops with Turning",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 1, y: 3, dir: "W" },
-        home:{x:3,y:3},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"water"},{"x":2,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":2,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["step","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 4,
-        challengeId: 8,
-        name: "Advanced Loops with Turning",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:4,y:4},
-        obstacles:[{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 4,
-        challengeId: 9,
-        name: "Advanced Loops with Turning",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 8, y: 4, dir: "N" },
-        home:{x:0,y:0},
-        obstacles:[{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 4,
-        challengeId: 10,
-        name: "Advanced Loops with Turning",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":2,"x1":4,"y1":0,"x2":4,"y2":4}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-
-    (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 1,
         name: "Introducing Functions",
         grid: { cols: 6, rows: 4 },
@@ -3118,7 +3152,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 2,
         name: "Introducing Functions",
         grid: { cols: 6, rows: 4 },
@@ -3138,7 +3172,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 3,
         name: "Introducing Functions",
         grid: { cols: 8, rows: 4 },
@@ -3158,7 +3192,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 4,
         name: "Introducing Functions",
         grid: { cols: 8, rows: 5 },
@@ -3178,7 +3212,7 @@ window.CHALLENGES = [
         }; })(),
 
     (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 5,
         name: "Introducing Functions",
         grid: { cols: 7, rows: 5 },
@@ -3199,7 +3233,7 @@ window.CHALLENGES = [
 
 
     (function(){ var L = {
-        levelId: 5,
+        levelId: 8,
         challengeId: 6,
         name: "Introducing Functions",
         grid: { cols: 7, rows: 5 },
@@ -3217,1443 +3251,6 @@ window.CHALLENGES = [
         }
         return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
         }; })(),
-        
-    (function(){ var L = {
-        levelId: 5,
-        challengeId: 7,
-        name: "Functions with Loops",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:5,y:3},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":2},{"x":3,"y":2},{"x":5,"y":2}],
-        mouseHoles: [{"color":1,"x1":3,"y1":0,"x2":1,"y2":3},{"color":2,"x1":5,"y1":0,"x2":3,"y2":3}],
-        optimalBlocks:6,
-        allowedBlocks:["step","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"step"},{"type":"cheese"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 5,
-        challengeId: 8,
-        name: "Functions with Loops",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 7, y: 0, dir: "W" },
-        home:{x:0,y:4},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"water"},{"x":2,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":1,"y":1,"type":"water"},{"x":2,"y":1,"type":"water"},{"x":7,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":7,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":7,"y":3,"type":"water"},{"x":4,"y":4,"type":"water"},{"x":5,"y":4,"type":"water"},{"x":6,"y":4,"type":"water"},{"x":7,"y":4,"type":"water"}],
-        cheeses:[{"x":5,"y":0},{"x":6,"y":0},{"x":4,"y":1},{"x":5,"y":1},{"x":3,"y":2},{"x":4,"y":2},{"x":2,"y":3},{"x":3,"y":3},{"x":1,"y":4},{"x":2,"y":4}],
-        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":6,"y2":1},{"color":2,"x1":3,"y1":1,"x2":5,"y2":2},{"color":3,"x1":2,"y1":2,"x2":4,"y2":3},{"color":4,"x1":1,"y1":3,"x2":3,"y2":4}],
-        optimalBlocks:7,
-        allowedBlocks:["step","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"cheese"},{"type":"step"},{"type":"cheese"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-     (function(){ var L = {
-        levelId: 5,
-        challengeId: 9,
-        name: "Functions with Loops",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 3, y: 0, dir: "S" },
-        home:{x:3,y:4},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[{"x":3,"y":1},{"x":3,"y":2},{"x":3,"y":3}],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["step","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"cheese"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 5,
-        challengeId: 10,
-        name: "Functions with Loops",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 5, y: 0, dir: "W" },
-        home:{x:2,y:4},
-        obstacles:[{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":0},{"x":3,"y":0},{"x":2,"y":2},{"x":4,"y":2},{"x":3,"y":4},{"x":5,"y":4}],
-        mouseHoles: [{"color":1,"x1":0,"y1":0,"x2":6,"y2":2},{"color":4,"x1":1,"y1":2,"x2":7,"y2":4}],
-        optimalBlocks:7,
-        allowedBlocks:["step","repeat","function"]        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"step"},{"type":"cheese"}]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 1,
-        name: "Nested Loops",
-        grid: { cols: 7, rows: 6 },
-        start: { x: 1, y: 0, dir: "W" },
-        home:{x:5,y:4},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"water"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"wall"},{"x":0,"y":5,"type":"wall"},{"x":6,"y":5,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["step","turnLeft","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 2,
-        name: "Nested Loops",
-        grid: { cols: 8, rows: 6 },
-        start: { x: 6, y: 5, dir: "S" },
-        home:{x:6,y:0},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"water"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":0,"y":4,"type":"wall"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":7,"y":5,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["step","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 3,
-        name: "Nested Loops",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:7,y:1},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":2,"y2":4},{"color":2,"x1":3,"y1":1,"x2":4,"y2":4},{"color":3,"x1":5,"y1":1,"x2":6,"y2":4}],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 4,
-        name: "Nested Loops",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 0, y: 0, dir: "S" },
-        home:{x:4,y:1},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":3,"y":0,"type":"wall"},{"x":1,"y":1,"type":"tree"},{"x":3,"y":1,"type":"wall"},{"x":5,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":3,"y":2,"type":"wall"},{"x":5,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"tree"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":2,"y1":3,"x2":6,"y2":4}],
-        optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 5,
-        name: "Nested Loops",
-        grid: { cols: 6, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:4,y:3},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":5,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":5,"y":4,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 6,
-        name: "Nested Loops",
-        grid: { cols: 11, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:6,y:1},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":7,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":10,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":10,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"wall"},{"x":7,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":10,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"wall"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":10,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":5,"y":4,"type":"wall"},{"x":10,"y":4,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":4,"y1":3,"x2":9,"y2":4}],
-        optimalBlocks:5,
-        allowedBlocks:["step","turnLeft","turnRight","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 7,
-        name: "Nested Loops with Cheeses",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 7, y: 4, dir: "N" },
-        home:{x:1,y:0},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"wall"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"water"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":2,"y":3,"type":"wall"},{"x":2,"y":4,"type":"wall"}],
-        cheeses:[{"x":1,"y":2},{"x":3,"y":2},{"x":7,"y":2},{"x":1,"y":3},{"x":3,"y":3},{"x":7,"y":3}],
-        mouseHoles: [{"color":2,"x1":3,"y1":0,"x2":1,"y2":4},{"color":4,"x1":7,"y1":0,"x2":3,"y2":4}],
-        optimalBlocks:6,
-        allowedBlocks:["step","cheese","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 8,
-        name: "Nested Loops with Cheeses",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 1, y: 1, dir: "E" },
-        home:{x:7,y:3},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":4,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
-        cheeses:[{"x":3,"y":1},{"x":5,"y":1},{"x":3,"y":2},{"x":5,"y":2},{"x":3,"y":3},{"x":5,"y":3}],
-        mouseHoles: [{"color":2,"x1":7,"y1":1,"x2":1,"y2":2},{"color":4,"x1":7,"y1":2,"x2":1,"y2":3}],
-        optimalBlocks:7,
-        allowedBlocks:["step","cheese","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 9,
-        name: "Nested Loops with Cheeses",
-        grid: { cols: 10, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:8,y:3},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":9,"y":0,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":9,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":9,"y":3,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":1},{"x":2,"y":1},{"x":3,"y":1},{"x":6,"y":1},{"x":7,"y":1},{"x":8,"y":1},{"x":1,"y":4},{"x":2,"y":4},{"x":3,"y":4},{"x":6,"y":4},{"x":7,"y":4},{"x":8,"y":4}],
-        mouseHoles: [{"color":2,"x1":5,"y1":1,"x2":3,"y2":3},{"color":3,"x1":8,"y1":0,"x2":0,"y2":1},{"color":4,"x1":3,"y1":0,"x2":5,"y2":4}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,
-        grid: L.grid, start: L.start, home: L.home,
-        obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 6,
-        challengeId: 10,
-        name: "Nested Loops with Cheeses",
-        grid: { cols: 11, rows: 5 },
-        start: { x: 6, y: 4, dir: "E" },
-        home:{x:4,y:2},
-        obstacles:[{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":9,"y":0,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":2,"type":"water"},{"x":9,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":9,"y":3,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
-        cheeses:[{"x":3,"y":2},{"x":7,"y":2}],
-        mouseHoles: [{"color":1,"x1":4,"y1":0,"x2":6,"y2":2},{"color":2,"x1":2,"y1":2,"x2":0,"y2":4},{"color":4,"x1":10,"y1":0,"x2":8,"y2":2}],
-        optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 1,
-        name: "Functions with Turning",
-        grid: { cols: 6, rows: 4 },
-        start: { x: 1, y: 3, dir: "E" },
-        home:{x:1,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":5,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":5,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["repeat","function"],
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"step"},{"type":"step"},{"type":"turnLeft"}]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 2,
-        name: "Functions with Turning",
-        grid: { cols: 6, rows: 4 },
-        start: { x: 1, y: 3, dir: "E" },
-        home:{x:1,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"water"},{"x":3,"y":1,"type":"water"},{"x":5,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"water"},{"x":3,"y":2,"type":"water"},{"x":5,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":3,"y":0},{"x":4,"y":2},{"x":2,"y":3}],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["cheese","repeat","function"],
-        functionLocked:false,
-       functionContents:[{"type":"step"},{"type":"step"},{"type":"step"},{"type":"turnLeft"}]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 3,
-        name: "Functions with Turning",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 1, y: 3, dir: "N" },
-        home:{x:3,y:3},
-        obstacles:[{"x":0,"y":0,"type":"water"},{"x":1,"y":0,"type":"water"},{"x":2,"y":0,"type":"water"},{"x":3,"y":0,"type":"water"},{"x":4,"y":0,"type":"water"},{"x":0,"y":1,"type":"water"},{"x":4,"y":1,"type":"water"},{"x":0,"y":2,"type":"water"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"water"},{"x":0,"y":3,"type":"water"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":2,"y":4,"type":"water"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[{"x":2,"y":1},{"x":1,"y":2},{"x":3,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["turnLeft","turnRight","cheese","repeat","function"],
-        functionLocked:false,
-        functionContents:[{"type":"step"},{"type":"step"},{"type":"turnLeft"}]
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 4,
-        name: "Functions with Turning",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:4,y:4},
-        obstacles:[{"x":2,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"step"},{"type":"turnRight"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 5,
-        name: "Functions with Turning",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 8, y: 4, dir: "N" },
-        home:{x:0,y:0},
-        obstacles:[{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":0},{"x":3,"y":1},{"x":5,"y":2},{"x":7,"y":3}],
-        mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["step","turnLeft","turnRight","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"cheese"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 6,
-        name: "Functions with Loops Inside",
-        grid: { cols: 6, rows: 6 },
-        start: { x: 0, y: 5, dir: "N" },
-        home:{x:2,y:2},
-        obstacles:[{"x":1,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":4,"y":4,"type":"wall"},{"x":1,"y":5,"type":"wall"}],
-        cheeses:[{"x":4,"y":0},{"x":0,"y":1},{"x":3,"y":2},{"x":5,"y":4}],
-        mouseHoles: [{"color":2,"x1":4,"y1":2,"x2":2,"y2":5}],
-        optimalBlocks:11,
-        allowedBlocks:["step","turnRight","cheese","function"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 7,
-        name: "Functions with Loops Inside",
-        grid: { cols: 6, rows: 6 },
-        start: { x: 0, y: 5, dir: "N" },
-        home:{x:2,y:2},
-        obstacles:[{"x":1,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":1,"y":5,"type":"tree"}],
-        cheeses:[{"x":4,"y":0},{"x":0,"y":1},{"x":3,"y":2},{"x":5,"y":4}],
-        mouseHoles: [{"color":2,"x1":4,"y1":2,"x2":2,"y2":5}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnRight","cheese","repeat","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":4,"children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 8,
-        name: "Functions with Loops Inside",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 8, y: 4, dir: "N" },
-        home:{x:0,y:0},
-        obstacles:[{"x":4,"y":0,"type":"water"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":4,"y":1,"type":"water"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":2,"y":2,"type":"water"},{"x":3,"y":2,"type":"water"},{"x":4,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":7,"y":2,"type":"water"},{"x":8,"y":2,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"water"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":5,"y1":3,"x2":3,"y2":4},{"color":2,"x1":8,"y1":1,"x2":0,"y2":3},{"color":3,"x1":5,"y1":0,"x2":3,"y2":1}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","repeat","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":3,"children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-(   function(){ var L = {
-        levelId: 7,
-        challengeId: 9,
-        name: "Functions with Loops",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 8, y: 4, dir: "N" },
-        home:{x:0,y:0},
-        obstacles:[{"x":4,"y":0,"type":"water"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":4,"y":1,"type":"water"},{"x":5,"y":1,"type":"wall"},{"x":6,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"water"},{"x":2,"y":2,"type":"water"},{"x":4,"y":2,"type":"water"},{"x":5,"y":2,"type":"water"},{"x":6,"y":2,"type":"water"},{"x":7,"y":2,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":4,"y":4,"type":"water"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":5,"y1":3,"x2":3,"y2":4},{"color":2,"x1":8,"y1":2,"x2":0,"y2":3},{"color":3,"x1":5,"y1":0,"x2":3,"y2":2}],
-        optimalBlocks:10,
-        allowedBlocks:["step","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"turnLeft"},{"type":"repeat","count":3,"children":[{"type":"step"}]},{"type":"turnRight"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 7,
-        challengeId: 10,
-        name: "Functions with Loops",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":8,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":4},{"x":3,"y":4},{"x":5,"y":4},{"x":7,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["step","cheese","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnRight"},{"type":"repeat","count":4,"children":[{"type":"step"}]},{"type":"turnRight"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 1,
-        name: "\"If\" block",
-        grid: { cols: 10, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:9,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
-        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:13,
-        allowedBlocks:["step","cheese"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 2,
-        name: "\"If\" block",
-        grid: { cols: 10, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:9,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":9,"y":4,"type":"tree"}],
-        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":9,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[{"type":"cheese"}]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 3,
-        name: "\"If\" block",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 0, y: 1, dir: "E" },
-        home:{x:2,y:4},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":1,"type":"C1"},{"x":2,"y":2,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"C1"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":9,"children":[{"type":"step"},{"type":"if","choice":"C1","children":[{"type":"turnRight"}]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 4,
-        name: "\"If\" block",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 2, y: 4, dir: "N" },
-        home:{x:0,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":0,"y":1,"type":"C2"},{"x":2,"y":1,"type":"C2"},{"x":3,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["turnLeft","turnRight","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":7,"children":[{"type":"step"},{"type":"if","choice":"C2","children":[{"type":"turnRight"}]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 5,
-        name: "\"If\" block",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 4, y: 0, dir: "W" },
-        home:{x:0,y:2},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"C2"},{"x":2,"y":2,"type":"C1"},{"x":4,"y":2,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["turnLeft","turnRight","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"C2","children":[]},{"type":"if","choice":"C1","children":[]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 6,
-        name: "\"If\" block",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:0,y:4},
-        obstacles:[{"x":4,"y":0,"type":"tree"},{"x":1,"y":1,"type":"C1"},{"x":3,"y":1,"type":"C2"},{"x":0,"y":2,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":2,"y":2,"type":"wall"},{"x":4,"y":2,"type":"wall"},{"x":0,"y":3,"type":"C1"},{"x":3,"y":3,"type":"C2"},{"x":4,"y":3,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["turnLeft","turnRight","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"C2","children":[]},{"type":"if","choice":"C1","children":[]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 7,
-        name: "\"If\" block",
-        grid: { cols: 8, rows: 6 },
-        start: { x: 4, y: 1, dir: "W" },
-        home:{x:6,y:3},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":2,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":6,"y":2,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":2,"y":4,"type":"C1"},{"x":6,"y":4,"type":"C1"},{"x":0,"y":5,"type":"tree"},{"x":5,"y":5,"type":"wall"},{"x":7,"y":5,"type":"wall"}],
-        cheeses:[{"x":3,"y":1},{"x":2,"y":2},{"x":2,"y":3},{"x":3,"y":4},{"x":4,"y":4},{"x":5,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 8,
-        name: "\"If\" block",
-        grid: { cols: 8, rows: 6 },
-        start: { x: 1, y: 2, dir: "S" },
-        home:{x:7,y:4},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":3,"y":1,"type":"C2"},{"x":5,"y":1,"type":"C2"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":3,"y":4,"type":"C1"},{"x":5,"y":4,"type":"C1"},{"x":0,"y":5,"type":"tree"},{"x":7,"y":5,"type":"tree"}],
-        cheeses:[{"x":4,"y":1},{"x":5,"y":3},{"x":2,"y":4},{"x":6,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["turnLeft","turnRight","cheese","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeat","count":6,"children":[{"type":"step"},{"type":"if","choice":"cheese","children":[]},{"type":"if","choice":"C1","children":[]},{"type":"if","choice":"C2","children":[]}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 9,
-        name: "\"If\" Block",
-        grid: { cols: 10, rows: 4 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:9,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":9,"y":1,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"}],
-        cheeses:[{"x":2,"y":2},{"x":3,"y":2},{"x":6,"y":2},{"x":8,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:5,
-        allowedBlocks:["step","repeat","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"if","choice":"cheese","children":[{"type":"cheese"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 8,
-        challengeId: 10,
-        name: "\"If\" Block",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 2, y: 2, dir: "E" },
-        home:{x:3,y:0},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"C3"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":6,"y":2,"type":"C3"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["step","turnLeft","repeat","if"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 1,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:4,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:3,
-        allowedBlocks:["function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"home","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 2,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 0, dir: "S" },
-        home:{x:0,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"home","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 3,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 2, dir: "W" },
-        home:{x:0,y:0},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":0,"y":2,"type":"C2"},{"x":2,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"C2","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-        
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 4,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:4,y:2},
-        obstacles:[{"x":1,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":6,"y":2,"type":"C3"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [{"color":1,"x1":0,"y1":0,"x2":6,"y2":4}],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"C3","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-   
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 5,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:4,y:4},
-        obstacles:[{"x":2,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"C1"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:9,
-        allowedBlocks:["step","turnLeft","turnRight","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"C1","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 6,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:1,y:2},
-        obstacles:[{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":1,"y":0}],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 7,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:2,y:3},
-        obstacles:[{"x":0,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":1,"y":0},{"x":1,"y":3}],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 8,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:6,y:1},
-        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C2"},{"x":6,"y":4,"type":"C3"}],
-        cheeses:[{"x":1,"y":1},{"x":6,"y":3},{"x":2,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:14,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 9,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:6,y:1},
-        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":6,"y":4,"type":"C1"}],
-        cheeses:[{"x":1,"y":1},{"x":6,"y":3},{"x":2,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:9,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 9,
-        challengeId: 10,
-        name: "\"Repeat Until\" Block",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 7, y: 0, dir: "W" },
-        home:{x:0,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"C1"},{"x":2,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":3,"y":2,"type":"C1"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"tree"},{"x":0,"y":4,"type":"water"},{"x":1,"y":4,"type":"water"},{"x":2,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":1},{"x":2,"y":2},{"x":3,"y":3}],
-        mouseHoles: [{"color":1,"x1":7,"y1":1,"x2":1,"y2":2},{"color":2,"x1":7,"y1":2,"x2":2,"y2":3},{"color":3,"x1":7,"y1":3,"x2":3,"y2":4}],
-        optimalBlocks:11,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 1,
-        name: "Combining blocks",
-        grid: { cols: 5, rows: 5 },
-        start: { x: 4, y: 0, dir: "W" },
-        home:{x:1,y:4},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"C2"},{"x":0,"y":2,"type":"C2"},{"x":2,"y":2,"type":"C1"},{"x":4,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"water"},{"x":0,"y":4,"type":"C2"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"water"},{"x":4,"y":4,"type":"water"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"if","choice":"C2","children":[]},{"type":"if","choice":"C1","children":[]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 2,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 0, y: 1, dir: "E" },
-        home:{x:8,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"C1"},{"x":5,"y":1,"type":"C1"},{"x":7,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"}],
-        cheeses:[{"x":1,"y":2},{"x":5,"y":2},{"x":7,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:9,
-        allowedBlocks:["step","cheese","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnRight"},{"type":"step"},{"type":"turnRight"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 3,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 0, y: 1, dir: "E" },
-        home:{x:8,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":5,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"C1"},{"x":3,"y":1,"type":"C2"},{"x":4,"y":1,"type":"C2"},{"x":7,"y":1,"type":"C1"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"}],
-        cheeses:[{"x":3,"y":0},{"x":4,"y":0},{"x":1,"y":2},{"x":7,"y":2}],
-        mouseHoles: [],
-        optimalBlocks:15,
-        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"turnRight"},{"type":"cheese"},{"type":"turnRight"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 4,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
-        cheeses:[],
-        mouseHoles: [{"color":2,"x1":4,"y1":0,"x2":4,"y2":4}],
-        optimalBlocks:8,
-        allowedBlocks:["repeatUntil","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"step"},{"type":"turnRight"},{"type":"step"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 5,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":1,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"},{"x":1,"y":4,"type":"wall"},{"x":2,"y":4,"type":"wall"},{"x":3,"y":4,"type":"wall"},{"x":5,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"},{"x":8,"y":4,"type":"wall"}],
-        cheeses:[{"x":2,"y":2},{"x":6,"y":2}],
-        mouseHoles: [{"color":2,"x1":4,"y1":0,"x2":4,"y2":4}],
-        optimalBlocks:10,
-        allowedBlocks:["cheese","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"step"},{"type":"turnRight"},{"type":"step"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 6,
-        name: "Combining blocks",
-        grid: { cols: 10, rows: 4 },
-        start: { x: 3, y: 3, dir: "N" },
-        home:{x:6,y:0},
-        obstacles:[{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":9,"y":0,"type":"wall"},{"x":2,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":9,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":9,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"}],
-        cheeses:[{"x":1,"y":1},{"x":4,"y":1},{"x":2,"y":2},{"x":8,"y":2}],
-        mouseHoles: [{"color":1,"x1":3,"y1":0,"x2":9,"y2":3},{"color":3,"x1":0,"y1":0,"x2":6,"y2":3}],
-        optimalBlocks:8,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function","if"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 7,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":3,"y":0,"type":"C1"},{"x":4,"y":0,"type":"C1"},{"x":7,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":2,"y":1,"type":"tree"},{"x":5,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":4,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"},{"x":8,"y":4,"type":"tree"}],
-        cheeses:[{"x":3,"y":1},{"x":4,"y":2},{"x":7,"y":3},{"x":1,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:13,
-        allowedBlocks:["step","turnLeft","turnRight","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"cheese"},{"type":"turnRight"},{"type":"turnRight"},{"type":"repeatUntil","choice":"C1","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 8,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:8,y:2},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":7,"y":1,"type":"tree"},{"x":1,"y":2,"type":"C1"},{"x":2,"y":2,"type":"C2"},{"x":3,"y":2,"type":"C1"},{"x":4,"y":2,"type":"C2"},{"x":6,"y":2,"type":"C1"},{"x":7,"y":2,"type":"C2"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":1},{"x":6,"y":1},{"x":4,"y":3},{"x":7,"y":3}],
-        mouseHoles: [{"color":1,"x1":1,"y1":0,"x2":2,"y2":3},{"color":2,"x1":3,"y1":0,"x2":4,"y2":4},{"color":3,"x1":6,"y1":0,"x2":7,"y2":4}],
-        optimalBlocks:10,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","function","if"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 9,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 2, dir: "E" },
-        home:{x:8,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"C2"},{"x":3,"y":1,"type":"tree"},{"x":8,"y":1,"type":"tree"},{"x":1,"y":2,"type":"C1"},{"x":3,"y":2,"type":"tree"},{"x":6,"y":2,"type":"C1"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":8,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[{"x":1,"y":1},{"x":2,"y":1},{"x":4,"y":1},{"x":5,"y":1},{"x":6,"y":1},{"x":7,"y":1},{"x":2,"y":2},{"x":4,"y":2},{"x":7,"y":2},{"x":2,"y":3},{"x":4,"y":3},{"x":7,"y":3}],
-        mouseHoles: [{"color":1,"x1":1,"y1":0,"x2":2,"y2":4},{"color":2,"x1":5,"y1":0,"x2":4,"y2":4},{"color":3,"x1":6,"y1":0,"x2":7,"y2":4}],
-        optimalBlocks:14,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeat","repeatUntil","function","if"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 10,
-        challengeId: 10,
-        name: "Combining blocks",
-        grid: { cols: 9, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:7,y:1},
-        obstacles:[{"x":8,"y":0,"type":"C2"},{"x":0,"y":1,"type":"C1"},{"x":1,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"},{"x":7,"y":3,"type":"tree"},{"x":0,"y":4,"type":"C1"},{"x":4,"y":4,"type":"C1"},{"x":5,"y":4,"type":"tree"},{"x":6,"y":4,"type":"C2"},{"x":8,"y":4,"type":"C2"}],
-        cheeses:[{"x":1,"y":1},{"x":4,"y":1},{"x":6,"y":1},{"x":0,"y":3},{"x":3,"y":4}],
-        mouseHoles: [],
-        optimalBlocks:11,
-        allowedBlocks:["step","turnLeft","turnRight","cheese","repeatUntil","if"]
-        ,
-        functionLocked:false,
-        functionContents:[]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 1,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 1, y: 1, dir: "E" },
-        home:{x:7,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 2,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 8, y: 1, dir: "W" },
-        home:{x:0,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:4,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 3,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 1, y: 2, dir: "E" },
-        home:{x:7,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":6,"y":1},{"x":4,"y":2}],
-        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":5,"y2":2}],
-        optimalBlocks:8,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 4,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 3, dir: "W" },
-        home:{x:1,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":2,"y":3,"type":"tree"}],
-        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
-        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
-        optimalBlocks:10,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 5,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 3, dir: "W" },
-        home:{x:1,y:1},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":2,"y":3,"type":"wall"}],
-        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
-        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
-        optimalBlocks:9,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"},{"type":"incrementVariable","name":"C","delta":1}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 6,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 1, dir: "W" },
-        home:{x:3,y:3},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":1,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":2,"y":3,"type":"wall"}],
-        cheeses:[{"x":2,"y":1},{"x":3,"y":2},{"x":4,"y":3}],
-        mouseHoles: [{"color":1,"x1":1,"y1":1,"x2":7,"y2":2},{"color":2,"x1":2,"y1":2,"x2":7,"y2":3}],
-        optimalBlocks:9,
-        allowedBlocks:["defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"step"},{"type":"incrementVariable","name":"C","delta":-1}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 7,
-        name: "Variables",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 3, y: 2, dir: "W" },
-        home:{x:0,y:4},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["repeat","defineVariable","incrementVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnRight"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 8,
-        name: "Variables",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 0, y: 4, dir: "E" },
-        home:{x:3,y:2},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":1,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":4,"y":1,"type":"tree"},{"x":6,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":6,"y":4,"type":"tree"}],
-        cheeses:[],
-        mouseHoles: [],
-        optimalBlocks:7,
-        allowedBlocks:["repeat","defineVariable","incrementVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 9,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 3, dir: "W" },
-        home:{x:4,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"}],
-        cheeses:[{"x":4,"y":1},{"x":2,"y":2},{"x":0,"y":3}],
-        mouseHoles: [{"color":1,"x1":0,"y1":2,"x2":7,"y2":2},{"color":2,"x1":2,"y1":1,"x2":7,"y2":1}],
-        optimalBlocks:10,
-        allowedBlocks:["defineVariable","incrementVariable","repeatUntil","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"cheese"},{"type":"turnRight"},{"type":"step"},{"type":"turnLeft"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 11,
-        challengeId: 10,
-        name: "Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 3, dir: "W" },
-        home:{x:1,y:0},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":1,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":3,"y":3,"type":"tree"}],
-        cheeses:[{"x":2,"y":0},{"x":3,"y":0},{"x":4,"y":0},{"x":5,"y":0},{"x":6,"y":0},{"x":3,"y":1},{"x":4,"y":1},{"x":5,"y":1},{"x":6,"y":1},{"x":4,"y":2},{"x":5,"y":2},{"x":6,"y":2},{"x":5,"y":3},{"x":6,"y":3}],
-        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":4,"y2":3},{"color":2,"x1":7,"y1":1,"x2":3,"y2":2},{"color":3,"x1":7,"y1":0,"x2":2,"y2":1}],
-        optimalBlocks:8,
-        allowedBlocks:["step","repeat","defineVariable","incrementVariable","repeatUntil","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"cheese"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 1,
-        name: "Advanced Variables",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 1, y: 1, dir: "E" },
-        home:{x:5,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":3,"y":1,"count":2}],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","cheese"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 2,
-        name: "Advanced Variables",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 1, y: 1, dir: "E" },
-        home:{x:5,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":3,"y":1,"count":5}],
-        mouseHoles: [],
-        optimalBlocks:6,
-        allowedBlocks:["step","cheese","repeat"]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 3,
-        name: "Advanced Variables",
-        grid: { cols: 7, rows: 4 },
-        start: { x: 1, y: 1, dir: "E" },
-        home:{x:5,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":4,"y":0,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":5,"y":3,"type":"tree"}],
-        cheeses:[{"x":3,"y":1,"count":4},{"x":4,"y":1,"count":5}],
-        mouseHoles: [],
-        optimalBlocks:9,
-        allowedBlocks:["step","defineVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"incrementVariable","name":"C","delta":1},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 4,
-        name: "Advanced Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 3, dir: "W" },
-        home:{x:1,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":3,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":2,"type":"water"},{"x":1,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":0,"y":3,"type":"water"},{"x":1,"y":3,"type":"water"},{"x":2,"y":3,"type":"tree"}],
-        cheeses:[{"x":2,"y":1,"count":5},{"x":3,"y":2,"count":4},{"x":4,"y":3,"count":3}],
-        mouseHoles: [{"color":1,"x1":7,"y1":2,"x2":3,"y2":3},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2}],
-        optimalBlocks:9,
-        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 5,
-        name: "Advanced Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 1, dir: "W" },
-        home:{x:1,y:1},
-        obstacles:[{"x":0,"y":0,"type":"tree"},{"x":2,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":8,"y":0,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":3,"y":2,"type":"tree"},{"x":4,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":8,"y":2,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"water"},{"x":3,"y":3,"type":"water"},{"x":4,"y":3,"type":"water"},{"x":5,"y":3,"type":"water"},{"x":6,"y":3,"type":"water"},{"x":7,"y":3,"type":"tree"}],
-        cheeses:[{"x":2,"y":1,"count":5},{"x":3,"y":1,"count":4},{"x":4,"y":1,"count":3},{"x":5,"y":1,"count":2},{"x":6,"y":1,"count":1}],
-        mouseHoles: [],
-        optimalBlocks:8,
-        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 6,
-        name: "Advanced Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 7, y: 1, dir: "W" },
-        home:{x:1,y:2},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":1,"y":0,"type":"wall"},{"x":2,"y":0,"type":"tree"},{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"wall"},{"x":8,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":1,"y":3,"type":"wall"},{"x":2,"y":3,"type":"tree"},{"x":6,"y":3,"type":"tree"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"}],
-        cheeses:[{"x":2,"y":1,"count":1},{"x":3,"y":1,"count":2},{"x":4,"y":1,"count":3},{"x":5,"y":1,"count":4},{"x":6,"y":1,"count":5},{"x":2,"y":2,"count":5},{"x":3,"y":2,"count":4},{"x":4,"y":2,"count":3},{"x":5,"y":2,"count":2},{"x":6,"y":2,"count":1}],
-        mouseHoles: [{"color":4,"x1":1,"y1":1,"x2":7,"y2":2}],
-        optimalBlocks:11,
-        allowedBlocks:["step","repeat","defineVariable","incrementVariable","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 7,
-        name: "Advanced Variables",
-        grid: { cols: 7, rows: 5 },
-        start: { x: 6, y: 0, dir: "W" },
-        home:{x:6,y:1},
-        obstacles:[{"x":1,"y":0,"type":"C1"},{"x":0,"y":1,"type":"tree"},{"x":3,"y":1,"type":"tree"},{"x":2,"y":2,"type":"tree"},{"x":5,"y":2,"type":"tree"},{"x":4,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"C1"},{"x":6,"y":4,"type":"C1"}],
-        cheeses:[{"x":1,"y":1,"count":1},{"x":6,"y":3,"count":3},{"x":2,"y":4,"count":2}],
-        mouseHoles: [],
-        optimalBlocks:10,
-        allowedBlocks:["step","defineVariable","incrementVariable","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnLeft"},{"type":"step"},{"type":"repeat","count":"C","children":[{"type":"cheese"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 8,
-        name: "Advanced Variables",
-        grid: { cols: 9, rows: 4 },
-        start: { x: 8, y: 0, dir: "W" },
-        home:{x:0,y:0},
-        obstacles:[{"x":1,"y":0,"type":"C2"},{"x":2,"y":0,"type":"C1"},{"x":4,"y":0,"type":"C1"},{"x":5,"y":0,"type":"C2"},{"x":7,"y":0,"type":"C1"},{"x":0,"y":1,"type":"wall"},{"x":3,"y":1,"type":"wall"},{"x":6,"y":1,"type":"wall"},{"x":8,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":3,"y":2,"type":"wall"},{"x":6,"y":2,"type":"wall"},{"x":8,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":2,"y":3,"type":"wall"},{"x":3,"y":3,"type":"wall"},{"x":4,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":8,"y":3,"type":"wall"}],
-        cheeses:[{"x":2,"y":2,"count":2},{"x":4,"y":2,"count":2},{"x":7,"y":2,"count":2},{"x":1,"y":3,"count":3},{"x":5,"y":3,"count":3}],
-        mouseHoles: [],
-        optimalBlocks:18,
-        allowedBlocks:["step","defineVariable","repeatUntil","function","if"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnLeft"},{"type":"turnLeft"},{"type":"repeat","count":"C","children":[{"type":"step"}]},{"type":"turnLeft"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 9,
-        name: "Advance Variable",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 0, y: 0, dir: "E" },
-        home:{x:6,y:4},
-        obstacles:[{"x":6,"y":0,"type":"tree"},{"x":7,"y":0,"type":"tree"},{"x":0,"y":1,"type":"tree"},{"x":0,"y":2,"type":"tree"},{"x":1,"y":2,"type":"tree"},{"x":6,"y":2,"type":"tree"},{"x":7,"y":2,"type":"tree"},{"x":0,"y":3,"type":"tree"},{"x":1,"y":3,"type":"tree"},{"x":2,"y":3,"type":"tree"},{"x":0,"y":4,"type":"tree"},{"x":1,"y":4,"type":"tree"},{"x":2,"y":4,"type":"tree"},{"x":3,"y":4,"type":"tree"},{"x":7,"y":4,"type":"tree"}],
-        cheeses:[{"x":4,"y":0,"count":4},{"x":6,"y":1,"count":5},{"x":4,"y":2,"count":2},{"x":6,"y":3,"count":3},{"x":5,"y":4,"count":1}],
-        mouseHoles: [{"color":1,"x1":5,"y1":0,"x2":1,"y2":1},{"color":2,"x1":7,"y1":1,"x2":2,"y2":2},{"color":3,"x1":5,"y1":2,"x2":3,"y2":3},{"color":4,"x1":7,"y1":3,"x2":4,"y2":4}],
-        optimalBlocks:9,
-        allowedBlocks:["step","defineVariable","incrementVariable","repeatUntil","function"]
-        ,
-        functionLocked:true,
-        functionContents:[{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"step"}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-    
-    (function(){ var L = {
-        levelId: 12,
-        challengeId: 10,
-        name: "Advanced Variables",
-        grid: { cols: 8, rows: 5 },
-        start: { x: 1, y: 0, dir: "S" },
-        home:{x:1,y:4},
-        obstacles:[{"x":0,"y":0,"type":"wall"},{"x":2,"y":0,"type":"wall"},{"x":3,"y":0,"type":"wall"},{"x":4,"y":0,"type":"wall"},{"x":5,"y":0,"type":"wall"},{"x":6,"y":0,"type":"wall"},{"x":7,"y":0,"type":"wall"},{"x":0,"y":1,"type":"wall"},{"x":4,"y":1,"type":"wall"},{"x":5,"y":1,"type":"wall"},{"x":6,"y":1,"type":"wall"},{"x":7,"y":1,"type":"wall"},{"x":0,"y":2,"type":"wall"},{"x":7,"y":2,"type":"wall"},{"x":0,"y":3,"type":"wall"},{"x":5,"y":3,"type":"wall"},{"x":6,"y":3,"type":"wall"},{"x":7,"y":3,"type":"wall"},{"x":0,"y":4,"type":"wall"},{"x":6,"y":4,"type":"wall"},{"x":7,"y":4,"type":"wall"}],
-        cheeses:[{"x":3,"y":1,"count":2},{"x":6,"y":2,"count":5},{"x":4,"y":3,"count":3},{"x":5,"y":4,"count":4}],
-        mouseHoles: [],
-        optimalBlocks:15,
-        allowedBlocks:["step","turnLeft","defineVariable","incrementVariable","repeatUntil","function"]
-        ,
-        functionLocked:false,
-        functionContents:[{"type":"repeatUntil","choice":"cheese","children":[{"type":"step"}]},{"type":"repeat","count":"C","children":[{"type":"cheese"}]},{"type":"turnRight"},{"type":"turnRight"},{"type":"repeat","count":"C","children":[{"type":"step"}]}]
-
-        }
-        return { levelId: L.levelId, challengeId: L.challengeId, name: L.name,grid: L.grid, start: L.start, home: L.home,obstacles: L.obstacles, cheeses: L.cheeses, mouseHoles: L.mouseHoles, optimalBlocks: L.optimalBlocks, allowedBlocks: L.allowedBlocks, functionLocked: L.functionLocked, functionContents: L.functionContents
-        }; })(),
-
-    
 
 ];
 
