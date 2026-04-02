@@ -261,6 +261,32 @@
       padding: 14px 0 36px;
     }
 
+    .video-hero {
+      width: 100%;
+      height: 40vh; /* adjust if you want taller/shorter */
+      min-height: 350px;
+      max-height: 600px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .video-hero video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* keeps it nicely cropped */
+      display: block;
+    }
+
+    .video-hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), #fcfbf7);
+    }
+
     a { color: var(--green-dark); }
 
     @media (max-width: 860px) {
@@ -283,21 +309,21 @@
   </style>
 </head>
 <body> 
+  <div class="video-hero">
+    <video autoplay muted loop playsinline>
+      <source src="Vid.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <header class="hero">
     <div class="container hero-grid">
       <section class="hero-copy">
         <div class="eyebrow">Java e Teknologjisë | Shtime</div>
         <h1>Gara Komunale e Kodimit</h1>
         <p class="lead">
-          Këtu prindërit mund të shohin si bëhet regjistrimi, ndërsa nxënësit mund të gjejnë linket dhe videon për ushtrim para raundit kualifikues.
+          Zgjidh sfida dhe trego që je më i miri!
         </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="https://www.picktime.com/QendraAlfaOmega" target="_blank" rel="noopener">Rezervo termin</a>
-          <a class="btn btn-secondary" href="#trajnimi">Shko te ushtrimet</a>
-        </div>
       </section>
-
-      
     </div>
   </header>
 
@@ -314,16 +340,12 @@
 
       <div class="detail-grid">
         <div class="detail-box">
-          <h3>Raundi kualifikues – Cikli i ulët</h3>
+          <h3>Raundi kualifikues</h3>
           <p><strong>Klasat 3–5</strong><br>E mërkurë, 8 Prill</p>
         </div>
         <div class="detail-box">
-          <h3>Raundi kualifikues – Cikli i lartë</h3>
+          <h3>Raundi kualifikues</h3>
           <p><strong>Klasat 6–9</strong><br>E enjte, 9 Prill</p>
-        </div>
-        <div class="detail-box">
-          <h3>Regjistrimi</h3>
-          <p><a href="https://www.picktime.com/QendraAlfaOmega" target="_blank" rel="noopener">www.picktime.com/QendraAlfaOmega</a></p>
         </div>
         <div class="detail-box">
           <h3>Kush mund të marrë pjesë?</h3>
@@ -347,7 +369,7 @@
     <section class="card" id="trajnimi">
       <h2>Trajnimi</h2>
       <p>
-        Për t’u përgatitur për garën, këtu i keni materialet kryesore për ushtrim. Filloni me nivelin e duhur dhe provoni t’i zgjidhni sfidat vetë sa më shumë që mundeni.
+        Për t’u përgatitur për garën, këtu i keni materialet kryesore për ushtrim. 
       </p>
 
       <div class="resource-grid">
@@ -355,7 +377,7 @@
           <div class="tag">Junior Competition | klasat 3–5</div>
           <h3>Ushtrimet fillestare</h3>
           <p>
-            Për hapin e parë me MiuMiu, këto janë sfidat e duhura për ju. Gara për nxënësit e ciklit të ulët do t’i përdorë vetëm këto blloqe:
+            Gara për nxënësit e ciklit të ulët do t’i përdorë vetëm këto blloqe:
           </p>
           <ul class="block-list">
             <li>step</li>
@@ -370,9 +392,9 @@
 
         <article class="resource">
           <div class="tag">Senior Competition | klasat 6–9</div>
-          <h3>Sfida më të avancuara</h3>
+          <h3>Sfidat më të avancuara</h3>
           <p>
-            Nëse nuk e ke përdorur më parë MiuMiu, rekomandohet që së pari t’i bësh ushtrimet e Junior. Pastaj provo këto sfida më të vështira me blloqe më të avancuara.
+            <strong>Nëse nuk e ke përdorur më parë MiuMiu, rekomandohet që së pari t’i bësh ushtrimet fillestare.</strong> Pastaj provo këto sfida më të vështira me blloqe më të avancuara.
           </p>
           <a class="btn btn-secondary" href="https://windtorque.github.io/MiuMiu_Senior/" target="_blank" rel="noopener">Hape MiuMiu Senior</a>
         </article>
@@ -380,9 +402,9 @@
 
       <article class="resource" style="margin-top:16px;">
         <div class="tag">Video udhëzuese</div>
-        <h3>Si të zgjidhësh sfidat e Senior</h3>
+        <h3>Si të zgjidhësh sfidat më të avancuara</h3>
         <p>
-          Kjo video të udhëzon hap pas hapi për sfidat e seniorëve. Mundohu t’i bësh sfidat vetë sa më shumë që të mundesh, dhe përdore videon vetëm kur të ngecësh.
+          Kjo video të udhëzon hap pas hapi për sfidat e ciklit të lartë. Mundohu t’i bësh sfidat vetë sa më shumë që të mundesh, dhe përdore videon vetëm kur të ngecësh.
         </p>
         <div class="video-wrap">
           <iframe src="https://www.youtube.com/embed/YRt9E3czCaE" title="Video udhëzuese për MiuMiu Senior" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
